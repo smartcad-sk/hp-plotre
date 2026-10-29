@@ -1,0 +1,42 @@
+/* Small additions for behaviour that WordPress plugins provided via JavaScript. */
+
+/* Complianz placeholders for blocked embeds */
+.cmplz-blocked {
+  position: relative;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: auto;
+}
+.cmplz-blocked-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cmplz-blocked-content-notice {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: 0;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.yt-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+}
+
+/* Swiper fade effect (normally set inline by swiper.js) */
+.swiper-container-fade .swiper-slide {
+  transition-property: opacity;
+  pointer-events: none;
+}
+.swiper-container-fade .swiper-slide-active {
+  pointer-events: auto;
+}

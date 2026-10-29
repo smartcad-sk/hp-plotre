@@ -1,0 +1,301 @@
+{
+ "fonts": [
+  "https://fonts.googleapis.com/css?family=Open+Sans%3Aregular%2Citalic%2C700%2C300%2C300italic%2C600%2C600italic%2C700italic%2C800%2C800italic|Kanit%3A400%2C700%2C500italic%2C200%2C100%2C100italic%2C600italic%2C600%2C500%2C400italic%2C300italic%2C300%2C200italic%2C900%2C800italic%2C800%2C700italic%2C900italic&ver=1.5.1"
+ ],
+ "routes": {
+  "/": {
+   "file": "index",
+   "title": "smartCAD s.r.o. | predaj a servis plotrov"
+  },
+  "/https-kancelaria-smartcad-sk-bazar-plotrov/": {
+   "file": "https-kancelaria-smartcad-sk-bazar-plotrov",
+   "title": "https://kancelaria.smartcad.sk/bazar-plotrov/ - HPplotre.sk"
+  },
+  "/t950_mfp/": {
+   "file": "t950_mfp",
+   "title": "HP DJ T950 MFP | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/smart-sluzby/rady_tipy/": {
+   "file": "smart-sluzby__rady_tipy",
+   "title": "Diagnostika plotra | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/blogy/": {
+   "file": "blogy",
+   "title": "Diagnostika plotra | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t870-printer/": {
+   "file": "hp-designjet-t870-printer",
+   "title": "HP DJ T850 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/t850/": {
+   "file": "t850",
+   "title": "HP DJ T850 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-sd-pro-scanner/": {
+   "file": "hp-sd-pro-scanner",
+   "title": "HP SD Pro 44-in Scanner - HPplotre.sk"
+  },
+  "/hp-hd-pro2-scanner/": {
+   "file": "hp-hd-pro2-scanner",
+   "title": "HP HD PRO 42´´ skener | smartCAD s.r.o."
+  },
+  "/t850-mfp/": {
+   "file": "t850-mfp",
+   "title": "HP DJ T850 MFP | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/xl-3800-printer/": {
+   "file": "xl-3800-printer",
+   "title": "HP DesignJet XL 3800 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/t950_printer/": {
+   "file": "t950_printer",
+   "title": "HP DJ T950 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/vyrezavacie-plotre/": {
+   "file": "vyrezavacie-plotre",
+   "title": "Vyrezávacie plotre - HPplotre.sk"
+  },
+  "/skladacky-vykresov/": {
+   "file": "skladacky-vykresov",
+   "title": "Skladačky výkresov - HPplotre.sk"
+  },
+  "/hp-designjet-z9-pro/": {
+   "file": "hp-designjet-z9-pro",
+   "title": "HP DesignJet Z9+ Pro | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z6810-printer/": {
+   "file": "hp-designjet-z6810-printer",
+   "title": "HP DesignJet Z6810 60-in Production Printer - HPplotre.sk"
+  },
+  "/latex/": {
+   "file": "latex",
+   "title": "Latexové tlačiarne | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z6-pro/": {
+   "file": "hp-designjet-z6-pro",
+   "title": "HP DesignJet Z6 Pro 64-in Printer (2QU25A)"
+  },
+  "/kontaktny-formular/": {
+   "file": "kontaktny-formular",
+   "title": "kontaktný formulár | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t600-printer-series/": {
+   "file": "hp-designjet-t600-printer-series",
+   "title": "HP DesignJet T650 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t940-printer/": {
+   "file": "hp-designjet-t940-printer",
+   "title": "HP DesignJet T940 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t200/": {
+   "file": "hp-designjet-t200",
+   "title": "HP DesignJet T200 Printer Series - novinka 2020"
+  },
+  "/hp-designjet-z6610-printer/": {
+   "file": "hp-designjet-z6610-printer",
+   "title": "HP DesignJet Z6610 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-studio/": {
+   "file": "hp-designjet-studio",
+   "title": "HP DesignJet Studio | smartCAD s.r.o."
+  },
+  "/hp-designjet-t2600-multifunction-printer-series/": {
+   "file": "hp-designjet-t2600-multifunction-printer-series",
+   "title": "HP DesignJet T2600 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-xl-3600-multifunction-printer-series/": {
+   "file": "hp-designjet-xl-3600-multifunction-printer-series",
+   "title": "HP DesignJet XL 3600 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t500-printer-series/": {
+   "file": "hp-designjet-t500-printer-series",
+   "title": "HP DesignJet T500 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/smart-sluzby/ovladace-pre-hp-plotre/": {
+   "file": "smart-sluzby__ovladace-pre-hp-plotre",
+   "title": "ovládače pre HP plotre | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/plotrovanie/": {
+   "file": "plotrovanie",
+   "title": "Planografia | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t1600-printer-series/": {
+   "file": "hp-designjet-t1600-printer-series",
+   "title": "HP DesignJet T1600 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t1300/": {
+   "file": "hp-designjet-t1300",
+   "title": "HP DesignJet T1300 PostScript ePrinter - hpplotre.sk"
+  },
+  "/hp-designjet-t1700/": {
+   "file": "hp-designjet-t1700",
+   "title": "HP DesignJet T1700 - NOVINKA 2018! Aj dvojrolkový model - hpplotre.sk"
+  },
+  "/bazar-plotrov/": {
+   "file": "bazar-plotrov",
+   "title": "Bazár plotrov | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z9/": {
+   "file": "hp-designjet-z9",
+   "title": "HP DesignJet Z9 PostScript - HPplotre.sk"
+  },
+  "/hp-designjet-z6/": {
+   "file": "hp-designjet-z6",
+   "title": "HP DesignJet Z6 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t100-printer-series/": {
+   "file": "hp-designjet-t100-printer-series",
+   "title": "HP DesignJet T100 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z5600/": {
+   "file": "hp-designjet-z5600",
+   "title": "HP DesignJet Z5600 PostScript Printer - HPplotre.sk"
+  },
+  "/hp-designjet-z6800/": {
+   "file": "hp-designjet-z6800",
+   "title": "HP DesignJet Z6800 Photo Production Printer - HPplotre.sk"
+  },
+  "/hp-designjet-z2600/": {
+   "file": "hp-designjet-z2600",
+   "title": "HP DesignJet Z2600 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/stary_za_novy/": {
+   "file": "stary_za_novy",
+   "title": "Výmena starého plotra za nový | smartCAD s.r.o."
+  },
+  "/smart-sluzby/": {
+   "file": "smart-sluzby",
+   "title": "inštalácie a servis plotrov | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/diagnostika-plotra/": {
+   "file": "diagnostika-plotra",
+   "title": "Diagnostika plotra | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z5400-printer/": {
+   "file": "hp-designjet-z5400-printer",
+   "title": "HP DesignJet Z5400 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z6600-printer/": {
+   "file": "hp-designjet-z6600-printer",
+   "title": "HP DesignJet Z6600 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z6200-photo/": {
+   "file": "hp-designjet-z6200-photo",
+   "title": "HP DesignJet Z6200 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/kontakt/": {
+   "file": "kontakt",
+   "title": "Kontakt | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t790-printer/": {
+   "file": "hp-designjet-t790-printer",
+   "title": "HP DesignJet T790 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t795-printer/": {
+   "file": "hp-designjet-t795-printer",
+   "title": "HP DesignJet T795 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z2100-photo/": {
+   "file": "hp-designjet-z2100-photo",
+   "title": "HP DesignJet Z2100 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t3500/": {
+   "file": "hp-designjet-t3500",
+   "title": "HP DesignJet T3500 Production Multifunction Printer - HPplotre.sk"
+  },
+  "/hp-designjet-z5200-photo/": {
+   "file": "hp-designjet-z5200-photo",
+   "title": "HP DesignJet Z5200 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-z3200-photo/": {
+   "file": "hp-designjet-z3200-photo",
+   "title": "HP DesignJet Z3200 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t2530/": {
+   "file": "hp-designjet-t2530",
+   "title": "HP Designjet T2530 multifunkčná tlačiaren - technické parametre"
+  },
+  "/hp-designjet-t7200/": {
+   "file": "hp-designjet-t7200",
+   "title": "HP DesignJet T7200 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t830-printer/": {
+   "file": "hp-designjet-t830-printer",
+   "title": "HP DesignJet T830 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t1530-printer/": {
+   "file": "hp-designjet-t1530-printer",
+   "title": "HP designjet T1530 Printer - technická špecifikácia"
+  },
+  "/hp-designjet-t520-printer/": {
+   "file": "hp-designjet-t520-printer",
+   "title": "HP DesignJet T520 Printer - hpplotre.sk"
+  },
+  "/hp-designjet-t930-printer/": {
+   "file": "hp-designjet-t930-printer",
+   "title": "HP DesignJet T930 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/hp-designjet-t730-printer/": {
+   "file": "hp-designjet-t730-printer",
+   "title": "HP DesignJet T730 Printer - hpplotre.sk"
+  },
+  "/hp-designjet-t120/": {
+   "file": "hp-designjet-t120",
+   "title": "HP DesignJet T120 | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/kvalita-materialov-a-detaily-rozhoduju/": {
+   "file": "kvalita-materialov-a-detaily-rozhoduju",
+   "title": "Kompaktnosť, kvalita materiálov a detaily rozhodujú - HPplotre.sk"
+  },
+  "/pigmentove_atramenty/": {
+   "file": "pigmentove_atramenty",
+   "title": "Nie je atrament ako atrament: Výhody pigmentových atramentov pre HP plotre T850 a T950 - HPplotre.sk"
+  },
+  "/hp-plotre-t850-a-t950-ochrania-vase-projektove-data/": {
+   "file": "hp-plotre-t850-a-t950-ochrania-vase-projektove-data",
+   "title": "HP plotre T850 a T950 ochránia Vaše projektové dáta - HPplotre.sk"
+  },
+  "/navod-ako-na-vymenu-rezacieho-noza/": {
+   "file": "navod-ako-na-vymenu-rezacieho-noza",
+   "title": "Ako vymeniť rezací nôž v plotri – jednoduchý návod krok za krokom - HPplotre.sk"
+  },
+  "/hp-dj-t850-v-porovnani-s-epson-t5405/": {
+   "file": "hp-dj-t850-v-porovnani-s-epson-t5405",
+   "title": "HP DJ T850 v porovnaní s Epson T5405 - HPplotre.sk"
+  },
+  "/velkoformatove-tlaciarne/": {
+   "file": "velkoformatove-tlaciarne",
+   "title": "HP plotre | smartCAD s.r.o. predaj a servis plotrov"
+  },
+  "/montaz-a-instalacia-hp-dj-t850-u-zakaznika/": {
+   "file": "montaz-a-instalacia-hp-dj-t850-u-zakaznika",
+   "title": "Montáž a inštalácia HP DJ T850 u zákazníka - HPplotre.sk"
+  },
+  "/hp-designjet-t950-najrychlejsi-ploter-vo-svojej-kategorii/": {
+   "file": "hp-designjet-t950-najrychlejsi-ploter-vo-svojej-kategorii",
+   "title": "HP DesignJet T950 – Najrýchlejší ploter vo svojej kategórií - HPplotre.sk"
+  },
+  "/rada-t850_t950/": {
+   "file": "rada-t850_t950",
+   "title": "Kompaktné, výkonné a ekologické riešenie pre moderné kancelárie - HPplotre.sk"
+  },
+  "/diagnostika_plotra/": {
+   "file": "diagnostika_plotra",
+   "title": "V akom technickom stave máte ploter? - HPplotre.sk"
+  },
+  "/category/blog/": {
+   "file": "category__blog",
+   "title": "Blog - HPplotre.sk"
+  },
+  "/hp-designjet-T1700/": {
+   "file": "hp-designjet-T1700",
+   "title": "HP DesignJet T1700 - NOVINKA 2018! Aj dvojrolkový model - hpplotre.sk"
+  },
+  "/rady_tipy/": {
+   "redirect": "/smart-sluzby/rady_tipy/"
+  },
+  "/bazar/": {
+   "redirect": "/bazar-plotrov/"
+  }
+ }
+}
