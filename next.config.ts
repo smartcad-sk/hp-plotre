@@ -2,22 +2,34 @@ import type { NextConfig } from "next";
 import legacyRedirects from "./src/content/redirects.json";
 
 const isDev = process.env.NODE_ENV !== "production";
+// Vercel preview deployments inject the Vercel toolbar (vercel.live) – allow it there only.
+const isPreview = process.env.VERCEL_ENV === "preview";
+const vercelLive = isPreview ? " https://vercel.live" : "";
+
+// Google Tag Manager → GA4 + Google Ads (consent-gated). Hosts per Google's CSP guide.
+const google = {
+  script: "https://www.googletagmanager.com https://tagassistant.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net",
+  img: "https://*.google-analytics.com https://*.googletagmanager.com https://*.g.doubleclick.net https://ad.doubleclick.net https://www.googleadservices.com https://www.google.com https://www.google.sk",
+  connect:
+    "https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://ad.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com https://www.google.com https://www.google.sk",
+  frame: "https://td.doubleclick.net https://www.googletagmanager.com",
+};
 
 /**
  * Static CSP (no nonces) so pages stay statically prerendered.
  * Next.js injects inline bootstrap scripts, hence 'unsafe-inline' for scripts.
- * Third-party origins are limited to: YouTube (click-to-load embeds) and the
- * original WordPress host for PDFs/videos that were not migrated.
+ * Third-party origins: YouTube (click-to-load embeds), Google tags (only after consent)
+ * and the original WordPress host for PDFs/videos that were not migrated.
  */
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://tagassistant.google.com${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' ${google.script}${vercelLive}${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://i.ytimg.com https://*.google-analytics.com https://*.googletagmanager.com https://*.g.doubleclick.net https://www.google.com https://www.google.sk",
+  `img-src 'self' data: blob: https://i.ytimg.com ${google.img}${vercelLive}`,
   "font-src 'self'",
   "media-src 'self' https://hpplotre.sk",
-  "frame-src https://www.youtube-nocookie.com https://td.doubleclick.net https://www.googletagmanager.com",
-  `connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://www.google.com${isDev ? " ws:" : ""}`,
+  `frame-src https://www.youtube-nocookie.com ${google.frame}${vercelLive}`,
+  `connect-src 'self' ${google.connect}${vercelLive}${isDev ? " ws:" : ""}`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

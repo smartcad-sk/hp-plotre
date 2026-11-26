@@ -37,7 +37,7 @@ function applyConsent(c: Consent) {
     ad_personalization: c.marketing ? "granted" : "denied",
   });
   if (!GTM_ID || w.__gtmLoaded || !(c.analytics || c.marketing)) return;
-  w.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+  // `gtm.js` was already queued first in <head> (layout.tsx) – only inject the container script here.
   const s = document.createElement("script");
   s.async = true;
   s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(GTM_ID)}`;

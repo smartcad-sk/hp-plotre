@@ -24,7 +24,10 @@ export const metadata: Metadata = {
 
 const CONSENT_DEFAULT =
   "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}" +
-  "gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});";
+  "gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});" +
+  // Standard GTM bootstrap event – must be the first event in the queue, before any page_view the
+  // app pushes. The container script itself is only loaded after consent (ConsentManager).
+  "dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});";
 
 export const viewport: Viewport = {
   themeColor: "#008080",

@@ -83,6 +83,10 @@ test("page_view fires on load and on client-side navigation with page_type", asy
   const views = async () => (await events(page)).filter((e) => e.event === "page_view");
   await expect.poll(async () => (await views()).length).toBe(1);
   expect((await views())[0]).toMatchObject({ page_path: "/", page_type: "home" });
+  // GTM must see its bootstrap event before any app event, or Initialization tags (GA4 Google tag) never fire.
+  const order = (await events(page)).map((e) => e.event);
+  expect(order.indexOf("gtm.js")).toBeGreaterThanOrEqual(0);
+  expect(order.indexOf("gtm.js")).toBeLessThan(order.indexOf("page_view"));
 
   await page.locator('main a[href="/velkoformatove-tlaciarne"]').first().click();
   await expect(page).toHaveURL(/velkoformatove-tlaciarne/);
