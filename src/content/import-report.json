@@ -1,0 +1,16 @@
+{
+  "brokenPages": [],
+  "unknownWidgets": {
+    "/hp-designjet-t870-printer": [
+      "widget_text"
+    ],
+    "/blogy": [
+      "widget_block"
+    ]
+  },
+  "truncatedPosts": [],
+  "images": {
+    "downloaded": 243,
+    "failed": []
+  }
+}

@@ -1,0 +1,361 @@
+#!/usr/bin/env node
+/**
+ * One-off content importer: crawls the live WordPress site (hpplotre.sk, Layers theme)
+ * and converts every page/post into structured, sanitized JSON in src/content/.
+ * Images are downloaded into public/media/ so the Next.js site is self-contained.
+ * PDFs and videos stay linked to the original host (large binaries).
+ *
+ * Usage: node scripts/import-content.mjs
+ */
+import { mkdir, writeFile, access } from "node:fs/promises";
+import path from "node:path";
+import * as cheerio from "cheerio";
+import sanitizeHtml from "sanitize-html";
+
+const ORIGIN = "https://hpplotre.sk";
+const ROOT = path.resolve(import.meta.dirname, "..");
+const OUT_DIR = path.join(ROOT, "src", "content");
+const MEDIA_DIR = path.join(ROOT, "public", "media");
+const UA = "Mozilla/5.0 (content-import; hpplotre-nextjs)";
+
+// Pages that are WordPress artifacts, not real content.
+const SKIP_PAGE_IDS = new Set([31449 /* page whose title is a URL */]);
+
+const images = new Map(); // remote URL -> local path
+
+async function getJson(url) {
+  const res = await fetch(url, { headers: { "User-Agent": UA } });
+  if (!res.ok) throw new Error(`${res.status} ${url}`);
+  return res.json();
+}
+
+async function getHtml(url) {
+  const res = await fetch(url, { headers: { "User-Agent": UA } });
+  return { status: res.status, html: await res.text() };
+}
+
+const IMG_EXT = /\.(png|jpe?g|gif|webp|svg)$/i;
+
+/** Normalise an uploads URL and register it for download; returns local path. */
+function localImage(src) {
+  if (!src) return null;
+  let url;
+  try {
+    url = new URL(src, ORIGIN);
+  } catch {
+    return null;
+  }
+  if (!/(^|\.)hpplotre\.sk$/.test(url.hostname)) return null;
+  if (!url.pathname.startsWith("/wp-content/uploads/") || !IMG_EXT.test(url.pathname)) return null;
+  url.protocol = "https:";
+  url.hostname = "hpplotre.sk";
+  const rel = decodeURIComponent(url.pathname.replace("/wp-content/uploads/", ""))
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-zA-Z0-9/._-]+/g, "-");
+  const local = `/media/${rel}`;
+  images.set(url.href, local);
+  return local;
+}
+
+/** Rewrite links to the old site into local routes. */
+function rewriteHref(href) {
+  if (!href) return href;
+  if (href.startsWith("mailto:")) return href.replace("(a)", "@");
+  try {
+    const url = new URL(href, ORIGIN);
+    if (/(^|\.)hpplotre\.sk$/.test(url.hostname)) {
+      if (url.pathname.startsWith("/wp-content/")) {
+        url.protocol = "https:";
+        const img = IMG_EXT.test(url.pathname) ? localImage(url.href) : null;
+        return img ?? url.href;
+      }
+      const p = url.pathname.toLowerCase().replace(/\/+$/, "") || "/";
+      return p + url.hash;
+    }
+    return url.href;
+  } catch {
+    return href;
+  }
+}
+
+function clean(html) {
+  // WordPress replaces emoji with <img class="emoji" alt="🔸" src="s.w.org/...">; restore the glyph.
+  const withEmoji = (html ?? "").replace(/<img[^>]*?s\.w\.org\/images\/core\/emoji[^>]*>/g, (tag) => {
+    const alt = tag.match(/alt="([^"]*)"/)?.[1] ?? "";
+    return alt;
+  });
+  return sanitizeHtml(withEmoji, {
+    allowedTags: [
+      "p", "br", "strong", "b", "em", "i", "u", "ul", "ol", "li", "a", "h2", "h3", "h4",
+      "blockquote", "table", "thead", "tbody", "tr", "th", "td", "img", "figure", "figcaption",
+      "video", "hr", "sup", "sub",
+    ],
+    allowedAttributes: {
+      a: ["href", "target"],
+      img: ["src", "alt", "width", "height"],
+      video: ["src", "controls"],
+      td: ["colspan", "rowspan"],
+      th: ["colspan", "rowspan"],
+    },
+    allowedSchemes: ["http", "https", "mailto", "tel"],
+    transformTags: {
+      b: "strong",
+      i: "em",
+      h1: "h2",
+      h5: "h4",
+      h6: "h4",
+      a: (tagName, attribs) => ({
+        tagName,
+        attribs: {
+          href: rewriteHref(attribs.href),
+          ...(attribs.target === "_blank" ? { target: "_blank" } : {}),
+        },
+      }),
+      img: (tagName, attribs) => ({
+        tagName,
+        attribs: {
+          src: localImage(attribs.src) ?? attribs.src,
+          alt: attribs.alt ?? "",
+          ...(attribs.width ? { width: attribs.width } : {}),
+          ...(attribs.height ? { height: attribs.height } : {}),
+        },
+      }),
+    },
+    exclusiveFilter: (frame) =>
+      ["p", "strong", "em", "li", "h2", "h3", "h4"].includes(frame.tag) &&
+      !frame.text.trim() &&
+      !frame.mediaChildren?.length &&
+      !/<(img|video)/.test(frame.text),
+  })
+    .replace(/&nbsp;/g, " ")
+    .replace(/(<br \/>\s*){2,}/g, "<br />")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+const text = (s) => (s ?? "").replace(/\s+/g, " ").trim();
+
+/** Parse the per-widget inline CSS into { [elementId]: { bg, color, image } }. */
+function parseInlineCss(css) {
+  const out = {};
+  const re = /#([\w-]+)\s*\{([^}]*)\}/g;
+  let m;
+  while ((m = re.exec(css))) {
+    const [, id, body] = m;
+    const entry = (out[id] ??= {});
+    const bg = body.match(/background-color:\s*(#[0-9a-f]{3,6})/i);
+    if (bg) entry.bg = bg[1].toLowerCase();
+    const img = body.match(/background-image:\s*url\('?([^')]+)'?\)/i);
+    if (img) entry.image = img[1];
+  }
+  return out;
+}
+
+function imageFrom($, el) {
+  const img = $(el).find("img").first();
+  if (!img.length) return undefined;
+  const src = localImage(img.attr("src"));
+  if (!src) return undefined;
+  return {
+    src,
+    alt: text(img.attr("alt")),
+    width: Number(img.attr("width")) || undefined,
+    height: Number(img.attr("height")) || undefined,
+  };
+}
+
+function buttonFrom($, el) {
+  const a = $(el).find("a.button").first();
+  if (!a.length) return undefined;
+  return { href: rewriteHref(a.attr("href")), label: text(a.text()) };
+}
+
+function parseLayers($) {
+  const sections = [];
+  const unknown = new Set();
+  $("#wrapper-content > .widget, #wrapper-content > div.widget").each((_, w) => {
+    const $w = $(w);
+    const id = $w.attr("id") ?? "";
+    const css = parseInlineCss($w.find("style").text());
+    if ($w.hasClass("layers-content-widget")) {
+      const title = text($w.find("> .container .section-title .heading").first().text());
+      const excerptHtml = $w.find("> .container .section-title .excerpt").first().html();
+      const columns = [];
+      $w.find(".layers-masonry-column").each((__, c) => {
+        const $c = $(c);
+        const span = Number(($c.attr("class") ?? "").match(/span-(\d+)/)?.[1] ?? 12);
+        const ex = $c.find(".media-body .excerpt").first();
+        const image = imageFrom($, $c.find(".media-image").first());
+        const exImgs = [];
+        ex.find("img").each((___, im) => {
+          const s = localImage($(im).attr("src"));
+          if (s) exImgs.push(s);
+        });
+        const col = {
+          span,
+          title: text($c.find(".media-body .heading").first().text()) || undefined,
+          image,
+          html: clean(ex.html()) || undefined,
+          button: buttonFrom($, $c.find(".media-body")),
+          bg: css[$c.attr("id")]?.bg,
+        };
+        if (col.title || col.image || col.html || col.button) columns.push(col);
+      });
+      const sectionButton = buttonFrom($, $w.find("> .container .section-title"));
+      if (!title && !excerptHtml && !columns.length) return;
+      sections.push({
+        type: "content",
+        id,
+        title: title || undefined,
+        excerpt: clean(excerptHtml) || undefined,
+        bg: css[id]?.bg,
+        bgImage: localImage(css[id]?.image) ?? undefined,
+        button: sectionButton,
+        columns,
+      });
+    } else if ($w.hasClass("layers-slider-widget")) {
+      const slides = [];
+      $w.find(".swiper-slide").each((__, s) => {
+        const $s = $(s);
+        const sid = $s.attr("id");
+        const image =
+          localImage(css[sid]?.image) ??
+          imageFrom($, $s.find(".image-container, .overlay").first())?.src;
+        slides.push({
+          image: image ?? undefined,
+          title: text($s.find(".heading").first().text()) || undefined,
+          excerpt: clean($s.find(".excerpt").first().html()) || undefined,
+          button: buttonFrom($, $s),
+        });
+      });
+      if (slides.some((s) => s.image || s.title)) sections.push({ type: "slider", id, slides });
+    } else if ($w.hasClass("widget_media_video")) {
+      const src = $w.find("source[type='video/youtube'], iframe").first().attr("src") ?? "";
+      const youtubeId = src.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/)?.[1];
+      if (youtubeId)
+        sections.push({ type: "video", id, youtubeId, title: text($w.find(".widget-title, h3").first().text()) || undefined });
+    } else if ($w.hasClass("layers-contact-widget")) {
+      sections.push({ type: "contact", id });
+    } else if ($w.hasClass("layers-post-widget") || $w.hasClass("widget_text") || $w.hasClass("widget")) {
+      const html = clean($w.find(".textwidget, .widget-content, .container").first().html());
+      if (html) sections.push({ type: "html", id, html });
+      unknown.add(($w.attr("class") ?? "").split(/\s+/).find((c) => c.startsWith("layers-") || c.startsWith("widget_")) ?? "widget");
+    }
+  });
+  return { sections, unknown: [...unknown] };
+}
+
+function parsePost($) {
+  const $a = $("article").first();
+  const thumb = imageFrom($, $a.find(".thumbnail"));
+  const story = $a.find(".story").first().clone();
+  story.find("script, style, noscript, iframe, form").remove();
+  // A WordPress fatal error page sometimes gets injected into the story; cut there.
+  let html = story.html() ?? "";
+  const cut = html.search(/<!DOCTYPE html>|WordPress &rsaquo; Chyba/i);
+  const truncated = cut >= 0;
+  if (truncated) html = html.slice(0, cut);
+  return { thumbnail: thumb, html: clean(html), truncated };
+}
+
+async function exists(p) {
+  try {
+    await access(p);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function downloadImages() {
+  let ok = 0;
+  const failed = [];
+  const queue = [...images.entries()];
+  async function worker() {
+    while (queue.length) {
+      const [remote, local] = queue.shift();
+      const dest = path.join(ROOT, "public", ...local.split("/").filter(Boolean));
+      if (await exists(dest)) {
+        ok++;
+        continue;
+      }
+      try {
+        const res = await fetch(remote, { headers: { "User-Agent": UA } });
+        if (!res.ok) throw new Error(String(res.status));
+        await mkdir(path.dirname(dest), { recursive: true });
+        await writeFile(dest, Buffer.from(await res.arrayBuffer()));
+        ok++;
+      } catch (e) {
+        failed.push(`${remote} (${e.message})`);
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: 6 }, worker));
+  return { ok, failed };
+}
+
+async function main() {
+  await mkdir(OUT_DIR, { recursive: true });
+  await mkdir(MEDIA_DIR, { recursive: true });
+  const fields = "id,slug,link,title,parent,modified,date,excerpt,yoast_head_json";
+  const wpPages = await getJson(`${ORIGIN}/wp-json/wp/v2/pages?per_page=100&_fields=${fields}`);
+  const wpPosts = await getJson(`${ORIGIN}/wp-json/wp/v2/posts?per_page=100&_fields=${fields}`);
+  const report = { brokenPages: [], unknownWidgets: {}, truncatedPosts: [] };
+
+  const pages = [];
+  for (const p of wpPages) {
+    if (SKIP_PAGE_IDS.has(p.id)) continue;
+    const route = new URL(p.link).pathname.replace(/\/+$/, "").toLowerCase() || "/";
+    const { status, html } = await getHtml(p.link);
+    if (status !== 200) report.brokenPages.push(`${route} -> ${status}`);
+    const $ = cheerio.load(html);
+    const { sections, unknown } = parseLayers($);
+    if (unknown.length) report.unknownWidgets[route] = unknown;
+    const y = p.yoast_head_json ?? {};
+    pages.push({
+      id: p.id,
+      route,
+      title: cheerio.load(p.title.rendered).text().trim(),
+      seoTitle: y.title ? cheerio.load(y.title).text() : undefined,
+      description: y.description || y.og_description || undefined,
+      modified: p.modified,
+      sections,
+    });
+    process.stdout.write(".");
+  }
+
+  const posts = [];
+  for (const p of wpPosts) {
+    const route = new URL(p.link).pathname.replace(/\/+$/, "").toLowerCase();
+    const { html } = await getHtml(p.link);
+    const $ = cheerio.load(html);
+    const parsed = parsePost($);
+    if (parsed.truncated) report.truncatedPosts.push(route);
+    const y = p.yoast_head_json ?? {};
+    posts.push({
+      id: p.id,
+      route,
+      title: cheerio.load(p.title.rendered).text().trim(),
+      description: y.description || text(cheerio.load(p.excerpt?.rendered ?? "").text()).slice(0, 160),
+      date: p.date,
+      modified: p.modified,
+      thumbnail: parsed.thumbnail,
+      html: parsed.html,
+    });
+    process.stdout.write("+");
+  }
+  posts.sort((a, b) => b.date.localeCompare(a.date));
+
+  await writeFile(path.join(OUT_DIR, "pages.json"), JSON.stringify(pages, null, 2) + "\n");
+  await writeFile(path.join(OUT_DIR, "posts.json"), JSON.stringify(posts, null, 2) + "\n");
+  const dl = await downloadImages();
+  report.images = { downloaded: dl.ok, failed: dl.failed };
+  await writeFile(path.join(OUT_DIR, "import-report.json"), JSON.stringify(report, null, 2) + "\n");
+  console.log(`\npages=${pages.length} posts=${posts.length} images=${dl.ok} failed=${dl.failed.length}`);
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
