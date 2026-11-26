@@ -14,9 +14,40 @@ const isTitleBand = (s: ContentSection): s is ContentBlock =>
  *  - a title-only band directly followed by an untitled content grid is merged into it,
  *  - empty sections are dropped.
  */
+const decode = (s: string) =>
+  s.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").replace(/&#8220;|&#8221;|&#8222;/g, "\"").replace(/&nbsp;/g, " ");
+
+/** "» Technická špecifikácia HP DesignJet T1700 «" → "Technická špecifikácia HP DesignJet T1700" */
+export function slideLinkLabel(slide: { title?: string; excerpt?: string; link?: string }) {
+  const raw = decode(slide.title || strip(slide.excerpt)).replace(/[<>»«]+/g, " ").replace(/\s+/g, " ").trim();
+  if (raw) return raw;
+  const href = slide.link ?? "";
+  if (/youtu\.?be|\.mp4$/i.test(href)) return "Pozrieť video";
+  return friendlyLabel(href, href);
+}
+
+/**
+ * Layers "link bars" (single slides that are just a link) become one `links` section;
+ * consecutive bars are merged so spec + e-shop buttons sit in one row.
+ */
+function collapseLinkSliders(sections: ContentSection[]): ContentSection[] {
+  const out: ContentSection[] = [];
+  for (const s of sections) {
+    if (s.type === "slider" && s.slides.every((sl) => !sl.image && sl.link)) {
+      const links = s.slides.map((sl) => ({ href: sl.link!, label: slideLinkLabel(sl) }));
+      const prev = out[out.length - 1];
+      if (prev?.type === "links") prev.links.push(...links);
+      else out.push({ type: "links", id: s.id, links });
+    } else {
+      out.push(s);
+    }
+  }
+  return out;
+}
+
 export function normalizePage(page: Page) {
-  const sections = structuredClone(page.sections).filter(
-    (s) => !(s.type === "content" && !s.title && !s.excerpt && s.columns.length === 0),
+  const sections = collapseLinkSliders(
+    structuredClone(page.sections).filter((s) => !(s.type === "content" && !s.title && !s.excerpt && s.columns.length === 0)),
   );
 
   let title = displayTitle(page);
@@ -79,4 +110,16 @@ export function friendlyLabel(label: string, href: string) {
   if (/\.pdf($|\?)/i.test(href)) return "Technická špecifikácia (PDF)";
   if (href.includes("kancelaria.smartcad.sk")) return "Zakúpiť na e-shope";
   return "Viac informácií";
+}
+
+/** Consistent heading case: capitalize the first letter, turn SHOUTING into sentence case. */
+export function tidyHeading(t: string) {
+  let s = t.trim();
+  const letters = s.replace(/[^\p{L}]/gu, "");
+  if (letters.length > 12 && letters === letters.toUpperCase()) {
+    s = s
+      .toLowerCase()
+      .replace(/\b(hp|pdf|usb|cad|gis|a\d|mfp|ps)\b/gi, (m) => m.toUpperCase());
+  }
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }

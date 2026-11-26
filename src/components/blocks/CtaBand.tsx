@@ -14,17 +14,17 @@ export function CtaBand({
   return (
     <section aria-labelledby="cta-title" className="bg-brand-800 text-white">
       <Container className="flex flex-col gap-6 py-12 sm:py-14 lg:flex-row lg:items-center lg:justify-between">
-        <div className="max-w-2xl space-y-2">
+        <div className="max-w-2xl flex-1 space-y-2">
           <Heading id="cta-title" level={2} size="lg">
             {title}
           </Heading>
           <p className="text-white/85">{text}</p>
         </div>
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href="/kontakt" variant="secondary" size="lg" arrow>
+        <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+          <ButtonLink href="/kontakt" variant="secondary" size="lg" arrow className="whitespace-nowrap">
             Kontaktujte nás
           </ButtonLink>
-          <ButtonLink href={`tel:${site.phone.replace(/\s/g, "")}`} variant="inverse" size="lg">
+          <ButtonLink href={`tel:${site.phone.replace(/\s/g, "")}`} variant="inverse" size="lg" className="whitespace-nowrap">
             {site.phoneDisplay}
           </ButtonLink>
         </div>

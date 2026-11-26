@@ -4,7 +4,6 @@
     "route": "/hp-designjet-t870-printer",
     "title": "HP DesignJet T870 Printer",
     "seoTitle": "HP DJ T850 | smartCAD s.r.o. predaj a servis plotrov",
-    "description": "HP DJ T850 je kompaktná, ľahko ovládateľná a ekologickú A3 a- A1 farebná tlačiareň pre menšie pracovné tímy.",
     "modified": "2026-07-14T14:27:22",
     "sections": [
       {
@@ -132,6 +131,11 @@
         ]
       },
       {
+        "type": "video",
+        "id": "media_video-52",
+        "src": "https://hpplotre.sk/wp-content/uploads/2025/11/HP-DesignJet-T870-Plotter-Printer-Product-video_CS_5456603.mp4"
+      },
+      {
         "type": "html",
         "id": "custom_html-4",
         "html": "<h3>Výkon a efektivita</h3> <ul> <li>Až <strong>90 výtlačkov A1/h</strong></li> <li><strong>Automatický prechod</strong> z rolky na listy A4/A3 (zásobník 50 ks)</li> <li>Presné CAD/GIS – ostré linky, stabilné farby</li> <li>Atramenty <strong>HP Flex Tech 130/300 ml</strong> – menej prestojov</li> <li>Dotykový panel, tlač z <strong>USB/mobilu/cloudu</strong></li> </ul> <h3>Bezpečnosť a správa</h3> <ul> <li><strong>HP Wolf Pro Security</strong> – ochrana zariadenia a siete</li> <li>Secure Boot, Firmware Validation, <strong>SNMPv3</strong>, WMP</li> <li><strong>HP Click</strong> – jednoduchá dávková tlač PDF</li> <li>Rýchle prebudenie – pripravená tlačiť takmer hneď</li> </ul> <h3>Kvalita a presnosť</h3> <ul> <li>Čistý text, jemná rasterizácia, stabilné línie</li> <li>Automatické zarovnanie média a kalibrácia farieb</li> <li>Konzistentný výstup na bežné, natierané aj foto médiá</li> <li>Rovnomerné krytie plôch pri plnofarebnej tlači</li> </ul> <h3>Udržateľnosť a prevádzka</h3> <ul> <li>Min. <strong>35&nbsp;% recyklovaných plastov</strong></li> <li>Až <strong>-49&nbsp;% spotreby energie</strong> vs. predošlá generácia</li> <li>Kompaktnejšia konštrukcia, menej odpadu z balenia</li> <li>Stabilný podstavec, spoľahlivá dlhodobá prevádzka</li> </ul> Šírka rolky: <strong>369–914&nbsp;mm</strong> Max. návin: <strong>do 50&nbsp;m</strong> Zásobník: <strong>50 listov A4/A3</strong> Pamäť: <strong>1&nbsp;GB</strong> <h3>Kompatibilné tonery</h3> <strong>Matte Black</strong> — <a href=\"https://kancelaria.smartcad.sk/hpno738black130ml-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">130 ml (498N4A)</a> · <a href=\"https://kancelaria.smartcad.sk/hpno738black300ml-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">300 ml (498N8A)</a> <strong>Cyan</strong> — <a href=\"https://kancelaria.smartcad.sk/hpno738cyan130ml-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">130 ml (498N5A)</a> · <a href=\"https://kancelaria.smartcad.sk/hpno738cyan300ml-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">300 ml (676M6A)</a> <strong>Magenta</strong> — <a href=\"https://kancelaria.smartcad.sk/hpno738magenta130ml-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">130 ml (498N6A)</a> · <a href=\"https://kancelaria.smartcad.sk/hpno738magenta300ml-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">300 ml (676M7A)</a> <strong>Yellow</strong> — <a href=\"https://kancelaria.smartcad.sk/hpno738yellow130ml-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">130 ml (498N7A)</a> · <a href=\"https://kancelaria.smartcad.sk/hpno738yellow300ml-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">300 ml (676M8A)</a> <strong>Tlačová hlava:</strong> <a href=\"https://kancelaria.smartcad.sk/hp739printheadreplacementkit-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">HP 498N0A</a>"
@@ -165,7 +169,6 @@
     "route": "/blogy",
     "title": "Blogy",
     "seoTitle": "Diagnostika plotra | smartCAD s.r.o. predaj a servis plotrov",
-    "description": "Netlačí Vám správne ploter? Výtlačky sú nepresné, rozmazané? Ploter trhá papier prípadne vypisuje chybu? Diagnostikou predídete problémom.",
     "modified": "2026-07-14T14:27:36",
     "sections": [
       {
@@ -1259,6 +1262,11 @@
         ]
       },
       {
+        "type": "video",
+        "id": "media_video-44",
+        "src": "https://hpplotre.sk/wp-content/uploads/2023/11/XL-3800-video.mp4"
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-262",
         "title": "Zaujala Vás HP XL 3800? Neváhajte a kontaktujte nás",
@@ -1307,6 +1315,16 @@
       },
       {
         "type": "slider",
+        "id": "layers-widget-slide-177",
+        "slides": [
+          {
+            "excerpt": "<p><strong><strong>&gt;&gt; Technická špecifikácia HP HD Pro 2 42-in &lt;&lt;</strong></strong></p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2022/03/technicka-spec-HP-HD-Pro-42-in.pdf"
+          }
+        ]
+      },
+      {
+        "type": "slider",
         "id": "layers-widget-slide-178",
         "slides": [
           {
@@ -1318,6 +1336,16 @@
             },
             "title": "Špičkové farebné skenovanie pomocou technológie CCD",
             "excerpt": "<ul><li>Skener HP HD Pro 2 je vysokorýchlostný skener.</li><li>Reprodukuje všetko <strong>od technických dokumentov vrátane grafiky v HD kvalite.</strong></li><li>Dosahuje vysokokvalitné výsledky s optickým rozlíšením 1 200 dpi.</li><li>Vylepšené rozlíšenie snímania až 9600 dpi.</li><li>Maximálna šírka skenu je až 1 067 mm.</li><li>Na veľkej dotykovej obrazovke vidíte náhľad po skenovaní, ktorý môžete vylepšiť a upraviť pomocou softvéru HP SmartStream.</li><li>Jednoduchá integrácia s veľkoformátovými tlačiarňami HP.</li></ul>"
+          }
+        ]
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-226",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať skener </strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/hp-dh-pro-2-42-in-scanner"
           }
         ]
       },
@@ -1389,6 +1417,16 @@
       },
       {
         "type": "slider",
+        "id": "layers-widget-slide-173",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt; Technická špecifikácia HP SD Pro 44-in &lt;&lt;</strong></p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2022/01/technicka-spec-HP-SD-Pro-44-in.pdf"
+          }
+        ]
+      },
+      {
+        "type": "slider",
         "id": "layers-widget-slide-171",
         "slides": [
           {
@@ -1400,6 +1438,16 @@
             },
             "title": "Špičkové farebné skenovanie pomocou CIS technológie",
             "excerpt": "<ul><li>HP SD Pro je vysokorýchlostný skener. </li><li>Produkuje presne farebné skeny s ostrými čiarami a dokonalými detailami pomocou technológie CIS. </li><li>Neželané tiene a pozadia odstránite pomocou systému dvojitého osvetlenia.</li><li>Vysokokvalitné výsledky s optickým rozlíšením 1 200 dpi pri používaní originálov so šírkou až 1 118 mm.</li><li>Vylepšené rozlíšenie snímania až 9600 dpi.</li><li>Na veľkej dotykovej obrazovke vidíte náhľad po skenovaní, ktorý môžete vylepšiť a upraviť pomocou softvéru HP SmartStream.</li></ul>"
+          }
+        ]
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-218",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať skener </strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/velkoformatove-scannery/"
           }
         ]
       },
@@ -1485,6 +1533,20 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-169",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2022/01/HP-DesignJet-Z9-Pro-64-in-Printer-.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>technická špecifikácia HP DesignJet Z9+ Pro 64-in</strong></a><strong>&nbsp;na stiahnutie</strong><strong>&lt;&lt;</strong></p>"
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "id": "media_video-40",
+        "src": "https://hpplotre.sk/wp-content/uploads/2022/01/2021-12_HP-DesignJet-Z9-plus-Pro.mp4"
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-226",
         "excerpt": "<ul><li>.</li></ul>",
@@ -1518,7 +1580,8 @@
               "src": "/media/2022/01/cyan.png",
               "alt": "",
               "width": 320,
-              "height": 240
+              "height": 240,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+776"
             }
           },
           {
@@ -1533,7 +1596,8 @@
               "src": "/media/2021/12/777-printhead.jpg",
               "alt": "",
               "width": 500,
-              "height": 500
+              "height": 500,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+777"
             },
             "html": "<ul><li>3EE09A HP 777 DesignJet Printhead </li><li>HP Z9+ Pro 64-in má 5 univerzálnych tlačových hláv</li></ul>"
           },
@@ -1544,7 +1608,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>420mm až 1626mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 500 g/m² – na objednávku</li></ul>"
           }
@@ -1598,6 +1663,20 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-166",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2021/12/tech.-spec.-HP-DJ-Z6-Pro-64-in.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>technická špecifikácia HP DesignJet Z6 Pro 64-in</strong></a><strong>&nbsp;na stiahnutie</strong><strong>&lt;&lt;</strong></p>"
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "id": "media_video-38",
+        "src": "https://hpplotre.sk/wp-content/uploads/2021/12/2021-12_HP-DesignJet-Z6-Pro.mp4"
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-222",
         "title": ".",
@@ -1632,7 +1711,8 @@
               "src": "/media/2021/12/775.webp",
               "alt": "",
               "width": 320,
-              "height": 240
+              "height": 240,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=1XB+hp+775"
             }
           },
           {
@@ -1647,7 +1727,8 @@
               "src": "/media/2021/12/777-printhead.jpg",
               "alt": "",
               "width": 500,
-              "height": 500
+              "height": 500,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+777"
             },
             "html": "<ul><li>3EE09A HP 777 DesignJet Printhead </li><li>HP Z6 Pro 64-in má 3 univerzálne tlačové hlavy</li></ul>"
           },
@@ -1658,7 +1739,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>420mm až 1626mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 500 g/m² – na objednávku</li></ul>"
           }
@@ -2183,6 +2265,26 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-157",
+        "slides": [
+          {
+            "excerpt": "<p>&gt;&gt; Technická špecifikácia HP DesignJet Z6810 &lt;&lt;</p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2021/05/technicka-specifikacia-Z6810.pdf"
+          }
+        ]
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-210",
+        "slides": [
+          {
+            "excerpt": "<p>&gt;&gt; Chcem prejsť do e-shopu a objednať si tlačiareň &lt;&lt;</p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+Z6810+in"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-190",
         "excerpt": "<p>Chýbajú Vám náplne alebo plotrovacie rolky? Objednajte si ich na našom e-shope <strong>kancelaria.smartcad.sk</strong> alebo nám napíšte na: <strong>obchod@smartcad.sk</strong></p>",
@@ -2193,7 +2295,8 @@
               "src": "/media/2016/10/773-300x141.png",
               "alt": "",
               "width": 300,
-              "height": 141
+              "height": 141,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+773"
             }
           },
           {
@@ -2213,7 +2316,8 @@
               "src": "/media/2021/05/hp_p2w01a_774_matte_black_cyan-300x300.jpg",
               "alt": "",
               "width": 300,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+774"
             }
           },
           {
@@ -2233,7 +2337,8 @@
               "src": "/media/2020/11/rolky-1-300x217.png",
               "alt": "",
               "width": 300,
-              "height": 217
+              "height": 217,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/"
             }
           },
           {
@@ -2292,6 +2397,16 @@
       },
       {
         "type": "slider",
+        "id": "layers-widget-slide-151",
+        "slides": [
+          {
+            "excerpt": "<p>&gt;&gt; Technická špecifikácia HP DesignJet Z6610 60-in &lt;&lt;</p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2022/03/HP-Designjet-Z6610-Printer.pdf"
+          }
+        ]
+      },
+      {
+        "type": "slider",
         "id": "layers-widget-slide-153",
         "slides": [
           {
@@ -2309,6 +2424,16 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-206",
+        "slides": [
+          {
+            "excerpt": "<p>&gt;&gt; Chcem prejsť do e-shopu a objednať si tlačiareň &lt;&lt;</p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+Z6610"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-185",
         "excerpt": "<p>Chýbajú Vám náplne alebo plotrovacie rolky? Objednajte si ich na našom e-shope <strong>kancelaria.smartcad.sk</strong> alebo nám napíšte na: <strong>obchod@smartcad.sk</strong></p>",
@@ -2319,7 +2444,8 @@
               "src": "/media/2016/10/773-300x141.png",
               "alt": "",
               "width": 300,
-              "height": 141
+              "height": 141,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+773"
             }
           },
           {
@@ -2339,7 +2465,8 @@
               "src": "/media/2021/05/hp_p2w01a_774_matte_black_cyan-300x300.jpg",
               "alt": "",
               "width": 300,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+774"
             }
           },
           {
@@ -2359,7 +2486,8 @@
               "src": "/media/2020/11/rolky-1-300x217.png",
               "alt": "",
               "width": 300,
-              "height": 217
+              "height": 217,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/"
             }
           },
           {
@@ -2439,6 +2567,26 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-148",
+        "slides": [
+          {
+            "excerpt": "<p><strong><strong><strong>&gt;&gt; Technická špecifikácia HP DesignJet T940 Printer Series <strong>&lt;&lt;</strong></strong></strong></strong></p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2022/03/HP-Designjet-T940.pdf"
+          }
+        ]
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-187",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať si tlačiareň </strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+designjet+T940"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-177",
         "excerpt": "<p>Chýbajú Vám náplne alebo plotrovacie rolky? Objednajte si ich na našom e-shope <strong>kancelaria.smartcad.sk</strong> alebo nám napíšte na: <strong>obchod@smartcad.sk</strong></p>",
@@ -2449,7 +2597,8 @@
               "src": "/media/2019/07/HP-730-naplne-300x300.png",
               "alt": "",
               "width": 300,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+730+P2V"
             }
           },
           {
@@ -2475,7 +2624,8 @@
               "src": "/media/2019/07/hp-727-tlacova-hlava.jpg",
               "alt": "",
               "width": 1064,
-              "height": 875
+              "height": 875,
+              "href": "https://kancelaria.smartcad.sk/b3p06a"
             },
             "html": "<ul><li>B3P06A HP 727, DesignJet Printhead</li></ul><p><a href=\"https://kancelaria.smartcad.sk/b3p06a\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong></a></p>"
           },
@@ -2486,7 +2636,8 @@
               "src": "/media/2020/11/rolky.png",
               "alt": "",
               "width": 700,
-              "height": 700
+              "height": 700,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 914mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 328 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong></a></p>"
           }
@@ -2596,6 +2747,15 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-142",
+        "slides": [
+          {
+            "excerpt": "<a href=\"https://hpplotre.sk/wp-content/uploads/2022/03/HP-DesignJet-T600-Printer-Series.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;&gt;&gt; Technická špecifikácia HP DesignJet T600 Printer Series &lt;&lt;&nbsp;</a>"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-236",
         "title": "Modely tlačiarní v sérií T600",
@@ -2645,9 +2805,29 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-182",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať si tlačiareň </strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+DesignJet+T6"
+          }
+        ]
+      },
+      {
         "type": "video",
         "id": "media_video-32",
         "youtubeId": "Q4Rd5MS1KX0"
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-222",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt; </strong>Chýbajú Vám náplne alebo plotrovacie rolky? Objednajte si ich na našom e-shope<strong> kancelaria.smartcad.sk </strong>alebo nám napíšte na: <strong>obchod@smartcad.sk</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+712"
+          }
+        ]
       },
       {
         "type": "content",
@@ -2659,7 +2839,8 @@
               "src": "/media/2020/10/712.-290x300.jpg",
               "alt": "",
               "width": 290,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+712"
             }
           },
           {
@@ -2674,7 +2855,8 @@
               "src": "/media/2020/10/HP-713-printhead.png.jpg",
               "alt": "",
               "width": 319,
-              "height": 352
+              "height": 352,
+              "href": "https://kancelaria.smartcad.sk/hp713tlacovahlavacmyk-sk"
             },
             "html": "<ul><li><a href=\"https://kancelaria.smartcad.sk/hp713tlacovahlavacmyk-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;<strong>3ED58A</strong> HP 713 Cyan, Yellow, Magenta, Black&nbsp;</a></li></ul><p><a href=\"https://kancelaria.smartcad.sk/hp713tlacovahlavacmyk-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;CHCEM OBJEDNAŤ cez e-shop&nbsp;</a></p>"
           },
@@ -2685,7 +2867,8 @@
               "src": "/media/2026/05/plotrove-rolky-plain-6-scaled.png",
               "alt": "",
               "width": 2560,
-              "height": 1396
+              "height": 1396,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li><a href=\"https://kancelaria.smartcad.sk/pr80g/\" target=\"_blank\" rel=\"noopener noreferrer\">297mm až 914mm&nbsp;</a></li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;CHCEM OBJEDNAŤ cez e-shop&nbsp;</a></p>"
           }
@@ -2753,9 +2936,27 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-139",
+        "slides": [
+          {
+            "excerpt": "<a href=\"https://kancelaria.smartcad.sk/t230-24in-5hb07d/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Kúpiť HP DesignJet T230</strong></a><a href=\"https://kancelaria.smartcad.sk/t250-24in-5hb06d/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Kúpiť HP DesignJet T250</strong></a>"
+          }
+        ]
+      },
+      {
         "type": "video",
         "id": "media_video-30",
         "youtubeId": "Q4Rd5MS1KX0"
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-180",
+        "slides": [
+          {
+            "excerpt": "<p><a href=\"https://kancelaria.smartcad.sk/\" target=\"_blank\" rel=\"noopener noreferrer\">VSTÚPIŤ DO E-SHOPU</a></p>"
+          }
+        ]
       },
       {
         "type": "content",
@@ -2781,6 +2982,16 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-220",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt; </strong>Chýbajú Vám náplne alebo plotrovacie rolky? Objednajte si ich na našom e-shope <strong>kancelaria.smartcad.sk</strong> alebo nám napíšte na: <strong>obchod@smartcad.sk</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+712"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-164",
         "columns": [
@@ -2790,7 +3001,8 @@
               "src": "/media/2020/10/712.-290x300.jpg",
               "alt": "",
               "width": 290,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+712"
             }
           },
           {
@@ -2805,7 +3017,8 @@
               "src": "/media/2020/10/HP-713-printhead.png.jpg",
               "alt": "",
               "width": 319,
-              "height": 352
+              "height": 352,
+              "href": "https://kancelaria.smartcad.sk/hp713tlacovahlavacmyk-sk/"
             },
             "html": "<ul><li>3ED58A HP 713 Cyan, Yellow, Magenta, Black</li></ul><p><a href=\"https://kancelaria.smartcad.sk/hp713tlacovahlavacmyk-sk\" target=\"_blank\" rel=\"noopener noreferrer\">CHCEM OBJEDNAŤ cez e-shop</a></p>"
           },
@@ -2816,7 +3029,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/pr80g/"
             },
             "html": "<ul><li>297mm až 610mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/pr80g/\" target=\"_blank\" rel=\"noopener noreferrer\">CHCEM OBJEDNAŤ cez e-shop</a></p>"
           }
@@ -2866,6 +3080,15 @@
             },
             "title": "HP DesignJet Studio Printer Series (5HB12A, 5HB12C, 5HB14A, 5HB14C)",
             "excerpt": "<p>Predstavujeme vám dizajnovú novinku <strong>HP DesignJet Studio Printer.</strong><br>Je určená všetkým, ktorí majú radi nadupané a vizuálne atraktívne stroje.<br>HP sa aj v tomto prípade drží línie: kvalita prevedenia, profesionálna tlač a jednoduchosť užívania.</p><p><u>V sérii <strong>Studio</strong> sú tieto modely:</u></p><ul><li><a>&nbsp;<strong>HP DesignJet Studio (5HB12A)</strong> 24-in Printer </a></li><li><a>&nbsp;<strong>HP DesignJet Studio Steel (5HB12C)</strong> 24-in Printer </a></li><li><a>&nbsp;<strong>HP DesignJet Studio (5HB14A)</strong> 36-in Printer </a></li><li><a>&nbsp;<strong>HP DesignJet Studio Steel (5HB14C)</strong> 36-in Printer </a></li></ul><p>Rýchlosť tlače: A1 vytlačí za 26 sekúnd.</p>"
+          }
+        ]
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-136",
+        "slides": [
+          {
+            "excerpt": "<a href=\"https://hpplotre.sk/wp-content/uploads/2022/03/HP-DesignJet-Sudio-Printer.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;&gt;&gt; Technická špecifikácia HP DesignJet Studio Printer &lt;&lt;&nbsp;</a>"
           }
         ]
       },
@@ -2933,7 +3156,8 @@
               "src": "/media/2020/10/712.-290x300.jpg",
               "alt": "",
               "width": 290,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+712"
             }
           },
           {
@@ -2948,7 +3172,8 @@
               "src": "/media/2020/10/HP-713-printhead.png.jpg",
               "alt": "",
               "width": 319,
-              "height": 352
+              "height": 352,
+              "href": "https://kancelaria.smartcad.sk/hp713tlacovahlavacmyk-sk"
             },
             "html": "<ul><li><a href=\"https://kancelaria.smartcad.sk/hp713tlacovahlavacmyk-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;<strong>3ED58A</strong> HP 713 Cyan, Yellow, Magenta, Black&nbsp;</a></li></ul><p><a href=\"https://kancelaria.smartcad.sk/hp713tlacovahlavacmyk-sk/\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;CHCEM OBJEDNAŤ cez e-shop&nbsp;</a></p>"
           },
@@ -2959,7 +3184,8 @@
               "src": "/media/2026/05/plotrove-rolky-plain-6-scaled.png",
               "alt": "",
               "width": 2560,
-              "height": 1396
+              "height": 1396,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li><a href=\"https://kancelaria.smartcad.sk/pr80g/\" target=\"_blank\" rel=\"noopener noreferrer\">297mm až 914mm&nbsp;</a></li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;CHCEM OBJEDNAŤ cez e-shop&nbsp;</a></p>"
           }
@@ -3029,6 +3255,11 @@
         "id": "layers-widget-column-155",
         "excerpt": "<ul><li>V Bratislave aj v Banskej Bystrici máme plotre a skladačky.</li><li>Váš projekt vytlačíme, výkresy poskladáme, dokumentáciu skompletizujeme do obálok s popiskami a dovezieme. </li><li>Cenovo nerozlišujeme medzi čiernou a farebnou tlačou.</li><li>Stačí poslať výkresy na náš email <strong>plot@smartcad.sk</strong></li></ul>",
         "columns": []
+      },
+      {
+        "type": "video",
+        "id": "media_video-10",
+        "src": "https://hpplotre.sk/wp-content/uploads/2020/06/2020_Planografia.mp4"
       },
       {
         "type": "content",
@@ -3125,6 +3356,15 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-123",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;<a href=\"https://hpplotre.sk/wp-content/uploads/2022/03/HP-Designjet-XL-3600-Multi-Printer.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"> Technická špecifikácia HP DesignJet XL 3600 Multifunction Printer series </a> &lt;&lt;</strong></p>"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-135",
         "bgImage": {
@@ -3164,7 +3404,8 @@
               "src": "/media/2019/08/766-ink.jpg",
               "alt": "",
               "width": 600,
-              "height": 600
+              "height": 600,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+766"
             }
           },
           {
@@ -3179,7 +3420,8 @@
               "src": "/media/2019/07/hp-727-tlacova-hlava-480x480.jpg",
               "alt": "",
               "width": 480,
-              "height": 480
+              "height": 480,
+              "href": "https://kancelaria.smartcad.sk/b3p06a"
             },
             "html": "<ul><li>B3P06A HP 727 DesignJet Printhead</li></ul><p><a href=\"https://kancelaria.smartcad.sk/b3p06a\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           },
@@ -3190,7 +3432,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 914mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 328 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           }
@@ -3244,6 +3487,16 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-120",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;Technická špecifikácia HP DesignJet T2600 MFP</strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2022/03/HP-Designjet-T2600-Multifunction-Printer.pdf"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-132",
         "columns": [
@@ -3271,6 +3524,10 @@
         "id": "layers-widget-slide-195",
         "slides": [
           {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať si tlačiareň </strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+designjet+T2600"
+          },
+          {
             "title": "Slider Title",
             "excerpt": "<p>Short Excerpt</p>",
             "button": {
@@ -3295,7 +3552,8 @@
               "src": "/media/2019/07/HP-730-naplne-300x300.png",
               "alt": "",
               "width": 300,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+730+P2V"
             }
           },
           {
@@ -3315,7 +3573,8 @@
               "src": "/media/2019/07/hp-727-tlacova-hlava.jpg",
               "alt": "",
               "width": 1064,
-              "height": 875
+              "height": 875,
+              "href": "https://kancelaria.smartcad.sk/b3p06a"
             },
             "html": "<ul><li>B3P06A HP 727 DesignJet Printhead</li></ul><p><a href=\"https://kancelaria.smartcad.sk/b3p06a\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           },
@@ -3326,7 +3585,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 914mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 328 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           }
@@ -3380,6 +3640,15 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-117",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;&nbsp;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2019/07/HP-DJ-T1600.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Technická špecifikácia HP designJet T1600</strong></a><strong>&lt;&lt;</strong></p>"
+          }
+        ]
+      },
+      {
         "type": "video",
         "id": "media_video-18",
         "youtubeId": "ckZCCpPzStc"
@@ -3388,6 +3657,10 @@
         "type": "slider",
         "id": "layers-widget-slide-189",
         "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt; Chcem prejsť do e-shopu a objednať si tlačiareň &lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+designjet+T1600"
+          },
           {
             "title": "Slider Title",
             "excerpt": "<p>Short Excerpt</p>",
@@ -3409,7 +3682,8 @@
               "src": "/media/2019/07/HP-730-naplne-300x300.png",
               "alt": "",
               "width": 300,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+730+P2V"
             }
           },
           {
@@ -3435,7 +3709,8 @@
               "src": "/media/2019/07/hp-727-tlacova-hlava-1000x720.jpg",
               "alt": "",
               "width": 1000,
-              "height": 720
+              "height": 720,
+              "href": "https://kancelaria.smartcad.sk/b3p06a"
             },
             "html": "<ul><li>B3P06A HP 727, DesignJet Printhead</li></ul><p><a href=\"https://kancelaria.smartcad.sk/b3p06a\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           },
@@ -3446,7 +3721,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 914mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 328 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           }
@@ -3500,6 +3776,15 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-114",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2019/07/HP-DJ-T500-technicka-spec..pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>technická špecifikácia HP DesignJet T500 Printer series</strong></a><strong>na stiahnutie</strong><strong>&lt;&lt;</strong></p>"
+          }
+        ]
+      },
+      {
         "type": "video",
         "id": "media_video-14",
         "youtubeId": "r_2IG8gJLAk"
@@ -3516,7 +3801,8 @@
               "src": "/media/2019/07/HP-711-ink.png",
               "alt": "",
               "width": 700,
-              "height": 525
+              "height": 525,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+711"
             },
             "html": "<ul><li>CZ129A HP 711, 38-ml, Black </li><li>CZ130A HP 711, 29-ml, Cyan </li><li>CZ131A HP 711, 29-ml, Magenta </li><li>CZ132A HP 711, 29-ml, Yellow </li></ul>"
           },
@@ -3531,7 +3817,8 @@
               "src": "/media/2019/07/C1Q10A-HP-711-Printhead-Replacement-Kit-e1563966440951.png",
               "alt": "",
               "width": 300,
-              "height": 210
+              "height": 210,
+              "href": "https://kancelaria.smartcad.sk/hp711printheadreplacementkit-sk"
             },
             "html": "<ul><li>C1Q10A HP 711 Cyan/Magenta/Yellow/ Black DesignJet Printhead Replacement Kit</li></ul>"
           },
@@ -3542,7 +3829,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 610mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul>"
           }
@@ -3596,6 +3884,15 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-111",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong><a href=\"https://hpplotre.sk/wp-content/uploads/2019/07/HP-DJ-T100-technicka-spec..pdf\" target=\"_blank\" rel=\"noopener noreferrer\">technická špecifikácia HP DesignJet T100 Printer series</a></strong><strong>&nbsp;na stiahnutie</strong><strong>&lt;&lt;</strong></p>"
+          }
+        ]
+      },
+      {
         "type": "video",
         "id": "media_video-12",
         "youtubeId": "kVc6tG5yXSI"
@@ -3612,7 +3909,8 @@
               "src": "/media/2019/07/HP-711-ink.png",
               "alt": "",
               "width": 700,
-              "height": 525
+              "height": 525,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+711"
             },
             "html": "<ul><li>CZ129A HP 711, 38-ml, Black </li><li>CZ130A HP 711, 29-ml, Cyan </li><li>CZ131A HP 711, 29-ml, Magenta </li><li>CZ132A HP 711, 29-ml, Yellow </li></ul>"
           },
@@ -3627,7 +3925,8 @@
               "src": "/media/2019/07/C1Q10A-HP-711-Printhead-Replacement-Kit-e1563966440951.png",
               "alt": "",
               "width": 300,
-              "height": 210
+              "height": 210,
+              "href": "https://kancelaria.smartcad.sk/hp711printheadreplacementkit-sk"
             },
             "html": "<ul><li>C1Q10A HP 711 Cyan/Magenta/Yellow/ Black DesignJet Printhead Replacement Kit</li></ul>"
           },
@@ -3638,7 +3937,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 610mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul>"
           }
@@ -3692,6 +3992,16 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-106",
+        "slides": [
+          {
+            "excerpt": "<p>&gt;&gt; Technická špecifikácia HP DesignJet Z9+ PostScript &lt;&lt;</p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2018/10/tech.spec_.-Z9.pdf"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-108",
         "title": "Séria tlačiarní HP DesignJet Z9+ je:",
@@ -3731,6 +4041,16 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-213",
+        "slides": [
+          {
+            "excerpt": "<p>&gt;&gt; Chcem prejsť do e-shopu a objednať si tlačiareň &lt;&lt;</p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+designjet+Z9%2B+postscript"
+          }
+        ]
+      },
+      {
         "type": "video",
         "id": "media_video-26",
         "youtubeId": "NG-gczVrEwQ"
@@ -3745,7 +4065,8 @@
               "src": "/media/2022/03/746.png",
               "alt": "",
               "width": 700,
-              "height": 700
+              "height": 700,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+746"
             }
           },
           {
@@ -3843,6 +4164,16 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-103",
+        "slides": [
+          {
+            "excerpt": "<p>&gt;&gt; Technická špecifikácia HP DesignJet Z6 PostScript &lt;&lt;</p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2018/10/tech.spec_.-Z6-1.pdf"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-104",
         "title": "Séria tlačiarní HP DesignJet Z6 je:",
@@ -3881,6 +4212,16 @@
               "height": 730
             },
             "bg": "#ffffff"
+          }
+        ]
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-211",
+        "slides": [
+          {
+            "excerpt": "<p>&gt;&gt; Chcem prejsť do e-shopu a objednať si tlačiareň &lt;&lt;</p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+designjet+Z6+postscript"
           }
         ]
       },
@@ -4019,6 +4360,16 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-98",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt; Technická špecifikácia HP DesignJet T1700 &lt;&lt;</strong></p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2022/03/HP-Designjet-T1700-Printer.pdf"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-93",
         "columns": [
@@ -4054,6 +4405,16 @@
               "height": 960
             },
             "html": "<p>Neváhajte a dosiahnite:</p><p>Vysokú kvalitu tlače aj na najlacnejších médiách</p><p>Živé farby a verné zobrazenie</p><p>Dobre nastavené profily médií</p><p>Presné rendrovanie pomocou ICC-based color managementu</p><p>Perfektnú reprodukciu dát s novou univerzálnou tlačovou hlavou</p><p>Spoľahlivé spracovanie a reprodukcia:</p><ul><li>priehľadnosti, </li><li>vrstiev, </li><li>farebných paliet, </li><li>jemných prechodov,</li><li>tieňovanie</li></ul>"
+          }
+        ]
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-190",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať si tlačiareň </strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+designjet+T1700+in+printer"
           }
         ]
       },
@@ -4100,7 +4461,8 @@
               "src": "/media/2018/02/PDP_T1700_Gallery_image_grid3_308x234_tcm119_2540808_tcm119_2540824_tcm119-2540808-300x228.jpg",
               "alt": "",
               "width": 300,
-              "height": 228
+              "height": 228,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+730"
             }
           },
           {
@@ -4120,7 +4482,8 @@
               "src": "/media/2018/03/hlava-731.png",
               "alt": "",
               "width": 382,
-              "height": 338
+              "height": 338,
+              "href": "https://kancelaria.smartcad.sk/p2v27a"
             },
             "html": "<ul><li>P2V27A HP 731 DesignJet Printhead</li><li>HP T1700 obsahuje 3 x univerzálnu tlačovú hlavu, každá po dve farby&nbsp;</li></ul><p><a href=\"https://kancelaria.smartcad.sk/p2v27a\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           },
@@ -4131,7 +4494,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 1118mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 328 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           }
@@ -4284,10 +4648,12 @@
               "src": "/media/2017/03/T1300.jpg",
               "alt": "",
               "width": 616,
-              "height": 472
+              "height": 472,
+              "href": "https://www.youtube.com/watch?v=xCwBoPzfnTo"
             },
             "title": "HP DesignJet T1300 PostScript ePrinter (CR652A) 1118 mm",
-            "excerpt": "<p>Pracujete v stredne veľkom tíme a potrebujete kvalitnú tlač, zdieľať súbory a spolupracovať v mobilnom pracovnom prostredí ?</p><p>Potom T1300 je ideálna voľba. </p><p>Získajte výhody funkcií, ktoré zvyšujú produktivitu a šetrite čas a peniaze s nástrojmi, ktoré zjednodušujú proces tlače.</p>"
+            "excerpt": "<p>Pracujete v stredne veľkom tíme a potrebujete kvalitnú tlač, zdieľať súbory a spolupracovať v mobilnom pracovnom prostredí ?</p><p>Potom T1300 je ideálna voľba. </p><p>Získajte výhody funkcií, ktoré zvyšujú produktivitu a šetrite čas a peniaze s nástrojmi, ktoré zjednodušujú proces tlače.</p>",
+            "link": "https://www.youtube.com/watch?v=xCwBoPzfnTo"
           }
         ]
       },
@@ -4359,7 +4725,6 @@
     "route": "/diagnostika-plotra",
     "title": "diagnostika",
     "seoTitle": "Diagnostika plotra | smartCAD s.r.o. predaj a servis plotrov",
-    "description": "Netlačí Vám správne ploter? Výtlačky sú nepresné, rozmazané? Ploter trhá papier prípadne vypisuje chybu? Diagnostikou predídete problémom.",
     "modified": "2026-07-14T14:28:36",
     "sections": [
       {
@@ -4477,14 +4842,32 @@
           },
           {
             "span": 4,
+            "image": {
+              "src": "/media/2024/10/upchate-vetraky-1-480x480.avif",
+              "alt": "",
+              "width": 480,
+              "height": 480
+            },
             "html": "<p>Znečistenie prachom = upchaté vetráky</p>"
           },
           {
             "span": 4,
+            "image": {
+              "src": "/media/2024/10/zadrety-ventilator-480x480.avif",
+              "alt": "",
+              "width": 480,
+              "height": 480
+            },
             "html": "<p>Znečistenie prachom = zadretý ventilátor</p>"
           },
           {
             "span": 4,
+            "image": {
+              "src": "/media/2024/10/spaleny-vs-novy-zdroj-1-480x480.avif",
+              "alt": "",
+              "width": 480,
+              "height": 480
+            },
             "html": "<p>Spálený vs nový zdroj</p>"
           }
         ]
@@ -4890,7 +5273,8 @@
               "src": "/media/2023/10/T520_2-.png",
               "alt": "",
               "width": 1079,
-              "height": 909
+              "height": 909,
+              "href": "/plotrovanie"
             }
           },
           {
@@ -4905,7 +5289,8 @@
               "src": "/media/2023/10/T950MFP_4-1000x720.png",
               "alt": "",
               "width": 1000,
-              "height": 720
+              "height": 720,
+              "href": "/plotrovanie"
             }
           },
           {
@@ -4926,7 +5311,8 @@
               "src": "/media/2023/10/vykresy-1000x720.jpg",
               "alt": "",
               "width": 1000,
-              "height": 720
+              "height": 720,
+              "href": "/plotrovanie"
             }
           }
         ]
@@ -4966,7 +5352,8 @@
               "src": "/media/2017/09/dovnload-6.png",
               "alt": "",
               "width": 227,
-              "height": 81
+              "height": 81,
+              "href": "/smart-sluzby/ovladace-pre-hp-plotre"
             },
             "html": "<p>Už nehľadajte! Na našej stránke nájdete potrebný driver pre Váš ploter.</p>",
             "bg": "#d3d3d3"
@@ -4978,7 +5365,8 @@
               "src": "/media/2017/09/service-1.png",
               "alt": "",
               "width": 221,
-              "height": 79
+              "height": 79,
+              "href": "/bazar"
             },
             "html": "<p>Plotre nielen opravujeme, ale dávame šancu aj starým. Zrepasované a plne funkčné Vám ich ponúkame aj so zárukou. </p>",
             "bg": "#d3d3d3"
@@ -5044,7 +5432,8 @@
               "src": "/media/2016/11/VSETKO.png",
               "alt": "",
               "width": 1481,
-              "height": 1681
+              "height": 1681,
+              "href": "/stary_za_novy"
             }
           },
           {
@@ -5053,7 +5442,8 @@
               "src": "/media/2019/08/objednajte-si-diagnostiku.png",
               "alt": "",
               "width": 889,
-              "height": 1009
+              "height": 1009,
+              "href": "/diagnostika-plotra"
             }
           },
           {
@@ -6146,6 +6536,26 @@
         ]
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-27",
+        "slides": [
+          {
+            "excerpt": "<p><strong><strong><strong><strong><strong>&gt;&gt; Technická špecifikácia HP DesignJet T830 24 “ <strong>&lt;&lt;</strong></strong></strong></strong></strong></strong></p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2022/03/HP-Designjet-T830-24-in-multi.-Printer.pdf"
+          }
+        ]
+      },
+      {
+        "type": "slider",
+        "id": "layers-widget-slide-192",
+        "slides": [
+          {
+            "excerpt": "<p><strong><strong><strong><strong>&gt;&gt; Technická špecifikácia HP DesignJet T830 36 “ <strong>&lt;&lt;</strong></strong></strong></strong></strong></p>",
+            "link": "https://hpplotre.sk/wp-content/uploads/2022/03/HP-Designjet-T830-36-in-multi.-Printer.pdf"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-14",
         "bg": "#ffffff",
@@ -6216,6 +6626,16 @@
         "youtubeId": "7l5sY2UtKAc"
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-193",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať si tlačiareň </strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+designjet+T830+in+MFP"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-97",
         "excerpt": "<p>Chýbajú Vám náplne alebo plotrovacie rolky? Objednajte si ich na našom e-shope alebo nám napíšte na: <strong>obchod@smartcad.sk</strong></p>",
@@ -6226,7 +6646,8 @@
               "src": "/media/2018/04/atramenty-130ml-300x300.png",
               "alt": "",
               "width": 300,
-              "height": 300
+              "height": 300,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+728"
             }
           },
           {
@@ -6246,7 +6667,8 @@
               "src": "/media/2018/04/hlava-729-pre-T830.png",
               "alt": "",
               "width": 497,
-              "height": 538
+              "height": 538,
+              "href": "https://kancelaria.smartcad.sk/f9j81a"
             },
             "html": "<ul><li>F9J81A HP 729 DesignJet Printhead /C, Y, M, B/</li></ul><p><a href=\"https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+729\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           },
@@ -6257,7 +6679,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 914mm</li><li>technická tlač 80g/m² – 90g/m²</li><li>až do 280 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-vp-page=2&amp;productList-sortBy%5Bprice_base%5D=asc&amp;do=productList-vp-change\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           }
@@ -6358,6 +6781,16 @@
         "youtubeId": "AVGV8CwxLas"
       },
       {
+        "type": "slider",
+        "id": "layers-widget-slide-186",
+        "slides": [
+          {
+            "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať si tlačiareň </strong><strong>&lt;&lt;</strong></p>",
+            "link": "https://kancelaria.smartcad.sk/t730"
+          }
+        ]
+      },
+      {
         "type": "content",
         "id": "layers-widget-column-80",
         "excerpt": "<p>Chýbajú Vám náplne alebo plotrovacie rolky? Objednajte si ich na našom e-shope alebo nám napíšte na: <strong>obchod@smartcad.sk</strong></p>",
@@ -6368,7 +6801,8 @@
               "src": "/media/2017/10/728ink.jpg",
               "alt": "",
               "width": 350,
-              "height": 350
+              "height": 350,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+728"
             }
           },
           {
@@ -6388,7 +6822,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 914mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
           }
@@ -6501,7 +6936,8 @@
               "src": "/media/2017/03/711.jpg",
               "alt": "",
               "width": 500,
-              "height": 500
+              "height": 500,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+711"
             },
             "html": "<ul><li>CZ129A HP 711, 38-ml, Black </li><li>CZ130A HP 711, 29-ml, Cyan </li><li>CZ131A HP 711, 29-ml, Magenta </li><li>CZ132A HP 711, 29-ml, Yellow </li></ul>"
           },
@@ -6516,7 +6952,8 @@
               "src": "/media/2019/07/C1Q10A-HP-711-Printhead-Replacement-Kit-e1563966440951.png",
               "alt": "",
               "width": 300,
-              "height": 210
+              "height": 210,
+              "href": "https://kancelaria.smartcad.sk/hp711printheadreplacementkit-sk"
             },
             "html": "<ul><li>C1Q10A HP 711 Cyan/Magenta/Yellow/ Black DesignJet Printhead Replacement Kit</li></ul>"
           },
@@ -6527,7 +6964,8 @@
               "src": "/media/2019/07/C1Q10A-HP-711-Printhead-Replacement-Kit-e1563966440951.png",
               "alt": "",
               "width": 300,
-              "height": 210
+              "height": 210,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 914mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul>"
           }
@@ -6552,10 +6990,12 @@
               "src": "/media/2018/04/T120.png",
               "alt": "",
               "width": 729,
-              "height": 411
+              "height": 411,
+              "href": "https://www.youtube.com/watch?v=xCwBoPzfnTo"
             },
             "title": "HP DesignJet T120 Printer (CQ891A)",
-            "excerpt": "<p>Je ideálna pre zákazníkov, ktorí potrebujú cenovo dostupnú tlačiareň s jednoduchou obsluhou a pripojením na web.</p><p>Vhodná pre študentov, profesionálov a živnostníkov v oblasti architektúry, strojárstva a stavebníctva.</p><p><u>upgrade r.2018:</u></p><ul><li>zrýchlenie tlače: 45sec / A1</li><li>vylepšenie A3 zásobníka: zjednotené okraje na 5x5x5x5mm</li><li>až o 40% tichší rez nožom</li></ul><p>Stav: UKONČENÁ VÝROBA</p>"
+            "excerpt": "<p>Je ideálna pre zákazníkov, ktorí potrebujú cenovo dostupnú tlačiareň s jednoduchou obsluhou a pripojením na web.</p><p>Vhodná pre študentov, profesionálov a živnostníkov v oblasti architektúry, strojárstva a stavebníctva.</p><p><u>upgrade r.2018:</u></p><ul><li>zrýchlenie tlače: 45sec / A1</li><li>vylepšenie A3 zásobníka: zjednotené okraje na 5x5x5x5mm</li><li>až o 40% tichší rez nožom</li></ul><p>Stav: UKONČENÁ VÝROBA</p>",
+            "link": "https://www.youtube.com/watch?v=xCwBoPzfnTo"
           }
         ]
       },
@@ -6609,7 +7049,8 @@
               "src": "/media/2017/03/711.jpg",
               "alt": "",
               "width": 500,
-              "height": 500
+              "height": 500,
+              "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+711"
             },
             "html": "<ul><li>CZ129A HP 711, 38-ml, Black </li><li>CZ130A HP 711, 29-ml, Cyan </li><li>CZ131A HP 711, 29-ml, Magenta </li><li>CZ132A HP 711, 29-ml, Yellow </li></ul>"
           },
@@ -6624,7 +7065,8 @@
               "src": "/media/2019/07/C1Q10A-HP-711-Printhead-Replacement-Kit-e1563966440951.png",
               "alt": "",
               "width": 300,
-              "height": 210
+              "height": 210,
+              "href": "https://kancelaria.smartcad.sk/hp711printheadreplacementkit-sk"
             },
             "html": "<ul><li>C1Q10A HP 711 Cyan/Magenta/Yellow/ Black DesignJet Printhead Replacement Kit</li></ul>"
           },
@@ -6635,7 +7077,8 @@
               "src": "/media/2020/11/rolky-1.png",
               "alt": "",
               "width": 695,
-              "height": 503
+              "height": 503,
+              "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li>297mm až 610mm</li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul>"
           }
@@ -6901,7 +7344,8 @@
               "alt": "",
               "width": 1722,
               "height": 590
-            }
+            },
+            "link": "/blogy"
           }
         ]
       },
@@ -7043,7 +7487,8 @@
               "src": "/media/2016/09/plotre-servis.jpg",
               "alt": "",
               "width": 797,
-              "height": 494
+              "height": 494,
+              "href": "/diagnostika-plotra"
             },
             "html": "<p>Odvráva a protestuje Vám ploter?&nbsp;Neviete si s ním&nbsp;rady? </p><p>Ozvite sa nám. Príde k Vám náš technik, vykoná diagnostiku a navrhne čo ďalej – či už čistenie, kalibráciu, zmenu nastavení, výmenu chybných dielov . . .&nbsp;</p><p><a href=\"/diagnostika-plotra\">Prihláste sa TU…</a></p><p>Riešenie môže byť jednoduché : )</p>",
             "bg": "#ffffff"
@@ -7055,7 +7500,8 @@
               "src": "/media/2019/07/hp-T1600-300x225.png",
               "alt": "",
               "width": 300,
-              "height": 225
+              "height": 225,
+              "href": "/stary_za_novy"
             },
             "html": "<p>Slúžil dobre, … ALE už nestíha, tlačí nekvalitne, farby nie sú ostré, spomaľuje PC a kazí sa? <strong>Vymeňte ho </strong>a získajte: </p><ul><li><strong>NOVÝ ploter lacnejšie</strong> ako od internetových predajcov ! </li><li>možnosť zapojenia do siete, inštaláciu a kalibráciu plotra a zaškolenie užívateľov.</li></ul><p>O starý ploter sa nebojte. Šetrne a ekologicky ho zlikvidujeme.</p>",
             "bg": "#ffffff"

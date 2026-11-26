@@ -29,7 +29,7 @@ export const organizationLd = {
     addressLocality: site.address.city,
     addressCountry: site.address.country,
   },
-  sameAs: [site.social.linkedin, site.social.youtube],
+  sameAs: Object.values(site.social),
 };
 
 export function breadcrumbLd(items: { label: string; href: string }[]) {

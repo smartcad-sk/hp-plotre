@@ -1,5 +1,8 @@
 import type { ContentSection as Data } from "@/lib/content";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { Icon } from "@/components/ui/Icon";
+import { slideLinkLabel } from "@/lib/normalize";
 import { Heading } from "@/components/ui/Heading";
 import { Prose } from "@/components/ui/Prose";
 import { Section } from "@/components/ui/Section";
@@ -38,10 +41,20 @@ export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pag
               );
             }
             const captioned = s.slides.filter((sl) => sl.excerpt);
+            const linked = [...new Map(withImages.filter((sl) => sl.link).map((sl) => [sl.link!, sl])).values()];
             return (
               <Section key={s.id + i} spacing="sm">
                 <Container className="space-y-6">
                   <ImageCarousel slides={withImages.map(({ image, title }) => ({ image, title }))} label={galleryLabel()} />
+                  {linked.length > 0 && (
+                    <div className="flex flex-wrap justify-center gap-3">
+                      {linked.map((sl) => (
+                        <ButtonLink key={sl.link} href={sl.link!} variant="outline" arrow>
+                          {/youtu\.?be/.test(sl.link!) ? "Pozrieť video" : slideLinkLabel(sl)}
+                        </ButtonLink>
+                      ))}
+                    </div>
+                  )}
                   {captioned.map((sl, j) => (
                     <Prose key={j} html={sl.excerpt!} className="mx-auto max-w-(--container-prose)" />
                   ))}
@@ -49,11 +62,38 @@ export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pag
               </Section>
             );
           }
+          case "links":
+            return (
+              <Section key={s.id + i} spacing="sm" tone="muted">
+                <Container className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  {s.links.map((l, j) => {
+                    const pdf = /\.pdf($|\?)/i.test(l.href);
+                    return (
+                      <ButtonLink key={l.href + j} href={l.href} variant={pdf ? "outline" : "primary"} arrow={!pdf}>
+                        {pdf && <Icon name="document" className="size-5 shrink-0" />}
+                        {l.label}
+                        {pdf && <span className="sr-only"> (PDF)</span>}
+                      </ButtonLink>
+                    );
+                  })}
+                </Container>
+              </Section>
+            );
           case "video":
             return (
               <Section key={s.id + i} spacing="sm">
                 <Container size="prose">
-                  <YouTubeEmbed id={s.youtubeId} title={s.title ?? `Video – ${pageTitle}`} />
+                  {s.youtubeId ? (
+                    <YouTubeEmbed id={s.youtubeId} title={s.title ?? `Video – ${pageTitle}`} />
+                  ) : (
+                    <video
+                      src={s.src}
+                      controls
+                      preload="metadata"
+                      aria-label={s.title ?? `Video – ${pageTitle}`}
+                      className="aspect-video w-full rounded-(--radius-card) bg-ink"
+                    />
+                  )}
                 </Container>
               </Section>
             );

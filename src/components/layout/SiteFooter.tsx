@@ -2,6 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { footerNav, site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
+import { SocialIcon, type SocialNetwork } from "@/components/ui/SocialIcon";
+import { ConsentSettingsLink } from "@/components/analytics/ConsentManager";
+
+const SOCIAL_LABEL: Record<SocialNetwork, string> = {
+  facebook: "smartCAD na Facebooku",
+  instagram: "smartCAD na Instagrame",
+  linkedin: "smartCAD na LinkedIn",
+  youtube: "smartCAD na YouTube",
+};
 
 // Evaluated once at build/module load – keeps the footer static under cacheComponents.
 const BUILD_YEAR = new Date().getFullYear();
@@ -37,6 +46,23 @@ export function SiteFooter() {
               </a>
             </li>
           </ul>
+          <ul className="flex gap-2" aria-label="Sociálne siete">
+            {(Object.entries(site.social) as [SocialNetwork, string][]).map(([name, href]) => (
+              <li key={name}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white hover:text-brand-900"
+                >
+                  <SocialIcon name={name} />
+                  <span className="sr-only">
+                    {SOCIAL_LABEL[name]} (otvorí sa v novom okne)
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
         {footerNav.map((group) => (
           <nav key={group.title} aria-label={group.title}>
@@ -66,6 +92,7 @@ export function SiteFooter() {
             <Image src="/media/2018/10/iso-logo.jpg" alt="Certifikát STN EN ISO 9001:2015" width={48} height={48} className="rounded bg-white" />
             <p>Systém riadenia kvality podľa STN EN ISO 9001:2015</p>
           </div>
+          <ConsentSettingsLink className="inline-flex min-h-11 items-center underline-offset-4 hover:text-white hover:underline sm:pointer-fine:min-h-9" />
           <p>
             © 2016 – {year} {site.company}. {site.registry}
           </p>

@@ -60,6 +60,10 @@
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-brand-600;
   }
+  /* Phone numbers must never wrap ("0940 636" / "489"). */
+  a[href^="tel:"] {
+    white-space: nowrap;
+  }
   ::selection {
     @apply bg-brand-200 text-ink;
   }

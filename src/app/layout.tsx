@@ -3,6 +3,8 @@ import { Exo_2, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { ClickTracker } from "@/components/analytics/ClickTracker";
+import { ConsentManager } from "@/components/analytics/ConsentManager";
 import { SITE_URL, site } from "@/lib/site";
 import "./globals.css";
 
@@ -19,6 +21,10 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
 };
 
+const CONSENT_DEFAULT =
+  "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}" +
+  "gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});";
+
 export const viewport: Viewport = {
   themeColor: "#008080",
   width: "device-width",
@@ -28,6 +34,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="sk" className={`${inter.variable} ${exo.variable}`}>
+      <head>
+        {/* Google Consent Mode v2: everything denied until the visitor opts in (ConsentManager). */}
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT }} />
+      </head>
       <body className="flex min-h-dvh flex-col">
         <SkipLink />
         <SiteHeader />
@@ -35,6 +45,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <SiteFooter />
+        <ConsentManager />
+        <ClickTracker />
       </body>
     </html>
   );

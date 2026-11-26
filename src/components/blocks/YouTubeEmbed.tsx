@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
+import { track } from "@/lib/analytics";
 
 /**
  * Privacy-friendly YouTube facade: nothing is loaded from Google until the
@@ -24,7 +25,10 @@ export function YouTubeEmbed({ id, title = "Video" }: { id: string; title?: stri
       ) : (
         <button
           type="button"
-          onClick={() => setActive(true)}
+          onClick={() => {
+            setActive(true);
+            track({ event: "video_start", video_provider: "youtube", video_id: id, video_title: title });
+          }}
           className="group absolute inset-0 flex size-full items-center justify-center"
         >
           {/* eslint-disable-next-line @next/next/no-img-element -- remote thumbnail, intentionally not optimized */}

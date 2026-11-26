@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ContentColumn, ContentSection as ContentSectionData } from "@/lib/content";
 import { toneFromColor } from "@/lib/content";
-import { singleLinkColumn } from "@/lib/normalize";
+import { singleLinkColumn, tidyHeading } from "@/lib/normalize";
 import { cn } from "@/lib/cn";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -19,6 +19,30 @@ const spanClass: Record<number, string> = {
   11: "lg:col-span-12", 12: "lg:col-span-12",
 };
 const smSpanClass = (span: number) => (span >= 7 ? "sm:col-span-2" : "sm:col-span-1");
+
+/** Wraps an image in its original link (service tiles, e-shop consumables). */
+function MaybeLink({ href, label, children }: { href?: string; label: string; children: React.ReactNode }) {
+  if (!href) return <>{children}</>;
+  const external = /^https?:/.test(href);
+  return (
+    <a
+      href={href}
+      aria-label={external ? `${label} (otvorí sa v novom okne)` : label}
+      className="block rounded-(--radius-card) transition-opacity hover:opacity-90"
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
+      {children}
+    </a>
+  );
+}
+
+function imageLinkLabel(col: ContentColumn) {
+  const href = col.image?.href ?? "";
+  if (col.title) return col.title;
+  if (col.image?.alt) return col.image.alt;
+  if (href.includes("kancelaria.smartcad.sk")) return "Zobraziť v e-shope";
+  return "Zobraziť viac";
+}
 
 function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean; headingLevel: 2 | 3 }) {
   if (col.form) return <ContactForm />;
@@ -39,6 +63,7 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
 
   if (imageOnly && col.image) {
     return (
+      <MaybeLink href={col.image.href} label={imageLinkLabel(col)}>
       <Image
         src={col.image.src}
         alt={col.image.alt}
@@ -47,6 +72,7 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
         sizes={col.span >= 10 ? "(min-width: 1152px) 1152px, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
         className="h-auto w-full rounded-(--radius-card) object-contain"
       />
+      </MaybeLink>
     );
   }
 
@@ -62,6 +88,7 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
       )}
     >
       {col.image && (
+        <MaybeLink href={col.image.href} label={imageLinkLabel(col)}>
         <Image
           src={col.image.src}
           alt={col.image.alt}
@@ -70,10 +97,11 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="h-auto max-h-80 w-full rounded-lg object-contain"
         />
+        </MaybeLink>
       )}
       {col.title && (
         <Heading level={headingLevel} size="md" className={panelDark ? "text-white" : "text-brand-800"}>
-          {col.title}
+          {tidyHeading(col.title)}
         </Heading>
       )}
       {col.html && <Prose html={col.html} invert={panelDark} className="flex-1" />}
@@ -104,7 +132,7 @@ export function ContentSection({ data }: { data: Data }) {
           <div className="max-w-3xl space-y-3">
             {data.title && (
               <Heading id={headingId} level={2} size="xl" className={dark ? "text-white" : "text-brand-900"}>
-                {data.title}
+                {tidyHeading(data.title)}
               </Heading>
             )}
             {data.excerpt && <Prose html={data.excerpt} invert={dark} className="text-lg" />}

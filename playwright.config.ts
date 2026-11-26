@@ -27,6 +27,8 @@ export default defineConfig({
   reporter: [["list"], ["html", { open: "never" }], ["json", { outputFile: "test-results/results.json" }]],
   use: {
     baseURL,
+    // Consent already answered so the cookie banner does not cover controls (tests/analytics.spec.ts clears it).
+    storageState: "tests/consent-accepted.json",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
@@ -34,7 +36,7 @@ export default defineConfig({
     // Responsive layout checks on every device size.
     ...viewports.map((v) => ({ name: v.name, testMatch: /responsive\.spec\.ts/, use: v.use })),
     // Accessibility + SEO run on one mobile and one desktop size.
-    { name: "a11y-mobile", testMatch: /(a11y|usability)\.spec\.ts/, use: viewports[1].use },
+    { name: "a11y-mobile", testMatch: /(a11y|usability|analytics)\.spec\.ts/, use: viewports[1].use },
     { name: "a11y-desktop", testMatch: /(a11y|usability)\.spec\.ts/, use: viewports[6].use },
     { name: "seo", testMatch: /seo\.spec\.ts/, use: viewports[6].use },
   ],

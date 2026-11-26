@@ -36,7 +36,7 @@ async function getHtml(url) {
   return { status: res.status, html: await res.text() };
 }
 
-const IMG_EXT = /\.(png|jpe?g|gif|webp|svg)$/i;
+const IMG_EXT = /\.(png|jpe?g|gif|webp|avif|svg)$/i;
 
 /** Normalise an uploads URL and register it for download; returns local path. */
 function localImage(src) {
@@ -199,6 +199,8 @@ function imageFrom($, el) {
     alt: text(img.attr("alt")),
     width: Number(img.attr("width")) || undefined,
     height: Number(img.attr("height")) || undefined,
+    // Images wrapped in a link (service tiles, e-shop consumables) keep that link.
+    href: img.closest("a[href]").length ? rewriteHref(img.closest("a[href]").attr("href")) : undefined,
   };
 }
 
@@ -260,20 +262,27 @@ function parseLayers($) {
         const image = bgSrc
           ? { src: bgSrc, alt: "" }
           : imageFrom($, $s.find(".image-container, .overlay").first());
+        // Layers lets a whole slide be a link (<a class="swiper-slide" href>) – used for
+        // "Technická špecifikácia" / e-shop / YouTube bars. Keep that link.
+        const slideHref = s.tagName === "a" ? $s.attr("href") : undefined;
+        const title = text($s.find(".heading").first().text()) || undefined;
         slides.push({
           image,
-          title: text($s.find(".heading").first().text()) || undefined,
+          title,
           excerpt: clean($s.find(".excerpt").first().html()) || undefined,
           button: buttonFrom($, $s),
+          link: slideHref && !/^(#|\/?#more$)/.test(slideHref.replace(/^https?:\/\/hpplotre\.sk/, "")) ? rewriteHref(slideHref) : undefined,
         });
       });
-      const real = slides.filter((s) => s.image || (s.title && s.title.length > 2));
+      const real = slides.filter((s) => s.image || s.link || (s.title && s.title.length > 2) || /<a /.test(s.excerpt ?? ""));
       if (real.length) sections.push({ type: "slider", id, slides: real });
     } else if ($w.hasClass("widget_media_video")) {
       const src = $w.find("source[type='video/youtube'], iframe").first().attr("src") ?? "";
       const youtubeId = src.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/)?.[1];
-      if (youtubeId)
-        sections.push({ type: "video", id, youtubeId, title: text($w.find(".widget-title, h3").first().text()) || undefined });
+      const mp4 = $w.find("video source[type='video/mp4'], video[src]").first().attr("src");
+      const vtitle = text($w.find(".widget-title, h3").first().text()) || undefined;
+      if (youtubeId) sections.push({ type: "video", id, youtubeId, title: vtitle });
+      else if (mp4) sections.push({ type: "video", id, src: rewriteHref(mp4.split("?")[0]), title: vtitle });
     } else if ($w.hasClass("layers-contact-widget")) {
       sections.push({ type: "contact", id });
     } else if ($w.hasClass("layers-post-widget") || $w.hasClass("widget_text") || $w.hasClass("widget")) {
@@ -377,6 +386,7 @@ async function main() {
       route,
       title: cheerio.load(p.title.rendered).text().trim(),
       description: metaDescription(y.description || p.excerpt?.rendered),
+      excerptDescription: metaDescription(p.excerpt?.rendered),
       date: p.date,
       modified: p.modified,
       thumbnail: parsed.thumbnail,
@@ -412,6 +422,38 @@ async function main() {
       for (const v of Object.values(node)) await fillDims(v);
     }
   }
+  // Yoast reused one description on several URLs. Keep it on the item whose title shares
+  // the most words with it; the others fall back to their own text (excerpt / page content).
+  const words = (s) => new Set((s ?? "").toLowerCase().match(/[\p{L}\d]{4,}/gu) ?? []);
+  const byDesc = new Map();
+  for (const item of [...pages, ...posts]) if (item.description) byDesc.set(item.description, [...(byDesc.get(item.description) ?? []), item]);
+  for (const [desc, items] of byDesc) {
+    if (items.length < 2) continue;
+    const dw = words(desc);
+    // Hand-built pages (/, /kontakt, /blogy) have their own metadata in the app.
+    const score = (it) => ["/", "/kontakt", "/blogy"].includes(it.route) ? -1 : [...words(it.title + " " + it.route.replace(/[-_/]/g, " "))].filter((w) => dw.has(w)).length;
+    const owner = items.reduce((a, b) => (score(b) > score(a) ? b : a));
+    for (const it of items) if (it !== owner) it.description = it.excerptDescription; // undefined → derived in app
+    report.dedupedDescriptions = [...(report.dedupedDescriptions ?? []), `${owner.route} keeps "${desc.slice(0, 50)}…"`];
+  }
+  for (const it of [...pages, ...posts]) delete it.excerptDescription;
+
+  // Legacy URLs that have no page of their own: attachment pages → parent page, archives → blog.
+  const known = new Set([...pages.map((p) => p.route), ...posts.map((p) => p.route)]);
+  const redirects = [{ source: "/category/:slug*", destination: "/blogy" }];
+  try {
+    const xml = await (await fetch(`${ORIGIN}/attachment-sitemap.xml`, { headers: { "User-Agent": UA } })).text();
+    for (const [, loc] of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      const p = new URL(loc).pathname.replace(/\/+$/, "").toLowerCase();
+      if (!p || known.has(p)) continue;
+      const parent = p.split("/").slice(0, -1).join("/") || "/";
+      redirects.push({ source: p, destination: known.has(parent) ? parent : "/" });
+    }
+  } catch (e) {
+    report.redirectsError = String(e);
+  }
+  await writeFile(path.join(OUT_DIR, "redirects.json"), JSON.stringify(redirects, null, 2) + "\n");
+
   await fillDims(pages);
   await fillDims(posts);
   await writeFile(path.join(OUT_DIR, "pages.json"), JSON.stringify(pages, null, 2) + "\n");

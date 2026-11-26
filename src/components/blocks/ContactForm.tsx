@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { track } from "@/lib/analytics";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 
@@ -43,6 +44,7 @@ export function ContactForm({ heading = "Napíšte nám" }: { heading?: string }
       `E-mail: ${v("email")}`,
     ].filter(Boolean);
     const body = `${header.join("\n")}\n\n${v("message")}`;
+    track({ event: "generate_lead", form_id: "contact", lead_source: window.location.pathname });
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Dopyt z webu HPplotre.sk")}&body=${encodeURIComponent(body)}`;
     setSent(true);
   }

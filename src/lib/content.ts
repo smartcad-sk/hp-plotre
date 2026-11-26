@@ -1,7 +1,7 @@
 import pagesData from "@/content/pages.json";
 import postsData from "@/content/posts.json";
 
-export type ContentImage = { src: string; alt: string; width?: number; height?: number };
+export type ContentImage = { src: string; alt: string; width?: number; height?: number; href?: string };
 export type ContentLink = { href: string; label: string };
 
 export type ContentColumn = {
@@ -28,11 +28,13 @@ export type ContentSection =
   | {
       type: "slider";
       id: string;
-      slides: { image?: ContentImage; title?: string; excerpt?: string; button?: ContentLink }[];
+      slides: { image?: ContentImage; title?: string; excerpt?: string; button?: ContentLink; link?: string }[];
     }
-  | { type: "video"; id: string; youtubeId: string; title?: string }
+  | { type: "video"; id: string; youtubeId?: string; src?: string; title?: string }
   | { type: "html"; id: string; html: string }
-  | { type: "contact"; id: string };
+  | { type: "contact"; id: string }
+  /** Produced by normalizePage from link-only slides (spec PDF, e-shop, video bars). */
+  | { type: "links"; id: string; links: ContentLink[] };
 
 export type Page = {
   id: number;

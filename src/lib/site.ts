@@ -21,6 +21,8 @@ export const site = {
   bazaar: "https://kancelaria.smartcad.sk/bazar-plotrov/",
   gdpr: "https://www.smartcad.sk/gdpr",
   social: {
+    facebook: "https://www.facebook.com/cadpodpora",
+    instagram: "https://www.instagram.com/smartcad.sk/",
     linkedin: "https://www.linkedin.com/company/smartcad",
     youtube: "https://www.youtube.com/c/smartCADsroBratislava",
   },
