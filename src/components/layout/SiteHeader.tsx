@@ -13,12 +13,12 @@ export function SiteHeader() {
           <p className="text-white/85">{site.tagline}</p>
           <ul className="flex items-center gap-5">
             <li>
-              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-1.5 py-1 hover:underline">
+              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-1.5 py-1 hover:underline pointer-coarse:min-h-11">
                 <Icon name="phone" className="size-4" /> {site.phoneDisplay}
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="inline-flex items-center gap-1.5 py-1 hover:underline">
+              <a href={`mailto:${site.email}`} className="inline-flex items-center gap-1.5 py-1 hover:underline pointer-coarse:min-h-11">
                 <Icon name="mail" className="size-4" /> {site.email}
               </a>
             </li>
@@ -27,7 +27,7 @@ export function SiteHeader() {
       </div>
 
       <div className="mx-auto flex h-16 max-w-(--container-content) items-center justify-between gap-4 px-4 sm:px-6 lg:h-20 lg:px-8">
-        <Link href="/" className="flex shrink-0 items-center rounded-md" aria-label={`${site.company} – úvodná stránka`}>
+        <Link href="/" className="flex min-h-11 shrink-0 items-center rounded-md" aria-label={`${site.company} – úvodná stránka`}>
           <Image
             src="/brand/logo-smartcad.png"
             alt=""

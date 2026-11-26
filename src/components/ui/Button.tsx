@@ -8,7 +8,7 @@ export type ButtonSize = "sm" | "md" | "lg";
 const base =
   "inline-flex items-center justify-center gap-2 rounded-(--radius-control) font-semibold transition-colors " +
   "focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-60 " +
-  "text-center leading-snug";
+  "text-center leading-snug max-w-full min-w-0 [overflow-wrap:anywhere]";
 
 const variants: Record<ButtonVariant, string> = {
   primary: "bg-brand-600 text-white hover:bg-brand-700 focus-visible:outline-brand-600",

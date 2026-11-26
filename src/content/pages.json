@@ -464,7 +464,7 @@
         "columns": [
           {
             "span": 6,
-            "html": "<video controls=\"controls\"><a href=\"https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4\" target=\"_blank\" rel=\"noopener noreferrer\">https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4</a></video>",
+            "html": "<video preload=\"metadata\" controls=\"controls\"><source type=\"video/mp4\" src=\"https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4?_=1\"></source><a href=\"https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4\" target=\"_blank\" rel=\"noopener noreferrer\">https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4</a></video>",
             "bg": "#e8e8e8"
           },
           {
@@ -689,7 +689,7 @@
         "columns": [
           {
             "span": 6,
-            "html": "<video controls=\"controls\"><a href=\"https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4\" target=\"_blank\" rel=\"noopener noreferrer\">https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4</a></video>",
+            "html": "<video preload=\"metadata\" controls=\"controls\"><source type=\"video/mp4\" src=\"https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4?_=1\"></source><a href=\"https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4\" target=\"_blank\" rel=\"noopener noreferrer\">https://hpplotre.sk/wp-content/uploads/2023/10/T950.mp4</a></video>",
             "bg": "#e8e8e8"
           },
           {
@@ -875,7 +875,7 @@
         "columns": [
           {
             "span": 6,
-            "html": "<video controls=\"controls\"><a href=\"https://hpplotre.sk/wp-content/uploads/2023/10/T850multimedia.mp4\" target=\"_blank\" rel=\"noopener noreferrer\">https://hpplotre.sk/wp-content/uploads/2023/10/T850multimedia.mp4</a></video>"
+            "html": "<video preload=\"metadata\" controls=\"controls\"><source type=\"video/mp4\" src=\"https://hpplotre.sk/wp-content/uploads/2023/10/T850multimedia.mp4?_=1\"></source><a href=\"https://hpplotre.sk/wp-content/uploads/2023/10/T850multimedia.mp4\" target=\"_blank\" rel=\"noopener noreferrer\">https://hpplotre.sk/wp-content/uploads/2023/10/T850multimedia.mp4</a></video>"
           },
           {
             "span": 6,
@@ -1052,7 +1052,7 @@
         "columns": [
           {
             "span": 6,
-            "html": "<video controls=\"controls\"><a href=\"https://hpplotre.sk/wp-content/uploads/2023/10/main.mp4\" target=\"_blank\" rel=\"noopener noreferrer\">https://hpplotre.sk/wp-content/uploads/2023/10/main.mp4</a></video>"
+            "html": "<video preload=\"metadata\" controls=\"controls\"><source type=\"video/mp4\" src=\"https://hpplotre.sk/wp-content/uploads/2023/10/main.mp4?_=1\"></source><a href=\"https://hpplotre.sk/wp-content/uploads/2023/10/main.mp4\" target=\"_blank\" rel=\"noopener noreferrer\">https://hpplotre.sk/wp-content/uploads/2023/10/main.mp4</a></video>"
           },
           {
             "span": 6,

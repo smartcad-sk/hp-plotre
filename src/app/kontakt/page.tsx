@@ -43,10 +43,10 @@ export default function ContactPage() {
                   <Image src={p.photo} alt="" width={80} height={80} className="size-16 shrink-0 rounded-full object-cover sm:size-20" />
                   <div className="min-w-0">
                     <p className="font-semibold">{p.name}</p>
-                    <a href={`tel:${p.phone.replace(/\s/g, "")}`} className="block py-1 text-brand-700 underline underline-offset-4">
+                    <a href={`tel:${p.phone.replace(/\s/g, "")}`} className="flex min-h-11 items-center text-brand-700 underline underline-offset-4">
                       {p.phone}
                     </a>
-                    <a href={`mailto:${p.email}`} className="block break-all py-1 text-brand-700 underline underline-offset-4">
+                    <a href={`mailto:${p.email}`} className="flex min-h-11 items-center break-all text-brand-700 underline underline-offset-4">
                       {p.email}
                     </a>
                   </div>

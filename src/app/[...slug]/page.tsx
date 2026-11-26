@@ -6,6 +6,7 @@ import { SectionRenderer } from "@/components/blocks/SectionRenderer";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
 import { Badge } from "@/components/ui/Badge";
+import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Prose } from "@/components/ui/Prose";
 import {
@@ -112,7 +113,7 @@ export default async function ContentPage({ params }: PageProps<"/[...slug]">) {
   const page = getPage(route);
   if (!page) notFound();
 
-  const { title, leadHtml, sections } = normalizePage(page);
+  const { title, leadHtml, actions, sections } = normalizePage(page);
   const crumbs = breadcrumbFor(route);
   const product = isProductRoute(route);
 
@@ -124,6 +125,15 @@ export default async function ContentPage({ params }: PageProps<"/[...slug]">) {
           <div className="flex flex-wrap gap-2 pt-2">
             <Badge tone="inverse">HP DesignJet</Badge>
             <Badge tone="inverse">Autorizovaný predaj a servis</Badge>
+          </div>
+        )}
+        {actions.length > 0 && (
+          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
+            {actions.map((a, i) => (
+              <ButtonLink key={a.href} href={a.href} variant={i === 0 ? "secondary" : "inverse"} arrow>
+                {a.label}
+              </ButtonLink>
+            ))}
           </div>
         )}
       </PageHeader>

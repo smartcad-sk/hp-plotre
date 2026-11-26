@@ -35,7 +35,8 @@ export function ImageCarousel({ slides, label = "Galéria" }: { slides: Slide[];
 
   // Common aspect ratio from the first image keeps the frame stable.
   const first = slides.find((s) => s.image)?.image;
-  const ratio = first?.width && first?.height ? Math.max(first.width / first.height, 1.2) : 16 / 9;
+  // Never taller than 16:9 so a slide can't push the page content off-screen.
+  const ratio = first?.width && first?.height ? Math.max(first.width / first.height, 16 / 9) : 16 / 9;
 
   return (
     <section aria-roledescription="carousel" aria-label={label} className="relative">
@@ -88,7 +89,11 @@ export function ImageCarousel({ slides, label = "Galéria" }: { slides: Slide[];
             <Icon name="chevron-left" />
             <span className="sr-only">Predchádzajúca snímka</span>
           </button>
-          <ul className="flex items-center">
+          {/* Phones: compact counter (a row of 44px dots would overflow with many slides). */}
+          <p className="min-w-16 text-center font-medium tabular-nums text-ink-muted sm:hidden" aria-hidden="true">
+            {index + 1} / {count}
+          </p>
+          <ul className="hidden flex-wrap items-center justify-center sm:flex">
             {slides.map((_, i) => (
               <li key={i}>
                 <button

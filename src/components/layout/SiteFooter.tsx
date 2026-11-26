@@ -42,12 +42,12 @@ export function SiteFooter() {
               {group.items.map((item) => (
                 <li key={item.href + item.label}>
                   {item.external ? (
-                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 hover:text-white hover:underline sm:min-h-9">
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 hover:text-white hover:underline sm:pointer-fine:min-h-9">
                       {item.label}
                       <span className="sr-only"> (otvorí sa v novom okne)</span>
                     </a>
                   ) : (
-                    <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-white hover:underline sm:min-h-9">
+                    <Link href={item.href} className="inline-flex min-h-11 items-center hover:text-white hover:underline sm:pointer-fine:min-h-9">
                       {item.label}
                     </Link>
                   )}

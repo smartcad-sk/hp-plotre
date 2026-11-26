@@ -34,6 +34,19 @@ export function normalizePage(page: Page) {
     }
   }
 
+  // A band right under the header that only holds a subtitle + link buttons
+  // (e.g. "Technická špecifikácia", "Zakúpiť na e-shope") becomes header content.
+  const actions: { href: string; label: string }[] = [];
+  const top = sections[0];
+  if (top?.type === "content" && top.title && !top.bgImage && top.columns.length <= 3) {
+    const links = top.columns.map((c) => (!c.title && !c.image ? singleLinkColumn(c.html) : null));
+    if (links.every(Boolean)) {
+      sections.shift();
+      actions.push(...(links as { href: string; label: string }[]));
+      leadHtml = `${leadHtml ?? ""}<p><strong>${top.title}</strong></p>${top.excerpt ?? ""}`;
+    }
+  }
+
   const merged: ContentSection[] = [];
   for (let i = 0; i < sections.length; i++) {
     const s = sections[i];
@@ -46,7 +59,7 @@ export function normalizePage(page: Page) {
     }
   }
 
-  return { title, leadHtml, sections: merged };
+  return { title, leadHtml, actions, sections: merged };
 }
 
 /** A column that only contains one link (WordPress "button" made from a paragraph). */
@@ -54,7 +67,15 @@ export function singleLinkColumn(html?: string): { href: string; label: string }
   if (!html) return null;
   const links = [...html.matchAll(/<a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)];
   if (links.length !== 1) return null;
-  const label = strip(links[0][2]);
-  if (!label || strip(html) !== label) return null;
-  return { href: links[0][1], label };
+  const raw = strip(links[0][2]);
+  if (!raw || strip(html) !== raw) return null;
+  return { href: links[0][1], label: friendlyLabel(raw, links[0][1]) };
+}
+
+/** Some WordPress links used the bare URL as their text – give them a human label. */
+export function friendlyLabel(label: string, href: string) {
+  if (!/^https?:\/\//.test(label)) return label;
+  if (/\.pdf($|\?)/i.test(href)) return "Technická špecifikácia (PDF)";
+  if (href.includes("kancelaria.smartcad.sk")) return "Zakúpiť na e-shope";
+  return "Viac informácií";
 }

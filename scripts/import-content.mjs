@@ -91,12 +91,13 @@ function clean(html) {
     allowedTags: [
       "p", "br", "strong", "b", "em", "i", "u", "ul", "ol", "li", "a", "h2", "h3", "h4",
       "blockquote", "table", "thead", "tbody", "tr", "th", "td", "img", "figure", "figcaption",
-      "video", "hr", "sup", "sub",
+      "video", "source", "hr", "sup", "sub",
     ],
     allowedAttributes: {
       a: ["href", "target", "rel"],
       img: ["src", "alt", "width", "height"],
-      video: ["src", "controls"],
+      video: ["src", "controls", "preload"],
+      source: ["src", "type"],
       td: ["colspan", "rowspan"],
       th: ["colspan", "rowspan"],
     },
