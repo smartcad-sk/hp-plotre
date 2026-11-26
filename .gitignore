@@ -53,3 +53,6 @@ next-env.d.ts
 .claude/settings.local.json
 
 *storybook.log
+
+# Private local files (GTM container exports, credentials-free configs) – never committed
+/private/
