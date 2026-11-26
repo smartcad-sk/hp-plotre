@@ -171,6 +171,21 @@ export function toneFromColor(color?: string): Tone {
   }
 }
 
+const TITLE_SUFFIX = " | HPplotre.sk";
+const TITLE_MAX = 65;
+
+/**
+ * SERP title: uses the layout's " | HPplotre.sk" suffix when it fits, otherwise drops the
+ * suffix, and for very long headlines keeps the most descriptive segment ("A: B" / "A – B").
+ */
+export function seoTitle(title: string): string | { absolute: string } {
+  if ((title + TITLE_SUFFIX).length <= TITLE_MAX) return title;
+  if (title.length <= TITLE_MAX) return { absolute: title };
+  const parts = title.split(/:\s+|\s+–\s+/).filter((p) => p.length >= 20 && p.length <= TITLE_MAX - TITLE_SUFFIX.length);
+  if (parts.length) return parts.sort((a, b) => b.length - a.length)[0];
+  return { absolute: title.slice(0, TITLE_MAX - 1).replace(/\s+\S*$/, "") + "…" };
+}
+
 const strip = (html?: string) => (html ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 
 /** Description fallback: first meaningful text on the page. */

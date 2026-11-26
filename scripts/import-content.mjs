@@ -87,7 +87,7 @@ function clean(html) {
     const alt = tag.match(/alt="([^"]*)"/)?.[1] ?? "";
     return alt;
   });
-  return sanitizeHtml(withEmoji, {
+  const cleaned = sanitizeHtml(withEmoji, {
     allowedTags: [
       "p", "br", "strong", "b", "em", "i", "u", "ul", "ol", "li", "a", "h2", "h3", "h4",
       "blockquote", "table", "thead", "tbody", "tr", "th", "td", "img", "figure", "figcaption",
@@ -138,6 +138,36 @@ function clean(html) {
     .replace(/(<br \/>\s*){2,}/g, "<br />")
     .replace(/\s{2,}/g, " ")
     .trim();
+  return nameLinks(cleaned);
+}
+
+/** Links must have an accessible name: image-only links get alt text, empty links are dropped. */
+function nameLinks(html) {
+  if (!html.includes("<a")) return html;
+  const $ = cheerio.load(html, null, false);
+  $("a").each((_, a) => {
+    const $a = $(a);
+    if (text($a.text())) return;
+    const imgs = $a.find("img");
+    if (!imgs.length) {
+      $a.replaceWith($a.contents());
+      return;
+    }
+    imgs.each((__, img) => {
+      const $img = $(img);
+      if (text($img.attr("alt"))) return;
+      const href = $a.attr("href") ?? "";
+      $img.attr("alt", IMG_EXT.test(href) ? "Zobraziť obrázok vo veľkom rozlíšení" : "Odkaz na súvisiacu stránku");
+    });
+  });
+  return $.html();
+}
+
+/** Decode HTML entities and trim to a SERP-friendly length at a word boundary. */
+function metaDescription(s, max = 158) {
+  const plain = text(cheerio.load(`<p>${s ?? ""}</p>`).text());
+  if (plain.length <= max) return plain || undefined;
+  return plain.slice(0, max - 1).replace(/[\s,;:–-]+\S*$/, "") + "…";
 }
 
 const text = (s) => (s ?? "").replace(/\s+/g, " ").trim();
@@ -326,7 +356,7 @@ async function main() {
       route,
       title: cheerio.load(p.title.rendered).text().trim(),
       seoTitle: y.title ? cheerio.load(y.title).text() : undefined,
-      description: y.description || y.og_description || undefined,
+      description: metaDescription(y.description || y.og_description),
       modified: p.modified,
       sections,
     });
@@ -345,7 +375,7 @@ async function main() {
       id: p.id,
       route,
       title: cheerio.load(p.title.rendered).text().trim(),
-      description: y.description || text(cheerio.load(p.excerpt?.rendered ?? "").text()).slice(0, 160),
+      description: metaDescription(y.description || p.excerpt?.rendered),
       date: p.date,
       modified: p.modified,
       thumbnail: parsed.thumbnail,

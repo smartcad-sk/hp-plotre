@@ -74,6 +74,7 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     items: [
       { label: "Planografia", href: "/plotrovanie" },
       { label: "Blog o HP plotroch", href: "/blogy" },
+      { label: "Kontakt", href: "/kontakt" },
       { label: "Bazár plotrov", href: site.bazaar, external: true },
       { label: "E-shop", href: site.eshop, external: true },
       { label: "Ochrana osobných údajov (GDPR)", href: site.gdpr, external: true },

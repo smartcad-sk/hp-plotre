@@ -10,6 +10,10 @@ import { YouTubeEmbed } from "./YouTubeEmbed";
 
 /** Maps imported WordPress sections to design-system blocks. */
 export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pageTitle: string }) {
+  // Carousels are landmarks (region) – each needs a unique name.
+  const galleries = sections.filter((s) => s.type === "slider" && s.slides.some((sl) => sl.image)).length;
+  let galleryNo = 0;
+  const galleryLabel = () => (galleries > 1 ? `Galéria ${++galleryNo} – ${pageTitle}` : `Galéria – ${pageTitle}`);
   return (
     <>
       {sections.map((s, i) => {
@@ -37,7 +41,7 @@ export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pag
             return (
               <Section key={s.id + i} spacing="sm">
                 <Container className="space-y-6">
-                  <ImageCarousel slides={withImages.map(({ image, title }) => ({ image, title }))} label={`Galéria – ${pageTitle}`} />
+                  <ImageCarousel slides={withImages.map(({ image, title }) => ({ image, title }))} label={galleryLabel()} />
                   {captioned.map((sl, j) => (
                     <Prose key={j} html={sl.excerpt!} className="mx-auto max-w-(--container-prose)" />
                   ))}

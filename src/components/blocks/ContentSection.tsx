@@ -20,7 +20,7 @@ const spanClass: Record<number, string> = {
 };
 const smSpanClass = (span: number) => (span >= 7 ? "sm:col-span-2" : "sm:col-span-1");
 
-function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean; headingLevel: 3 | 4 }) {
+function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean; headingLevel: 2 | 3 }) {
   if (col.form) return <ContactForm />;
 
   const cta = !col.title && !col.image && singleLinkColumn(col.html);
@@ -114,7 +114,7 @@ export function ContentSection({ data }: { data: Data }) {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12">
             {data.columns.map((col, i) => (
               <div key={i} className={cn("min-w-0", smSpanClass(col.span), spanClass[col.span] ?? "lg:col-span-12")}>
-                <Column col={col} dark={dark} headingLevel={data.title ? 3 : 3} />
+                <Column col={col} dark={dark} headingLevel={data.title ? 3 : 2} />
               </div>
             ))}
           </div>

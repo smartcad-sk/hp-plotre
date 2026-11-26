@@ -18,6 +18,7 @@ import {
   isProductRoute,
   pageDescription,
   pageImage,
+  seoTitle,
 } from "@/lib/content";
 import { normalizePage } from "@/lib/normalize";
 import { SITE_URL, site } from "@/lib/site";
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: PageProps<"/[...slug]">): Pro
   const post = getPost(route);
   if (post) {
     return {
-      title: post.title,
+      title: seoTitle(post.title),
       description: post.description,
       alternates: { canonical: route },
       openGraph: {
@@ -52,7 +53,7 @@ export async function generateMetadata({ params }: PageProps<"/[...slug]">): Pro
   const description = pageDescription(page);
   const image = pageImage(page);
   return {
-    title,
+    title: seoTitle(title),
     description,
     alternates: { canonical: route },
     openGraph: { title, description, url: route, images: image ? [image.src] : undefined },

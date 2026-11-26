@@ -17,7 +17,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: `${site.company} | Predaj a servis HP plotrov` },
   description:
-    "Autorizované servisné stredisko HP pre záručný a pozáručný servis plotrov. Predaj, prenájom a splátky HP DesignJet plotrov, skenerov a skladačiek – viac ako 20 rokov skúseností.",
+    "Autorizovaný HP servis a predaj plotrov. Predaj, prenájom a splátky HP DesignJet plotrov, skenerov a skladačiek – viac ako 20 rokov skúseností.",
   alternates: { canonical: "/" },
 };
 
