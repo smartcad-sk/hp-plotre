@@ -27,7 +27,7 @@ export function YouTubeEmbed({ id, title = "Video" }: { id: string; title?: stri
           type="button"
           onClick={() => {
             setActive(true);
-            track({ event: "video_start", video_provider: "youtube", video_id: id, video_title: title });
+            track({ event: "video_start", video_provider: "youtube", video_title: title, video_url: `https://www.youtube.com/watch?v=${id}` });
           }}
           className="group absolute inset-0 flex size-full items-center justify-center"
         >

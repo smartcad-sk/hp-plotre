@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useState, useSyncExternalStore } from "react";
-import { GA4_IDS, GADS_ID, analyticsConfigured, track } from "@/lib/analytics";
+import { GTM_ID, track } from "@/lib/analytics";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 
@@ -9,7 +9,7 @@ type Consent = { analytics: boolean; marketing: boolean; ts: number };
 const KEY = "hpplotre-consent-v1";
 const OPEN_EVENT = "hpplotre:open-consent";
 
-type GtagWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; __gtagLoaded?: boolean };
+type GtagWindow = Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void; __gtmLoaded?: boolean };
 
 function readConsent(): Consent | null {
   try {
@@ -20,7 +20,11 @@ function readConsent(): Consent | null {
   }
 }
 
-/** Google Consent Mode v2 update + lazy tag loading (basic mode: nothing loads before consent). */
+/**
+ * Google Consent Mode v2 update, then (basic consent mode, like the old Complianz setup)
+ * load the GTM container only once the visitor has granted at least one category.
+ * Tags inside GTM must use built-in consent checks (analytics_storage / ad_storage).
+ */
 function applyConsent(c: Consent) {
   const w = window as GtagWindow;
   w.dataLayer = w.dataLayer ?? [];
@@ -32,16 +36,13 @@ function applyConsent(c: Consent) {
     ad_user_data: c.marketing ? "granted" : "denied",
     ad_personalization: c.marketing ? "granted" : "denied",
   });
-  if (!analyticsConfigured || w.__gtagLoaded || !(c.analytics || c.marketing)) return;
-  const first = GA4_IDS[0] ?? GADS_ID!;
+  if (!GTM_ID || w.__gtmLoaded || !(c.analytics || c.marketing)) return;
+  w.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
   const s = document.createElement("script");
   s.async = true;
-  s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(first)}`;
+  s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(GTM_ID)}`;
   document.head.appendChild(s);
-  w.gtag("js", new Date());
-  if (c.analytics) for (const id of GA4_IDS) w.gtag("config", id, { cookie_flags: "secure;samesite=lax" });
-  if (c.marketing && GADS_ID) w.gtag("config", GADS_ID);
-  w.__gtagLoaded = true;
+  w.__gtmLoaded = true;
 }
 
 const subscribe = (cb: () => void) => {
@@ -80,7 +81,11 @@ export function ConsentManager() {
       /* private mode – consent applies to this page view only */
     }
     applyConsent(full);
-    track({ event: "consent_update", ...c });
+    track({
+      event: "consent_update",
+      consent_analytics: c.analytics ? "granted" : "denied",
+      consent_marketing: c.marketing ? "granted" : "denied",
+    });
     setForcedOpen(false);
     window.dispatchEvent(new StorageEvent("storage", { key: KEY }));
   }, []);
@@ -91,6 +96,7 @@ export function ConsentManager() {
   return (
     <section
       role="dialog"
+      data-location="consent"
       aria-modal="false"
       aria-labelledby={`${id}-t`}
       aria-describedby={`${id}-d`}

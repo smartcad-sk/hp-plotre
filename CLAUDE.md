@@ -49,6 +49,7 @@ Content language is **Slovak** (`lang="sk"`); keep all UI copy in Slovak.
 - Never commit `.env*` files or secrets. Third-party embeds (YouTube) load only after user click (privacy/GDPR).
 - Never render unsanitized HTML; `dangerouslySetInnerHTML` is only allowed for content from `src/content/*.json`
   and for JSON-LD in `src/components/seo/JsonLd.tsx` (escapes `<`) and the static Consent Mode default in `layout.tsx`.
-- Analytics: events go through `track()` in `src/lib/analytics.ts` (typed dataLayer contract). Google tags load only
-  after opt-in consent (`ConsentManager`) and only if `NEXT_PUBLIC_GA4_IDS` / `NEXT_PUBLIC_GADS_ID` are set.
+- Analytics: every event goes through `track()` in `src/lib/analytics.ts` (typed dataLayer contract, spec in
+  `docs/tracking-plan.md`). The GTM container (`NEXT_PUBLIC_GTM_ID`) loads only after opt-in consent (`ConsentManager`).
+  Add a new event to the type union **and** the tracking plan; pages set `data-page-type` via `PageHeader`.
 - The contact form has no backend yet – do not add one that emails/stores data without a spam/rate-limit strategy.

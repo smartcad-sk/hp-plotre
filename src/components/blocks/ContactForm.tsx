@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
-import { track } from "@/lib/analytics";
+import { currentPageType, track } from "@/lib/analytics";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 
@@ -21,6 +21,8 @@ export function ContactForm({ heading = "Napíšte nám" }: { heading?: string }
   const uid = useId();
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [started, setStarted] = useState(false);
+  const formName = heading;
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,6 +35,9 @@ export function ContactForm({ heading = "Napíšte nám" }: { heading?: string }
     if (!data.get("consent")) next.consent = "Pre odoslanie potrebujeme váš súhlas.";
     setErrors(next);
     if (Object.keys(next).length) {
+      track({ event: "form_error", form_id: "contact", form_name: formName, error_fields: Object.keys(next).join(",") });
+    }
+    if (Object.keys(next).length) {
       const firstKey = Object.keys(next)[0];
       e.currentTarget.querySelector<HTMLElement>(`[name="${firstKey}"]`)?.focus();
       return;
@@ -44,7 +49,7 @@ export function ContactForm({ heading = "Napíšte nám" }: { heading?: string }
       `E-mail: ${v("email")}`,
     ].filter(Boolean);
     const body = `${header.join("\n")}\n\n${v("message")}`;
-    track({ event: "generate_lead", form_id: "contact", lead_source: window.location.pathname });
+    track({ event: "generate_lead", form_id: "contact", form_name: formName, lead_source: currentPageType() });
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Dopyt z webu HPplotre.sk")}&body=${encodeURIComponent(body)}`;
     setSent(true);
   }
@@ -62,6 +67,12 @@ export function ContactForm({ heading = "Napíšte nám" }: { heading?: string }
 
   return (
     <form
+      data-location="content"
+      onFocusCapture={() => {
+        if (started) return;
+        setStarted(true);
+        track({ event: "form_start", form_id: "contact", form_name: formName });
+      }}
       noValidate
       onSubmit={onSubmit}
       aria-labelledby={`${uid}-heading`}

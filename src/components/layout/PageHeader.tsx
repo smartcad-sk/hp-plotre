@@ -1,3 +1,4 @@
+import type { PageType } from "@/lib/analytics";
 import { Container } from "@/components/ui/Container";
 import { Heading } from "@/components/ui/Heading";
 import { Prose } from "@/components/ui/Prose";
@@ -9,12 +10,14 @@ type Props = {
   leadHtml?: string;
   crumbs?: Crumb[];
   children?: React.ReactNode;
+  /** Analytics page classification (read by PageViewTracker). */
+  pageType?: PageType;
 };
 
 /** Page title band – the only <h1> on a page. */
-export function PageHeader({ title, lead, leadHtml, crumbs, children }: Props) {
+export function PageHeader({ title, lead, leadHtml, crumbs, children, pageType = "page" }: Props) {
   return (
-    <div className="relative overflow-hidden bg-brand-700 text-white">
+    <div className="relative overflow-hidden bg-brand-700 text-white" data-page-type={pageType} data-location="page_header">
       <div aria-hidden="true" className="absolute -right-24 -top-24 size-80 rounded-full bg-brand-500/40 blur-3xl" />
       <Container className="relative space-y-4 py-10 sm:py-14">
         {crumbs && <Breadcrumbs items={crumbs} current={title} invert />}

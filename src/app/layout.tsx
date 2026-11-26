@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { ClickTracker } from "@/components/analytics/ClickTracker";
 import { ConsentManager } from "@/components/analytics/ConsentManager";
+import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { SITE_URL, site } from "@/lib/site";
 import "./globals.css";
 
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <ConsentManager />
         <ClickTracker />
+        <PageViewTracker />
       </body>
     </html>
   );

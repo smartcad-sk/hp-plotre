@@ -23,6 +23,7 @@ export default function ContactPage() {
       <JsonLd data={breadcrumbLd([{ label: "Úvod", href: "/" }, { label: "Kontakt", href: "/kontakt" }])} />
       <PageHeader
         title="Kontakt"
+        pageType="contact"
         lead="Potrebujete viac informácií? Poradíme vám! Sme HP DesignJet Specialist a HP Technical Production Specialist."
         crumbs={[{ label: "Úvod", href: "/" }]}
       />

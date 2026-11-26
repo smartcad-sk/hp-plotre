@@ -48,7 +48,7 @@ export default function HomePage() {
       <JsonLd data={organizationLd} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-brand-800 text-white" aria-labelledby="hero-title">
+      <section data-page-type="home" className="relative overflow-hidden bg-gradient-to-br from-brand-700 via-brand-600 to-brand-800 text-white" aria-labelledby="hero-title">
         <div aria-hidden="true" className="absolute -left-32 top-10 size-96 rounded-full bg-brand-400/30 blur-3xl" />
         <Container className="relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.1fr_1fr] lg:py-20">
           <div className="space-y-6">

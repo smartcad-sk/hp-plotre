@@ -20,8 +20,19 @@ import {
   pageImage,
   seoTitle,
 } from "@/lib/content";
+import type { PageType } from "@/lib/analytics";
 import { normalizePage } from "@/lib/normalize";
 import { SITE_URL, site } from "@/lib/site";
+
+const CATEGORY_ROUTES = new Set(["/velkoformatove-tlaciarne", "/skladacky-vykresov", "/latex", "/vyrezavacie-plotre"]);
+const SERVICE_ROUTES = /^\/(smart-sluzby|diagnostika-plotra|stary_za_novy|plotrovanie|bazar-plotrov)/;
+
+function pageTypeFor(route: string): PageType {
+  if (isProductRoute(route)) return "product";
+  if (CATEGORY_ROUTES.has(route)) return "product_category";
+  if (SERVICE_ROUTES.test(route)) return "service";
+  return "page";
+}
 
 export function generateStaticParams() {
   return catchAllRoutes().map((route) => ({ slug: route.slice(1).split("/") }));
@@ -85,7 +96,7 @@ export default async function ContentPage({ params }: PageProps<"/[...slug]">) {
             mainEntityOfPage: `${SITE_URL}${route}`,
           }}
         />
-        <PageHeader title={post.title} crumbs={crumbs}>
+        <PageHeader title={post.title} crumbs={crumbs} pageType="blog_post">
           <p className="text-white/85">
             <time dateTime={post.date}>{dateFmt.format(new Date(post.date))}</time>
           </p>
@@ -121,7 +132,7 @@ export default async function ContentPage({ params }: PageProps<"/[...slug]">) {
   return (
     <>
       <JsonLd data={breadcrumbLd([...crumbs, { label: displayTitle(page), href: route }])} />
-      <PageHeader title={title} leadHtml={leadHtml} crumbs={crumbs}>
+      <PageHeader title={title} leadHtml={leadHtml} crumbs={crumbs} pageType={pageTypeFor(route)}>
         {product && (
           <div className="flex flex-wrap gap-2 pt-2">
             <Badge tone="inverse">HP DesignJet</Badge>

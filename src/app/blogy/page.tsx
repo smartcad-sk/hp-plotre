@@ -23,6 +23,7 @@ export default function BlogPage() {
       <JsonLd data={breadcrumbLd([{ label: "Úvod", href: "/" }, { label: "Blog", href: "/blogy" }])} />
       <PageHeader
         title="Blog o HP plotroch"
+        pageType="blog_index"
         lead="Novinky, porovnania a praktické návody od technikov smartCAD."
         crumbs={[{ label: "Úvod", href: "/" }]}
       />

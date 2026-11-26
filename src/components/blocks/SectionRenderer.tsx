@@ -9,6 +9,7 @@ import { Section } from "@/components/ui/Section";
 import { ContactDetails } from "./ContactDetails";
 import { ContentSection } from "./ContentSection";
 import { ImageCarousel } from "./ImageCarousel";
+import { Html5Video } from "./Html5Video";
 import { YouTubeEmbed } from "./YouTubeEmbed";
 
 /** Maps imported WordPress sections to design-system blocks. */
@@ -86,13 +87,7 @@ export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pag
                   {s.youtubeId ? (
                     <YouTubeEmbed id={s.youtubeId} title={s.title ?? `Video – ${pageTitle}`} />
                   ) : (
-                    <video
-                      src={s.src}
-                      controls
-                      preload="metadata"
-                      aria-label={s.title ?? `Video – ${pageTitle}`}
-                      className="aspect-video w-full rounded-(--radius-card) bg-ink"
-                    />
+                    <Html5Video src={s.src!} title={s.title ?? `Video – ${pageTitle}`} />
                   )}
                 </Container>
               </Section>

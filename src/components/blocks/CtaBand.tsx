@@ -12,7 +12,7 @@ export function CtaBand({
   text?: string;
 }) {
   return (
-    <section aria-labelledby="cta-title" className="bg-brand-800 text-white">
+    <section aria-labelledby="cta-title" className="bg-brand-800 text-white" data-location="cta_band">
       <Container className="flex flex-col gap-6 py-12 sm:py-14 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-2xl flex-1 space-y-2">
           <Heading id="cta-title" level={2} size="lg">

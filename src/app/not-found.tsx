@@ -4,7 +4,7 @@ import { Heading } from "@/components/ui/Heading";
 
 export default function NotFound() {
   return (
-    <Container size="prose" className="space-y-6 py-20 text-center sm:py-28">
+    <Container size="prose" className="space-y-6 py-20 text-center sm:py-28" data-page-type="not_found">
       <p className="font-display text-6xl font-bold text-brand-600">404</p>
       <Heading level={1} size="xl">
         Stránku sme nenašli
