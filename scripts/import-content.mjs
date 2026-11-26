@@ -55,6 +55,7 @@ function localImage(src) {
     .normalize("NFKD")
     .replace(/[̀-ͯ]/g, "")
     .replace(/[^a-zA-Z0-9/._-]+/g, "-");
+  if (rel.split("/").some((seg) => seg === ".." || seg === ".")) return null; // no path traversal
   const local = `/media/${rel}`;
   images.set(url.href, local);
   return local;

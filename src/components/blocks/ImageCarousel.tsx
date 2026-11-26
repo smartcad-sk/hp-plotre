@@ -12,7 +12,7 @@ export type Slide = { image?: ContentImage; title?: string };
  * Accessible carousel (WAI-ARIA APG pattern) built on native scroll-snap:
  * swipeable on touch, no autoplay, prev/next + slide picker buttons, announces position.
  */
-export function ImageCarousel({ slides, label = "Galéria" }: { slides: Slide[]; label?: string }) {
+export function ImageCarousel({ slides, label = "Galéria", priority = false }: { slides: Slide[]; label?: string; priority?: boolean }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const id = useId();
@@ -67,7 +67,7 @@ export function ImageCarousel({ slides, label = "Galéria" }: { slides: Slide[];
                 fill
                 sizes="(min-width: 1152px) 1152px, 100vw"
                 className="object-contain"
-                priority={i === 0}
+                priority={priority && i === 0}
               />
             )}
             {s.title && (

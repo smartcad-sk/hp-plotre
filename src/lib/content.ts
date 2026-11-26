@@ -86,6 +86,7 @@ const TITLE_OVERRIDES: Record<string, string> = {
 };
 
 export function isProductRoute(route: string) {
+  if (posts.some((p) => p.route === route)) return false; // some blog slugs also start with "hp-"
   return /^\/(hp-|t8|t9|xl-)/.test(route) && !route.startsWith("/hp-plotre-2019");
 }
 

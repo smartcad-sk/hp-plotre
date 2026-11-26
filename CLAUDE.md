@@ -47,5 +47,6 @@ Content language is **Slovak** (`lang="sk"`); keep all UI copy in Slovak.
 - Security headers (CSP, HSTS, X-Frame-Options, Referrer-Policy, Permissions-Policy) are set in `next.config.ts`.
   If you add a third-party origin (fonts, analytics, embeds), update the CSP there deliberately.
 - Never commit `.env*` files or secrets. Third-party embeds (YouTube) load only after user click (privacy/GDPR).
-- Never render unsanitized HTML; `dangerouslySetInnerHTML` is only allowed for content from `src/content/*.json`.
+- Never render unsanitized HTML; `dangerouslySetInnerHTML` is only allowed for content from `src/content/*.json`
+  and for JSON-LD in `src/components/seo/JsonLd.tsx` (escapes `<`).
 - The contact form has no backend yet – do not add one that emails/stores data without a spam/rate-limit strategy.

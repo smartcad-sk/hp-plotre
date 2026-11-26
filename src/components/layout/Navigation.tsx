@@ -77,7 +77,7 @@ function Dropdown({ item }: { item: NavItem }) {
         type="button"
         aria-expanded={open}
         aria-controls={id}
-        onClick={() => setOpen((o) => !o)}
+        onClick={(e) => setOpen((o) => (e.detail > 0 && e.nativeEvent instanceof PointerEvent && e.nativeEvent.pointerType === "mouse" ? true : !o))}
         className={cn(
           "inline-flex min-h-11 items-center gap-1 rounded-md px-3 font-medium text-ink hover:bg-brand-50 hover:text-brand-800",
           active && "text-brand-700",

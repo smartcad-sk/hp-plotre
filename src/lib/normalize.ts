@@ -1,6 +1,7 @@
 import type { ContentSection, Page } from "./content";
 import { displayTitle } from "./content";
 
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const strip = (html?: string) => (html ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 
 type ContentBlock = Extract<ContentSection, { type: "content" }>;
@@ -30,7 +31,7 @@ export function normalizePage(page: Page) {
     const second = sections[0];
     if (second && isTitleBand(second) && !leadHtml) {
       sections.shift();
-      leadHtml = `<p><strong>${second.title}</strong></p>${second.excerpt ?? ""}`;
+      leadHtml = `<p><strong>${esc(second.title ?? "")}</strong></p>${second.excerpt ?? ""}`;
     }
   }
 
@@ -43,7 +44,7 @@ export function normalizePage(page: Page) {
     if (links.every(Boolean)) {
       sections.shift();
       actions.push(...(links as { href: string; label: string }[]));
-      leadHtml = `${leadHtml ?? ""}<p><strong>${top.title}</strong></p>${top.excerpt ?? ""}`;
+      leadHtml = `${leadHtml ?? ""}<p><strong>${esc(top.title)}</strong></p>${top.excerpt ?? ""}`;
     }
   }
 

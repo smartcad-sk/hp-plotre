@@ -51,7 +51,7 @@ for (const route of routes) {
         ? [...document.querySelectorAll("a, button, [role=button], input, select, textarea, summary")]
             .filter(visible)
             // WCAG 2.5.8 inline exception: links inside running text are exempt.
-            .filter((el) => !(el.tagName === "A" && el.closest(".prose-content, p, li address, dd")))
+            .filter((el) => !(el.tagName === "A" && el.closest(".prose-content, p, li, address, dd")))
             .filter((el) => !(el.tagName === "INPUT" && (el as HTMLInputElement).type === "checkbox"))
             .filter((el) => {
               const r = el.getBoundingClientRect();

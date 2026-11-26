@@ -3,8 +3,11 @@ import Link from "next/link";
 import { footerNav, site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
 
+// Evaluated once at build/module load – keeps the footer static under cacheComponents.
+const BUILD_YEAR = new Date().getFullYear();
+
 export function SiteFooter() {
-  const year = 2026; // static: keeps the footer prerenderable with cacheComponents
+  const year = BUILD_YEAR;
   return (
     <footer className="bg-brand-950 text-white/85" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
