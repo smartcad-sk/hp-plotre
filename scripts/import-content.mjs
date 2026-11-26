@@ -11,6 +11,8 @@ import { mkdir, writeFile, access } from "node:fs/promises";
 import path from "node:path";
 import * as cheerio from "cheerio";
 import sanitizeHtml from "sanitize-html";
+import { imageSize } from "image-size";
+import { readFile } from "node:fs/promises";
 
 const ORIGIN = "https://hpplotre.sk";
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -186,12 +188,12 @@ function parseLayers($) {
         const $c = $(c);
         const span = Number(($c.attr("class") ?? "").match(/span-(\d+)/)?.[1] ?? 12);
         const ex = $c.find(".media-body .excerpt").first();
+        // Contact Form 7 markup: replaced by our own <ContactForm/> component.
+        if (ex.find("form, .wpcf7").length) {
+          columns.push({ span, form: true });
+          return;
+        }
         const image = imageFrom($, $c.find(".media-image").first());
-        const exImgs = [];
-        ex.find("img").each((___, im) => {
-          const s = localImage($(im).attr("src"));
-          if (s) exImgs.push(s);
-        });
         const col = {
           span,
           title: text($c.find(".media-body .heading").first().text()) || undefined,
@@ -210,7 +212,7 @@ function parseLayers($) {
         title: title || undefined,
         excerpt: clean(excerptHtml) || undefined,
         bg: css[id]?.bg,
-        bgImage: localImage(css[id]?.image) ?? undefined,
+        bgImage: localImage(css[id]?.image) ? { src: localImage(css[id]?.image), alt: "" } : undefined,
         button: sectionButton,
         columns,
       });
@@ -219,17 +221,19 @@ function parseLayers($) {
       $w.find(".swiper-slide").each((__, s) => {
         const $s = $(s);
         const sid = $s.attr("id");
-        const image =
-          localImage(css[sid]?.image) ??
-          imageFrom($, $s.find(".image-container, .overlay").first())?.src;
+        const bgSrc = localImage(css[sid]?.image);
+        const image = bgSrc
+          ? { src: bgSrc, alt: "" }
+          : imageFrom($, $s.find(".image-container, .overlay").first());
         slides.push({
-          image: image ?? undefined,
+          image,
           title: text($s.find(".heading").first().text()) || undefined,
           excerpt: clean($s.find(".excerpt").first().html()) || undefined,
           button: buttonFrom($, $s),
         });
       });
-      if (slides.some((s) => s.image || s.title)) sections.push({ type: "slider", id, slides });
+      const real = slides.filter((s) => s.image || (s.title && s.title.length > 2));
+      if (real.length) sections.push({ type: "slider", id, slides: real });
     } else if ($w.hasClass("widget_media_video")) {
       const src = $w.find("source[type='video/youtube'], iframe").first().attr("src") ?? "";
       const youtubeId = src.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/)?.[1];
@@ -347,10 +351,36 @@ async function main() {
   }
   posts.sort((a, b) => b.date.localeCompare(a.date));
 
-  await writeFile(path.join(OUT_DIR, "pages.json"), JSON.stringify(pages, null, 2) + "\n");
-  await writeFile(path.join(OUT_DIR, "posts.json"), JSON.stringify(posts, null, 2) + "\n");
   const dl = await downloadImages();
   report.images = { downloaded: dl.ok, failed: dl.failed };
+  // Fill real intrinsic dimensions for every local image object (prevents layout shift).
+  const sizes = new Map();
+  async function fillDims(node) {
+    if (Array.isArray(node)) {
+      for (const n of node) await fillDims(n);
+    } else if (node && typeof node === "object") {
+      if (typeof node.src === "string" && node.src.startsWith("/media/")) {
+        if (!sizes.has(node.src)) {
+          try {
+            const buf = await readFile(path.join(ROOT, "public", ...node.src.split("/").filter(Boolean)));
+            sizes.set(node.src, imageSize(buf));
+          } catch {
+            sizes.set(node.src, null);
+          }
+        }
+        const dim = sizes.get(node.src);
+        if (dim) {
+          node.width = dim.width;
+          node.height = dim.height;
+        }
+      }
+      for (const v of Object.values(node)) await fillDims(v);
+    }
+  }
+  await fillDims(pages);
+  await fillDims(posts);
+  await writeFile(path.join(OUT_DIR, "pages.json"), JSON.stringify(pages, null, 2) + "\n");
+  await writeFile(path.join(OUT_DIR, "posts.json"), JSON.stringify(posts, null, 2) + "\n");
   await writeFile(path.join(OUT_DIR, "import-report.json"), JSON.stringify(report, null, 2) + "\n");
   console.log(`\npages=${pages.length} posts=${posts.length} images=${dl.ok} failed=${dl.failed.length}`);
 }

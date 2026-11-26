@@ -9,7 +9,9 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "import:content": "node scripts/import-content.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "next": "16.4.6",
@@ -19,7 +21,11 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.14.1",
     "@playwright/test": "^1.65.1",
+    "@storybook/addon-a11y": "^10.6.9",
+    "@storybook/addon-docs": "^10.6.9",
+    "@storybook/nextjs-vite": "^10.6.9",
     "@tailwindcss/turbopack": "4.3.3",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -27,9 +33,12 @@
     "cheerio": "^1.2.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "image-size": "^2.2.0",
     "sanitize-html": "^2.18.2",
+    "storybook": "^10.6.9",
     "tailwindcss": "4.3.3",
     "tsx": "^4.23.15",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "latest"
   }
 }
