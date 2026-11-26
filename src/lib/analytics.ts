@@ -51,7 +51,9 @@ export type AnalyticsEvent =
 
 type DataLayerWindow = Window & { dataLayer?: unknown[] };
 
-export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID?.trim() || undefined;
+/** smartCAD container for hpplotre.sk (public ID). Override per environment with NEXT_PUBLIC_GTM_ID; set it to "off" to disable. */
+const GTM_ENV = process.env.NEXT_PUBLIC_GTM_ID?.trim();
+export const GTM_ID = GTM_ENV === "off" ? undefined : GTM_ENV || "GTM-5DFN7L8W";
 
 // Keys that may be set by one event type – reset on every push (GTM merges dataLayer state).
 const EVENT_KEYS = [

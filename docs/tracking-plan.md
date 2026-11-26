@@ -7,7 +7,8 @@ is configured in **Google Tag Manager**. The code that implements the contract i
 
 | What | Where | Value |
 | --- | --- | --- |
-| GTM container ID | Vercel → Project *hp-plotre* → Settings → Environment Variables (Preview + Production) | `NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX` |
+| GTM container ID | Default in `src/lib/analytics.ts` | `GTM-5DFN7L8W` (override with `NEXT_PUBLIC_GTM_ID`, `off` disables) |
+| GA4 property | GTM constant `CONST - GA4 Measurement ID` | `G-Z3TY0XF1SL` |
 | Local testing | `.env.local` (not committed) | same variable |
 
 A redeploy is required after the variable changes (it is inlined at build time).
@@ -98,6 +99,13 @@ Container **Consent Overview** must be enabled. Every tag uses "Require addition
 - **Key events:** `generate_lead` (primary), `click_phone`, `click_email`. Optionally the `click` event with `outbound_type = eshop`,
   or create a derived event `eshop_click` in GA4.
 - Data retention: 14 months. Internal traffic filter for the smartCAD office IP.
+
+## 3b. Importing the container
+`node scripts/gtm/build-container.mjs private/gtm/<export>.json` generates
+`private/gtm/GTM-5DFN7L8W_tracking-plan.json` (private/ is gitignored). It contains every variable, trigger and tag above.
+The existing *GA4 - page view* Google tag is updated (renamed *GA4 - Google tag*, `send_page_view=false`, consent).
+GTM → Admin → **Import Container** → choose the file → workspace *Default/new* → **Merge** → *Overwrite conflicting*.
+Then add the Ads conversion labels to the 3 paused `Ads - Conversion - …` tags, unpause them, Preview, and Publish.
 
 ## 4. What I need from you
 1. **GTM container ID** (`GTM-…`), or the exported container JSON if you want me to review it.
