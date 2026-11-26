@@ -37,7 +37,14 @@ function applyConsent(c: Consent) {
     ad_personalization: c.marketing ? "granted" : "denied",
   });
   if (!GTM_ID || w.__gtmLoaded || !(c.analytics || c.marketing)) return;
-  // `gtm.js` was already queued first in <head> (layout.tsx) – only inject the container script here.
+  // GTM needs: consent commands → `gtm.js` → app events. Events such as the landing-page
+  // `page_view` were queued before consent was given, so re-order the (not yet consumed)
+  // queue: otherwise GTM initializes with consent denied and its GA4 tag never fires.
+  const isConsentCmd = (e: unknown) =>
+    Object.prototype.toString.call(e) === "[object Arguments]" && (e as IArguments)[0] === "consent";
+  const queue = w.dataLayer.filter((e) => !(e && typeof e === "object" && (e as { event?: string }).event === "gtm.js"));
+  w.dataLayer.length = 0;
+  w.dataLayer.push(...queue.filter(isConsentCmd), { "gtm.start": Date.now(), event: "gtm.js" }, ...queue.filter((e) => !isConsentCmd(e)));
   const s = document.createElement("script");
   s.async = true;
   s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(GTM_ID)}`;

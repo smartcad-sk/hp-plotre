@@ -25,9 +25,9 @@ export const metadata: Metadata = {
 const CONSENT_DEFAULT =
   "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}" +
   "gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});" +
-  // Standard GTM bootstrap event – must be the first event in the queue, before any page_view the
-  // app pushes. The container script itself is only loaded after consent (ConsentManager).
-  "dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});";
+  // Returning visitor: apply the stored choice before anything else is queued, so GTM starts with the right state.
+  "try{var c=JSON.parse(localStorage.getItem('hpplotre-consent-v1')||'null');if(c){var a=c.analytics?'granted':'denied',m=c.marketing?'granted':'denied';" +
+  "gtag('consent','update',{analytics_storage:a,ad_storage:m,ad_user_data:m,ad_personalization:m});}}catch(e){}";
 
 export const viewport: Viewport = {
   themeColor: "#008080",

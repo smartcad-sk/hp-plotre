@@ -83,10 +83,6 @@ test("page_view fires on load and on client-side navigation with page_type", asy
   const views = async () => (await events(page)).filter((e) => e.event === "page_view");
   await expect.poll(async () => (await views()).length).toBe(1);
   expect((await views())[0]).toMatchObject({ page_path: "/", page_type: "home" });
-  // GTM must see its bootstrap event before any app event, or Initialization tags (GA4 Google tag) never fire.
-  const order = (await events(page)).map((e) => e.event);
-  expect(order.indexOf("gtm.js")).toBeGreaterThanOrEqual(0);
-  expect(order.indexOf("gtm.js")).toBeLessThan(order.indexOf("page_view"));
 
   await page.locator('main a[href="/velkoformatove-tlaciarne"]').first().click();
   await expect(page).toHaveURL(/velkoformatove-tlaciarne/);
@@ -95,4 +91,24 @@ test("page_view fires on load and on client-side navigation with page_type", asy
   expect(second).toMatchObject({ page_path: "/velkoformatove-tlaciarne", page_type: "product_category" });
   expect(String(second.page_referrer)).toMatch(/\/$/);
   expect(String(second.page_title)).not.toBe("");
+});
+
+test("on first consent GTM gets: consent update → gtm.js → queued page_view", async ({ page }) => {
+  await page.route(/googletagmanager\.com/, (r) => r.fulfill({ status: 200, body: "" })); // don't hit Google from tests
+  await page.goto("/t850");
+  await expect.poll(async () => (await events(page)).some((e) => e.event === "page_view")).toBe(true);
+  await page.getByRole("dialog", { name: "Súbory cookie" }).getByRole("button", { name: "Prijať všetko" }).click();
+  const queue = await page.evaluate(() =>
+    ((window as unknown as { dataLayer: unknown[] }).dataLayer ?? []).map((e) =>
+      Object.prototype.toString.call(e) === "[object Arguments]"
+        ? `${(e as IArguments)[0]}:${(e as IArguments)[1]}`
+        : String((e as { event?: string }).event),
+    ),
+  );
+  const update = queue.indexOf("consent:update");
+  const gtm = queue.indexOf("gtm.js");
+  const pv = queue.indexOf("page_view");
+  expect(update).toBeGreaterThanOrEqual(0);
+  expect(update).toBeLessThan(gtm);
+  expect(gtm).toBeLessThan(pv);
 });
