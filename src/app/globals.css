@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------
+ * Design tokens – hpplotre.sk design system
+ * Brand teal comes from the original site (#008080 / #49a7b1),
+ * the accent orange from its 🔸 bullet. All text/background pairs
+ * used in components meet WCAG AA (see Storybook "Foundations").
+ * ------------------------------------------------------------------ */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-exo), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --color-brand-50: #eef8f8;
+  --color-brand-100: #d5eeee;
+  --color-brand-200: #addddd;
+  --color-brand-300: #7cc4c6;
+  --color-brand-400: #49a7b1; /* original secondary – decorative only (fails AA with white text) */
+  --color-brand-500: #1f8f95;
+  --color-brand-600: #008080; /* original primary – AA with white text (4.77:1) */
+  --color-brand-700: #006a6b;
+  --color-brand-800: #075456;
+  --color-brand-900: #0c4547;
+  --color-brand-950: #032a2c;
+
+  --color-accent-300: #fcd29a;
+  --color-accent-400: #fdb64e;
+  --color-accent-500: #f39200; /* decorative / large text only */
+  --color-accent-700: #b45309; /* text-safe accent */
+
+  --color-ink: #0f1f20;
+  --color-ink-muted: #475a5b;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f3f7f7;
+  --color-line: #d6e1e1;
+  --color-danger: #b42318;
+  --color-success: #067647;
+
+  --radius-card: 1rem;
+  --radius-control: 0.625rem;
+
+  --shadow-card: 0 1px 2px rgb(15 31 32 / 0.06), 0 4px 16px rgb(15 31 32 / 0.06);
+  --shadow-card-hover: 0 2px 4px rgb(15 31 32 / 0.08), 0 12px 32px rgb(15 31 32 / 0.12);
+
+  --container-content: 72rem;
+  --container-prose: 46rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem; /* sticky header offset for anchor links */
+  }
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-balance;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+  ::selection {
+    @apply bg-brand-200 text-ink;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Rich text imported from WordPress. Only allow-listed tags reach here. */
+@utility prose-content {
+  @apply text-base leading-relaxed text-ink;
+  overflow-wrap: anywhere;
+
+  & > * + * { @apply mt-4; }
+  & h2 { @apply mt-10 text-2xl font-semibold text-brand-800; }
+  & h3 { @apply mt-8 text-xl font-semibold text-brand-800; }
+  & h4 { @apply mt-6 text-lg font-semibold; }
+  & a { @apply font-medium text-brand-700 underline decoration-brand-300 underline-offset-4 hover:decoration-brand-700; }
+  & strong { @apply font-semibold; }
+  & ul { @apply list-disc space-y-1 pl-6 marker:text-brand-600; }
+  & ol { @apply list-decimal space-y-1 pl-6; }
+  & img, & video { @apply h-auto max-w-full rounded-lg; }
+  & figure { @apply my-6; }
+  & figcaption { @apply mt-2 text-sm text-ink-muted; }
+  & blockquote { @apply border-l-4 border-brand-300 pl-4 italic text-ink-muted; }
+  & table { @apply block w-full overflow-x-auto text-sm; border-collapse: collapse; }
+  & th, & td { @apply border border-line px-3 py-2 text-left align-top; }
+  & th { @apply bg-surface-muted font-semibold; }
+  & hr { @apply my-8 border-line; }
+}
+
+/* Inverted rich text for dark section tones. */
+@utility prose-invert {
+  @apply text-white;
+  & a { @apply text-white decoration-white/50 hover:decoration-white; }
+  & h2, & h3, & h4 { @apply text-white; }
+  & ul { @apply marker:text-accent-400; }
 }

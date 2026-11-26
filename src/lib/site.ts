@@ -1,0 +1,87 @@
+/** Company, navigation and contact data – single source of truth for the whole site. */
+
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://hpplotre.sk";
+
+export const site = {
+  name: "HPplotre.sk",
+  company: "smartCAD s.r.o.",
+  tagline: "Predaj a servis veľkoformátových tlačiarní HP",
+  description:
+    "Autorizovaný predaj a servis HP DesignJet plotrov, skenerov a skladačiek výkresov. Viac ako 20 rokov skúseností – dovoz, montáž, inštalácia, zaškolenie a záručný aj pozáručný servis.",
+  locale: "sk_SK",
+  address: { street: "Čajakova 19", zip: "811 05", city: "Bratislava", country: "SK" },
+  ico: "44 743 289",
+  dic: "SK2022818457",
+  registry: "Zapísaná v OR Bratislava 1, odd. Sro., vložka č. 58126/B",
+  phone: "+421 940 636 489",
+  phoneDisplay: "0940 636 489",
+  email: "obchod@smartcad.sk",
+  serviceEmail: "hw@smartcad.sk",
+  eshop: "https://kancelaria.smartcad.sk",
+  bazaar: "https://kancelaria.smartcad.sk/bazar-plotrov/",
+  gdpr: "https://www.smartcad.sk/gdpr",
+  social: {
+    linkedin: "https://www.linkedin.com/company/smartcad",
+    youtube: "https://www.youtube.com/c/smartCADsroBratislava",
+  },
+} as const;
+
+export type NavItem = {
+  label: string;
+  href: string;
+  external?: boolean;
+  description?: string;
+  children?: NavItem[];
+};
+
+/**
+ * Main navigation. The original WordPress menu listed "Bazár plotrov" three times;
+ * it now appears once.
+ */
+export const mainNav: NavItem[] = [
+  {
+    label: "Produkty",
+    href: "/velkoformatove-tlaciarne",
+    children: [
+      { label: "Plotre a skenery", href: "/velkoformatove-tlaciarne", description: "HP DesignJet T, Z a XL séria" },
+      { label: "Skladačky výkresov", href: "/skladacky-vykresov", description: "Automatické skladanie výkresov" },
+      { label: "Latex", href: "/latex", description: "HP Latex tlačiarne pre reklamu" },
+      { label: "Vyrezávacie plotre", href: "/vyrezavacie-plotre", description: "Rezacie plotre na fólie" },
+    ],
+  },
+  {
+    label: "Služby",
+    href: "/smart-sluzby",
+    children: [
+      { label: "Služby a technická podpora", href: "/smart-sluzby", description: "Prehľad našich služieb" },
+      { label: "Diagnostika a servis plotra", href: "/diagnostika-plotra", description: "Objednajte technika" },
+      { label: "Rady a návody", href: "/smart-sluzby/rady_tipy", description: "Tipy pre údržbu plotra" },
+      { label: "Výmena starého plotra za nový", href: "/stary_za_novy", description: "Výkup a ekologická likvidácia" },
+      { label: "Ovládače pre HP plotre", href: "/smart-sluzby/ovladace-pre-hp-plotre", description: "Drivery na stiahnutie" },
+    ],
+  },
+  { label: "Planografia", href: "/plotrovanie" },
+  { label: "Bazár plotrov", href: site.bazaar, external: true },
+  { label: "Blog", href: "/blogy" },
+  { label: "Kontakt", href: "/kontakt" },
+];
+
+export const footerNav: { title: string; items: NavItem[] }[] = [
+  { title: "Produkty", items: mainNav[0].children ?? [] },
+  { title: "Služby", items: mainNav[1].children ?? [] },
+  {
+    title: "Ďalšie",
+    items: [
+      { label: "Planografia", href: "/plotrovanie" },
+      { label: "Blog o HP plotroch", href: "/blogy" },
+      { label: "Bazár plotrov", href: site.bazaar, external: true },
+      { label: "E-shop", href: site.eshop, external: true },
+      { label: "Ochrana osobných údajov (GDPR)", href: site.gdpr, external: true },
+    ],
+  },
+];
+
+export const contactPeople = [
+  { name: "Mgr. Martin Straško", phone: "+421 940 636 481", email: "strasko@smartcad.sk", photo: "/media/2017/10/martin-strasko.jpg" },
+  { name: "Ing. Ladislav Líška", phone: "+421 940 636 482", email: "liska@smartcad.sk", photo: "/media/2017/10/ladislav-liska.jpg" },
+] as const;

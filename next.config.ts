@@ -57,6 +57,8 @@ const nextConfig: NextConfig = {
     // Old WordPress URLs that duplicated content or were artifacts.
     return [
       { source: "/feed", destination: "/blogy", permanent: true },
+      { source: "/kontaktny-formular", destination: "/kontakt", permanent: true },
+      { source: "/https-kancelaria-smartcad-sk-bazar-plotrov", destination: "https://kancelaria.smartcad.sk/bazar-plotrov/", permanent: true },
       { source: "/hp-plotre-2019", destination: "/velkoformatove-tlaciarne", permanent: true },
     ];
   },

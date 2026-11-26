@@ -94,7 +94,7 @@ function clean(html) {
       "video", "hr", "sup", "sub",
     ],
     allowedAttributes: {
-      a: ["href", "target"],
+      a: ["href", "target", "rel"],
       img: ["src", "alt", "width", "height"],
       video: ["src", "controls"],
       td: ["colspan", "rowspan"],
@@ -107,13 +107,16 @@ function clean(html) {
       h1: "h2",
       h5: "h4",
       h6: "h4",
-      a: (tagName, attribs) => ({
-        tagName,
-        attribs: {
-          href: rewriteHref(attribs.href),
-          ...(attribs.target === "_blank" ? { target: "_blank" } : {}),
-        },
-      }),
+      // Internal links open in the same tab (WP opened almost everything in a new tab);
+      // external links get a new tab + rel=noopener.
+      a: (tagName, attribs) => {
+        const href = rewriteHref(attribs.href);
+        const external = /^https?:/.test(href ?? "");
+        return {
+          tagName,
+          attribs: { href, ...(external ? { target: "_blank", rel: "noopener noreferrer" } : {}) },
+        };
+      },
       img: (tagName, attribs) => ({
         tagName,
         attribs: {

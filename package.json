@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "import:content": "node scripts/import-content.mjs",
     "test:e2e": "playwright test",
     "storybook": "storybook dev -p 6006",
