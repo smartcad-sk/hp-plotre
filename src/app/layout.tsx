@@ -7,7 +7,7 @@ import { SITE_URL, site } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin", "latin-ext"], display: "swap" });
-const exo = Exo_2({ variable: "--font-exo", subsets: ["latin", "latin-ext"], weight: ["600", "700"], display: "swap" });
+const exo = Exo_2({ variable: "--font-exo", subsets: ["latin", "latin-ext"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

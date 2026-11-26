@@ -78,12 +78,12 @@ export default function HomePage() {
             </div>
           </div>
           <Image
-            src="/media/2023/10/T850.png"
+            src="/brand/hero-t850.webp"
             alt="Plotre HP DesignJet T850 a T950"
-            width={4459}
-            height={2209}
+            width={1600}
+            height={793}
             priority
-            sizes="(min-width: 1024px) 50vw, 100vw"
+            sizes="(min-width: 1152px) 540px, (min-width: 1024px) 45vw, calc(100vw - 32px)"
             className="h-auto w-full drop-shadow-2xl"
           />
         </Container>

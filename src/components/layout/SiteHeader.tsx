@@ -29,10 +29,11 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-(--container-content) items-center justify-between gap-4 px-4 sm:px-6 lg:h-20 lg:px-8">
         <Link href="/" className="flex min-h-11 shrink-0 items-center rounded-md" aria-label={`${site.company} – úvodná stránka`}>
           <Image
-            src="/brand/logo-smartcad.png"
+            src="/brand/logo-smartcad-480.png"
             alt=""
-            width={1179}
-            height={183}
+            width={480}
+            height={75}
+            sizes="240px"
             priority
             className="h-7 w-auto sm:h-8 lg:h-9"
           />

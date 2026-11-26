@@ -16,7 +16,7 @@ export const organizationLd = {
   "@id": `${SITE_URL}/#organization`,
   name: site.company,
   url: SITE_URL,
-  logo: `${SITE_URL}/brand/logo-smartcad.png`,
+  logo: `${SITE_URL}/brand/logo-smartcad-480.png`,
   image: `${SITE_URL}/media/2023/10/T850.png`,
   description: site.description,
   telephone: site.phone,
