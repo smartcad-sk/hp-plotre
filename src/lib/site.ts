@@ -37,45 +37,54 @@ export type NavItem = {
 };
 
 /**
- * Main navigation. The original WordPress menu listed "Bazár plotrov" three times;
- * it now appears once.
+ * Main navigation – same structure as the original site: parents are links to their
+ * overview page and open a sub-menu of the *other* pages (no item repeats its parent).
+ * The original menu also listed "Bazár plotrov" three times; it now appears once.
  */
 export const mainNav: NavItem[] = [
+  { label: "Úvod", href: "/" },
   {
     label: "Produkty",
     href: "/velkoformatove-tlaciarne",
+    description: "Plotre a skenery HP DesignJet",
     children: [
-      { label: "Plotre a skenery", href: "/velkoformatove-tlaciarne", description: "HP DesignJet T, Z a XL séria" },
-      { label: "Skladačky výkresov", href: "/skladacky-vykresov", description: "Automatické skladanie výkresov" },
-      { label: "Latex", href: "/latex", description: "HP Latex tlačiarne pre reklamu" },
-      { label: "Vyrezávacie plotre", href: "/vyrezavacie-plotre", description: "Rezacie plotre na fólie" },
+      { label: "Skladačky výkresov", href: "/skladacky-vykresov" },
+      { label: "Latex", href: "/latex" },
+      { label: "Vyrezávacie plotre", href: "/vyrezavacie-plotre" },
     ],
   },
   {
-    label: "Služby",
+    label: "Služby a technická podpora",
     href: "/smart-sluzby",
     children: [
-      { label: "Služby a technická podpora", href: "/smart-sluzby", description: "Prehľad našich služieb" },
-      { label: "Diagnostika a servis plotra", href: "/diagnostika-plotra", description: "Objednajte technika" },
-      { label: "Rady a návody", href: "/smart-sluzby/rady_tipy", description: "Tipy pre údržbu plotra" },
-      { label: "Výmena starého plotra za nový", href: "/stary_za_novy", description: "Výkup a ekologická likvidácia" },
-      { label: "Ovládače pre HP plotre", href: "/smart-sluzby/ovladace-pre-hp-plotre", description: "Drivery na stiahnutie" },
+      { label: "Diagnostika a servis plotra", href: "/diagnostika-plotra" },
+      { label: "Rady a návody", href: "/smart-sluzby/rady_tipy" },
+      { label: "Výmena starého plotra za nový", href: "/stary_za_novy" },
+      { label: "Ovládače pre HP plotre", href: "/smart-sluzby/ovladace-pre-hp-plotre" },
     ],
   },
-  { label: "Planografia", href: "/plotrovanie" },
   { label: "Bazár plotrov", href: site.bazaar, external: true },
-  { label: "Blog", href: "/blogy" },
+  { label: "Planografia", href: "/plotrovanie" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 
+/** Secondary link shown in the top bar (as on the original site) and in the mobile menu. */
+export const blogNav: NavItem = { label: "Blogy o HP plotroch", href: "/blogy" };
+
 export const footerNav: { title: string; items: NavItem[] }[] = [
-  { title: "Produkty", items: mainNav[0].children ?? [] },
-  { title: "Služby", items: mainNav[1].children ?? [] },
+  {
+    title: "Produkty",
+    items: [{ label: "Plotre a skenery", href: "/velkoformatove-tlaciarne" }, ...(mainNav[1].children ?? [])],
+  },
+  {
+    title: "Služby",
+    items: [{ label: "Služby a technická podpora", href: "/smart-sluzby" }, ...(mainNav[2].children ?? [])],
+  },
   {
     title: "Ďalšie",
     items: [
       { label: "Planografia", href: "/plotrovanie" },
-      { label: "Blog o HP plotroch", href: "/blogy" },
+      blogNav,
       { label: "Kontakt", href: "/kontakt" },
       { label: "Bazár plotrov", href: site.bazaar, external: true },
       { label: "E-shop", href: site.eshop, external: true },

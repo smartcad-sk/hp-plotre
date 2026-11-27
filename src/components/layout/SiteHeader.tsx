@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { mainNav, site } from "@/lib/site";
+import { blogNav, mainNav, site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
 import { DesktopNav, MobileNav } from "./Navigation";
 
@@ -12,6 +12,11 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-(--container-content) items-center justify-between gap-4 px-4 py-1.5 sm:px-6 lg:px-8">
           <p className="text-white/85">{site.tagline}</p>
           <ul className="flex items-center gap-5">
+            <li>
+              <Link href={blogNav.href} className="inline-flex items-center gap-1.5 py-1 font-semibold hover:underline pointer-coarse:min-h-11">
+                {blogNav.label}
+              </Link>
+            </li>
             <li>
               <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-1.5 py-1 hover:underline pointer-coarse:min-h-11">
                 <Icon name="phone" className="size-4" /> {site.phoneDisplay}
@@ -35,7 +40,7 @@ export function SiteHeader() {
             height={75}
             sizes="240px"
             priority
-            className="h-7 w-auto sm:h-8 lg:h-9"
+            className="h-7 w-auto sm:h-8 lg:h-8 xl:h-9"
           />
         </Link>
         <DesktopNav items={mainNav} />

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import type { NavItem } from "@/lib/site";
-import { site } from "@/lib/site";
+import { blogNav, site } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { Icon } from "@/components/ui/Icon";
 import { buttonClasses } from "@/components/ui/Button";
@@ -34,10 +34,14 @@ function NavLink({ item, className, onNavigate }: { item: NavItem; className?: s
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Desktop: disclosure-pattern dropdowns (click/Enter/Space, Esc closes) */
-/* ------------------------------------------------------------------ */
-function Dropdown({ item }: { item: NavItem }) {
+const topLink =
+  "inline-flex min-h-11 items-center gap-1 whitespace-nowrap rounded-md px-2 text-[0.9375rem] font-medium text-ink hover:bg-brand-50 hover:text-brand-800 xl:px-3 xl:text-base";
+
+/* ------------------------------------------------------------------------- */
+/* Desktop: parent is a link; a separate ▾ button opens the sub-menu.         */
+/* Hover opens it too (like the original site). Esc / outside click closes.   */
+/* ------------------------------------------------------------------------- */
+function MenuWithSubmenu({ item }: { item: NavItem }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLLIElement>(null);
   const id = useId();
@@ -52,7 +56,7 @@ function Dropdown({ item }: { item: NavItem }) {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setOpen(false);
-        ref.current?.querySelector("button")?.focus();
+        ref.current?.querySelector<HTMLButtonElement>("button[aria-controls]")?.focus();
       }
     };
     document.addEventListener("pointerdown", onDown);
@@ -66,31 +70,29 @@ function Dropdown({ item }: { item: NavItem }) {
   return (
     <li
       ref={ref}
-      className="relative"
+      className="relative flex items-center"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onBlur={(e) => {
         if (!ref.current?.contains(e.relatedTarget as Node)) setOpen(false);
       }}
     >
+      <NavLink
+        item={item}
+        onNavigate={() => setOpen(false)}
+        className={cn(topLink, "pr-1", active && "text-brand-700 underline decoration-2 underline-offset-8")}
+      />
       <button
         type="button"
         aria-expanded={open}
         aria-controls={id}
-        onClick={(e) => setOpen((o) => (e.detail > 0 && e.nativeEvent instanceof PointerEvent && e.nativeEvent.pointerType === "mouse" ? true : !o))}
-        className={cn(
-          "inline-flex min-h-11 items-center gap-1 rounded-md px-3 font-medium text-ink hover:bg-brand-50 hover:text-brand-800",
-          active && "text-brand-700",
-        )}
+        onClick={() => setOpen((o) => !o)}
+        className="inline-flex min-h-11 w-8 items-center justify-center rounded-md text-ink hover:bg-brand-50"
       >
-        {item.label}
         <Icon name="chevron-down" className={cn("size-4 transition-transform", open && "rotate-180")} />
+        <span className="sr-only">Podmenu {item.label}</span>
       </button>
-      <div
-        id={id}
-        hidden={!open}
-        className="absolute left-0 top-full z-50 w-80 pt-2"
-      >
+      <div id={id} hidden={!open} className="absolute left-0 top-full z-50 w-72 pt-2">
         <ul className="rounded-(--radius-card) border border-line bg-white p-2 shadow-(--shadow-card-hover)">
           {item.children?.map((child) => (
             <li key={child.href + child.label}>
@@ -99,7 +101,6 @@ function Dropdown({ item }: { item: NavItem }) {
                 onNavigate={() => setOpen(false)}
                 className="flex min-h-11 items-center gap-1 rounded-lg px-3 py-2.5 hover:bg-brand-50 aria-[current=page]:bg-brand-50 aria-[current=page]:font-semibold"
               />
-              {child.description && <span className="sr-only">{child.description}</span>}
             </li>
           ))}
         </ul>
@@ -112,22 +113,19 @@ export function DesktopNav({ items }: { items: NavItem[] }) {
   const pathname = usePathname();
   return (
     <nav aria-label="Hlavná navigácia" className="hidden lg:block">
-      <ul className="flex items-center gap-1">
+      <ul className="flex items-center gap-0.5">
         {items.map((item) =>
           item.children ? (
-            <Dropdown key={item.label} item={item} />
+            <MenuWithSubmenu key={item.label} item={item} />
           ) : item.href === "/kontakt" ? (
             <li key={item.label} className="ml-2">
-              <NavLink item={item} className={buttonClasses({ size: "sm" })} />
+              <NavLink item={item} className={buttonClasses({ size: "sm", className: "whitespace-nowrap" })} />
             </li>
           ) : (
             <li key={item.label}>
               <NavLink
                 item={item}
-                className={cn(
-                  "inline-flex min-h-11 items-center gap-1 rounded-md px-3 font-medium text-ink hover:bg-brand-50 hover:text-brand-800",
-                  isActive(pathname, item) && "text-brand-700 underline decoration-2 underline-offset-8",
-                )}
+                className={cn(topLink, isActive(pathname, item) && "text-brand-700 underline decoration-2 underline-offset-8")}
               />
             </li>
           ),
@@ -137,9 +135,47 @@ export function DesktopNav({ items }: { items: NavItem[] }) {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Mobile: native <dialog> drawer (focus trap + Esc handled by browser) */
-/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------- */
+/* Mobile: native <dialog> drawer; parents are links with an expand button.   */
+/* ------------------------------------------------------------------------- */
+function MobileGroup({ item, onNavigate }: { item: NavItem; onNavigate: () => void }) {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(() => isActive(pathname, item));
+  const id = useId();
+  return (
+    <li>
+      <div className="flex items-center">
+        <NavLink
+          item={item}
+          onNavigate={onNavigate}
+          className="flex min-h-11 flex-1 items-center rounded-md px-3 font-medium hover:bg-brand-50 aria-[current=page]:text-brand-700"
+        />
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={id}
+          onClick={() => setOpen((o) => !o)}
+          className="inline-flex size-11 items-center justify-center rounded-md hover:bg-brand-50"
+        >
+          <Icon name="chevron-down" className={cn("size-4 transition-transform", open && "rotate-180")} />
+          <span className="sr-only">Podmenu {item.label}</span>
+        </button>
+      </div>
+      <ul id={id} hidden={!open} className="ml-3 border-l border-line pl-2">
+        {item.children?.map((child) => (
+          <li key={child.href + child.label}>
+            <NavLink
+              item={child}
+              onNavigate={onNavigate}
+              className="flex min-h-11 items-center gap-1 rounded-md px-3 text-ink-muted hover:bg-brand-50 hover:text-ink aria-[current=page]:font-semibold aria-[current=page]:text-brand-700"
+            />
+          </li>
+        ))}
+      </ul>
+    </li>
+  );
+}
+
 export function MobileNav({ items }: { items: NavItem[] }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const pathname = usePathname();
@@ -148,6 +184,9 @@ export function MobileNav({ items }: { items: NavItem[] }) {
   useEffect(() => {
     dialogRef.current?.close();
   }, [pathname]);
+
+  const linkClass =
+    "flex min-h-11 items-center gap-1 rounded-md px-3 font-medium hover:bg-brand-50 aria-[current=page]:text-brand-700";
 
   return (
     <div className="lg:hidden">
@@ -183,32 +222,18 @@ export function MobileNav({ items }: { items: NavItem[] }) {
           </div>
           <nav aria-label="Mobilná navigácia" className="flex-1 overflow-y-auto px-2 py-4">
             <ul className="space-y-1">
-              <li>
-                <NavLink item={{ label: "Úvod", href: "/" }} onNavigate={close} className="flex min-h-11 items-center rounded-md px-3 font-medium hover:bg-brand-50 aria-[current=page]:text-brand-700" />
-              </li>
               {items.map((item) =>
                 item.children ? (
-                  <li key={item.label}>
-                    <details className="group" open={isActive(pathname, item)}>
-                      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between rounded-md px-3 font-medium hover:bg-brand-50 [&::-webkit-details-marker]:hidden">
-                        {item.label}
-                        <Icon name="chevron-down" className="size-4 transition-transform group-open:rotate-180" />
-                      </summary>
-                      <ul className="ml-3 border-l border-line pl-2">
-                        {item.children.map((child) => (
-                          <li key={child.href + child.label}>
-                            <NavLink item={child} onNavigate={close} className="flex min-h-11 items-center gap-1 rounded-md px-3 text-ink-muted hover:bg-brand-50 hover:text-ink aria-[current=page]:font-semibold aria-[current=page]:text-brand-700" />
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  </li>
+                  <MobileGroup key={item.label} item={item} onNavigate={close} />
                 ) : (
                   <li key={item.label}>
-                    <NavLink item={item} onNavigate={close} className="flex min-h-11 items-center gap-1 rounded-md px-3 font-medium hover:bg-brand-50 aria-[current=page]:text-brand-700" />
+                    <NavLink item={item} onNavigate={close} className={linkClass} />
                   </li>
                 ),
               )}
+              <li className="mt-2 border-t border-line pt-2">
+                <NavLink item={blogNav} onNavigate={close} className={linkClass} />
+              </li>
             </ul>
           </nav>
           <div className="space-y-2 border-t border-line p-4 text-sm">
