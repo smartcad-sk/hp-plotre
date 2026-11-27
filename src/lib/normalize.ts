@@ -1,7 +1,6 @@
 import type { ContentSection, Page } from "./content";
 import { displayTitle } from "./content";
 
-const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const strip = (html?: string) => (html ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 
 type ContentBlock = Extract<ContentSection, { type: "content" }>;
@@ -18,12 +17,15 @@ const decode = (s: string) =>
   s.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").replace(/&#8220;|&#8221;|&#8222;/g, "\"").replace(/&nbsp;/g, " ");
 
 /** "» Technická špecifikácia HP DesignJet T1700 «" → "Technická špecifikácia HP DesignJet T1700" */
-export function slideLinkLabel(slide: { title?: string; excerpt?: string; link?: string }) {
+export function slideLinkLabel(slide: { title?: string; excerpt?: string; link?: string }, imageSrc?: string) {
   const raw = decode(slide.title || strip(slide.excerpt)).replace(/[<>»«]+/g, " ").replace(/\s+/g, " ").trim();
   if (raw) return raw;
   const href = slide.link ?? "";
   if (/youtu\.?be|\.mp4$/i.test(href)) return "Pozrieť video";
-  return friendlyLabel(href, href);
+  // Image-only slide: "Blogy-a-novinky-o-plotroch.png" → "Blogy a novinky o plotroch"
+  const fromFile = (imageSrc ?? "").split("/").pop()?.replace(/\.\w+$/, "").replace(/[-_]+/g, " ").trim();
+  if (fromFile && /[a-z]{3}/i.test(fromFile) && fromFile.includes(" ")) return fromFile.charAt(0).toUpperCase() + fromFile.slice(1);
+  return /^https?:/.test(href) ? friendlyLabel(href, href) : "Zobraziť viac";
 }
 
 /**
@@ -45,6 +47,16 @@ function collapseLinkSliders(sections: ContentSection[]): ContentSection[] {
   return out;
 }
 
+export type IntroBand = { title: string; excerptHtml?: string; actions: { href: string; label: string }[] };
+
+/**
+ * Turns the Layers-builder section list into the original page structure, cleaned up:
+ *  - first title band → page header (the page's only <h1>),
+ *  - next title band (subtitle, often with spec / e-shop buttons) → intro band,
+ *  - a title-only band directly followed by an untitled content grid becomes that grid's
+ *    heading, keeping its own band colour (`titleBg`),
+ *  - empty sections are dropped.
+ */
 export function normalizePage(page: Page) {
   const sections = collapseLinkSliders(
     structuredClone(page.sections).filter((s) => !(s.type === "content" && !s.title && !s.excerpt && s.columns.length === 0)),
@@ -52,6 +64,7 @@ export function normalizePage(page: Page) {
 
   let title = displayTitle(page);
   let leadHtml: string | undefined;
+  let intro: IntroBand | undefined;
 
   const first = sections[0];
   if (first && isTitleBand(first)) {
@@ -59,23 +72,17 @@ export function normalizePage(page: Page) {
     // Product pages already carry their name in the band; prefer it when it's richer.
     if (first.title && first.title.length > 3 && first.title.toLowerCase() !== "kontakt") title = first.title;
     leadHtml = first.excerpt;
-    const second = sections[0];
-    if (second && isTitleBand(second) && !leadHtml) {
-      sections.shift();
-      leadHtml = `<p><strong>${esc(second.title ?? "")}</strong></p>${second.excerpt ?? ""}`;
-    }
   }
 
-  // A band right under the header that only holds a subtitle + link buttons
-  // (e.g. "Technická špecifikácia", "Zakúpiť na e-shope") becomes header content.
-  const actions: { href: string; label: string }[] = [];
+  // Subtitle band: either a plain title band, or a title band whose columns are only link buttons.
   const top = sections[0];
   if (top?.type === "content" && top.title && !top.bgImage && top.columns.length <= 3) {
     const links = top.columns.map((c) => (!c.title && !c.image ? singleLinkColumn(c.html) : null));
     if (links.every(Boolean)) {
       sections.shift();
-      actions.push(...(links as { href: string; label: string }[]));
-      leadHtml = `${leadHtml ?? ""}<p><strong>${esc(top.title)}</strong></p>${top.excerpt ?? ""}`;
+      intro = { title: top.title, excerptHtml: top.excerpt, actions: links as { href: string; label: string }[] };
+      // Spec / e-shop link bars that directly follow belong to the intro as well.
+      if (sections[0]?.type === "links") intro.actions.push(...(sections.shift() as { links: IntroBand["actions"] }).links);
     }
   }
 
@@ -84,14 +91,14 @@ export function normalizePage(page: Page) {
     const s = sections[i];
     const next = sections[i + 1];
     if (isTitleBand(s) && next?.type === "content" && !next.title && next.columns.length > 0) {
-      merged.push({ ...next, title: s.title, excerpt: s.excerpt ?? next.excerpt, bg: next.bg });
+      merged.push({ ...next, title: s.title, excerpt: s.excerpt ?? next.excerpt, titleBg: s.bg });
       i++;
     } else {
       merged.push(s);
     }
   }
 
-  return { title, leadHtml, actions, sections: merged };
+  return { title, leadHtml, intro, sections: merged };
 }
 
 /** A column that only contains one link (WordPress "button" made from a paragraph). */

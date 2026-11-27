@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactDetails } from "@/components/blocks/ContactDetails";
 import { ContactForm } from "@/components/blocks/ContactForm";
+import { IntroBand } from "@/components/layout/IntroBand";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { JsonLd, breadcrumbLd, organizationLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/kontakt" },
 };
 
+/**
+ * Same order as the original contact page: title band → specialist band → about (photo
+ * background) → people → "Máte otázky?" band → form + GDPR note → company details.
+ */
 export default function ContactPage() {
   return (
     <>
@@ -24,49 +29,77 @@ export default function ContactPage() {
       <PageHeader
         title="Kontakt"
         pageType="contact"
-        lead="Potrebujete viac informácií? Poradíme vám! Sme HP DesignJet Specialist a HP Technical Production Specialist."
+        lead="Potrebujete viac informácií? Poradíme vám!"
         crumbs={[{ label: "Úvod", href: "/" }]}
       />
+      <IntroBand data={{ title: "Sme HP DesignJet Specialist a HP Technical Production Specialist", actions: [] }} />
 
-      <Section aria-labelledby="tim">
-        <Container className="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
-          <div className="space-y-6">
-            <Heading id="tim" level={2} size="xl" className="text-brand-900">
-              Váš tím pre plotre
-            </Heading>
-            <p className="text-lg text-ink-muted">
-              Vyše 20 rokov sa špecializujeme na dodávku a montáž veľkoformátových tlačiarní HP pre CAD a grafické systémy.
-              Plotre denne používame a servisujeme – zariadenia poznáme a vieme vám pomôcť v každej situácii.
-            </p>
-            <ul className="grid gap-4 sm:grid-cols-2">
-              {contactPeople.map((p) => (
-                <li key={p.email} className="flex items-center gap-4 rounded-(--radius-card) border border-line bg-white p-4 shadow-(--shadow-card)">
-                  <Image src={p.photo} alt="" width={80} height={80} className="size-16 shrink-0 rounded-full object-cover sm:size-20" />
-                  <div className="min-w-0">
-                    <p className="font-semibold">{p.name}</p>
-                    <a href={`tel:${p.phone.replace(/\s/g, "")}`} className="flex min-h-11 items-center text-brand-700 underline underline-offset-4">
-                      {p.phone}
-                    </a>
-                    <a href={`mailto:${p.email}`} className="flex min-h-11 items-center break-all text-brand-700 underline underline-offset-4">
-                      {p.email}
-                    </a>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <p className="text-sm text-ink-muted">
-              Vyplnením formulára sa {site.company} stáva prevádzkovateľom vašich osobných údajov. Viac informácií nájdete na{" "}
-              <a href={site.gdpr} target="_blank" rel="noopener noreferrer" className="font-medium text-brand-700 underline">
-                www.smartcad.sk/gdpr<span className="sr-only"> (otvorí sa v novom okne)</span>
-              </a>
-              .
-            </p>
-          </div>
-          <ContactForm heading="Máte otázky? Pýtajte sa, radi vám odpovieme" />
+      <Section tone="brand-dark" className="relative isolate overflow-hidden" aria-label="O nás">
+        <Image src="/media/2017/03/portfolio.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-brand-950/80" />
+        <Container className="max-w-3xl space-y-4 text-lg text-white">
+          <p>Vyše 20 rokov sa špecializujeme na dodávku a montáž veľkoformátových tlačiarní HP pre CAD a grafické systémy.</p>
+          <p>
+            Našim cieľom je dodávať najlepšie riešenia na trhu v oblasti veľkoformátových zariadení. Poskytujeme individuálne
+            poradenstvo a výnimočné zákaznícke služby.
+          </p>
+          <p>Plotre dennodenne používame a servisujeme. To vám dáva istotu, že zariadenia poznáme a vieme vám pomôcť v každej situácii.</p>
         </Container>
       </Section>
 
-      <ContactDetails />
+      <Section aria-labelledby="tim">
+        <Container className="space-y-6">
+          <Heading id="tim" level={2} size="xl" className="text-brand-900">
+            Váš tím pre plotre
+          </Heading>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:max-w-4xl">
+            {contactPeople.map((p) => (
+              <li key={p.email} className="flex items-center gap-4 rounded-(--radius-card) border border-line bg-white p-4 shadow-(--shadow-card) sm:p-5">
+                <Image src={p.photo} alt="" width={96} height={96} className="size-20 shrink-0 rounded-full object-cover sm:size-24" />
+                <div className="min-w-0">
+                  <p className="font-display text-lg font-semibold">{p.name}</p>
+                  <a href={`tel:${p.phone.replace(/\s/g, "")}`} className="flex min-h-11 items-center text-brand-700 underline underline-offset-4">
+                    {p.phone}
+                  </a>
+                  <a href={`mailto:${p.email}`} className="flex min-h-11 items-center break-all text-brand-700 underline underline-offset-4">
+                    {p.email}
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      <section aria-labelledby="otazky">
+        <Section as="div" tone="brand" spacing="sm">
+          <Container>
+            <Heading id="otazky" level={2} size="xl">
+              Máte otázky? Pýtajte sa, radi vám odpovieme
+            </Heading>
+          </Container>
+        </Section>
+        <Section as="div" tone="muted">
+          <Container className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
+            <ContactForm heading="Napíšte nám" />
+            <div className="space-y-3 text-ink-muted lg:pt-8">
+              <p>
+                Vyplnením vašich osobných údajov sa {site.company} stáva prevádzkovateľom vašich osobných údajov.
+              </p>
+              <p>
+                Odoslaním formulára súhlasíte so spracovaním osobných údajov v súlade s pravidlami GDPR. Viac informácií nájdete
+                na našej stránke{" "}
+                <a href={site.gdpr} target="_blank" rel="noopener noreferrer" className="font-medium text-brand-700 underline">
+                  www.smartcad.sk/gdpr<span className="sr-only"> (otvorí sa v novom okne)</span>
+                </a>
+                .
+              </p>
+            </div>
+          </Container>
+        </Section>
+      </section>
+
+      <ContactDetails tone="default" />
     </>
   );
 }

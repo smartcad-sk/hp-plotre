@@ -14,14 +14,13 @@ type Props = {
   pageType?: PageType;
 };
 
-/** Page title band – the only <h1> on a page. */
+/** Page title band (the original site's dark-teal title band) – the only <h1> on a page. */
 export function PageHeader({ title, lead, leadHtml, crumbs, children, pageType = "page" }: Props) {
   return (
-    <div className="relative overflow-hidden bg-brand-700 text-white" data-page-type={pageType} data-location="page_header">
-      <div aria-hidden="true" className="absolute -right-24 -top-24 size-80 rounded-full bg-brand-500/40 blur-3xl" />
-      <Container className="relative space-y-4 py-10 sm:py-14">
+    <div className="bg-brand-700 text-white" data-page-type={pageType} data-location="page_header">
+      <Container className="space-y-3 py-8 sm:py-10">
         {crumbs && <Breadcrumbs items={crumbs} current={title} invert />}
-        <Heading level={1} size="display" className="max-w-4xl">
+        <Heading level={1} size="xl" className="max-w-4xl">
           {title}
         </Heading>
         {lead && <p className="max-w-3xl text-lg text-white/90 sm:text-xl">{lead}</p>}

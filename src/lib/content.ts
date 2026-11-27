@@ -22,6 +22,8 @@ export type ContentSection =
       excerpt?: string;
       bg?: string;
       bgImage?: ContentImage;
+      /** Colour of the original title band that headed this grid (rendered as its own band). */
+      titleBg?: string;
       button?: ContentLink;
       columns: ContentColumn[];
     }
@@ -154,14 +156,18 @@ export function allRoutes(): { route: string; modified: string }[] {
 }
 
 /** Map arbitrary WordPress background colors to design-system tones. */
-export type Tone = "default" | "muted" | "brand" | "brand-dark";
+/**
+ * Original bands: title band #008080, subtitle band #49a7b1 (lighter). White text on #49a7b1 fails
+ * WCAG AA, so the hierarchy is kept one step darker: title → brand-700, subtitle → brand-600 (#008080).
+ */
+export type Tone = "default" | "muted" | "brand" | "brand-strong" | "brand-dark";
 export function toneFromColor(color?: string): Tone {
   switch (color?.toLowerCase()) {
     case "#008080":
     case "#000000":
-      return "brand";
+      return "brand-strong";
     case "#49a7b1":
-      return "brand-dark";
+      return "brand";
     case "#bababa":
     case "#c1c1c1":
     case "#eaeaea":

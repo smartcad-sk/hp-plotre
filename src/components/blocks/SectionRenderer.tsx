@@ -2,7 +2,8 @@ import type { ContentSection as Data } from "@/lib/content";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Icon } from "@/components/ui/Icon";
-import { slideLinkLabel } from "@/lib/normalize";
+import Image from "next/image";
+import { slideLinkLabel, tidyHeading } from "@/lib/normalize";
 import { Heading } from "@/components/ui/Heading";
 import { Prose } from "@/components/ui/Prose";
 import { Section } from "@/components/ui/Section";
@@ -15,8 +16,13 @@ import { YouTubeEmbed } from "./YouTubeEmbed";
 /** Maps imported WordPress sections to design-system blocks. */
 export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pageTitle: string }) {
   // Carousels are landmarks (region) – each needs a unique name.
-  const galleries = sections.filter((s) => s.type === "slider" && s.slides.some((sl) => sl.image)).length;
+  const isGallery = (s: Data) =>
+    s.type === "slider" && s.slides.some((sl) => sl.image) && !(s.slides.length === 1 && (s.slides[0].title || s.slides[0].excerpt));
+  const galleries = sections.filter(isGallery).length;
   let galleryNo = 0;
+  let sliderNo = 0;
+  // A slider right at the top of the content is likely the LCP element – preload its first image.
+  const firstIsSlider = sections.findIndex(isGallery) <= 1 && sections.findIndex(isGallery) >= 0;
   const galleryLabel = () => (galleries > 1 ? `Galéria ${++galleryNo} – ${pageTitle}` : `Galéria – ${pageTitle}`);
   return (
     <>
@@ -41,21 +47,53 @@ export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pag
                 </Section>
               );
             }
+            // One slide with a heading/text (e.g. "Sme autorizovaný servisný partner HP") → image + text block.
+            const only = s.slides.length === 1 ? s.slides[0] : undefined;
+            if (only?.image && (only.title || only.excerpt)) {
+              const headingId = `${s.id}-title`;
+              return (
+                <Section key={s.id + i} aria-labelledby={only.title ? headingId : undefined}>
+                  <Container className="grid items-start gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+                    <Image
+                      src={only.image.src}
+                      alt={only.image.alt}
+                      width={only.image.width ?? 600}
+                      height={only.image.height ?? 400}
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="mx-auto h-auto w-full max-w-xs rounded-(--radius-card) object-contain"
+                    />
+                    <div className="space-y-4">
+                      {only.title && (
+                        <Heading id={headingId} level={2} size="xl" className="text-brand-900">
+                          {tidyHeading(only.title)}
+                        </Heading>
+                      )}
+                      {only.excerpt && <Prose html={only.excerpt} />}
+                      {only.link && (
+                        <ButtonLink href={only.link} variant="outline" arrow>
+                          {/youtu\.?be/.test(only.link) ? "Pozrieť video" : "Viac informácií"}
+                        </ButtonLink>
+                      )}
+                    </div>
+                  </Container>
+                </Section>
+              );
+            }
             const captioned = s.slides.filter((sl) => sl.excerpt);
-            const linked = [...new Map(withImages.filter((sl) => sl.link).map((sl) => [sl.link!, sl])).values()];
+            const no = ++sliderNo;
             return (
               <Section key={s.id + i} spacing="sm">
-                <Container className="space-y-6">
-                  <ImageCarousel slides={withImages.map(({ image, title }) => ({ image, title }))} label={galleryLabel()} />
-                  {linked.length > 0 && (
-                    <div className="flex flex-wrap justify-center gap-3">
-                      {linked.map((sl) => (
-                        <ButtonLink key={sl.link} href={sl.link!} variant="outline" arrow>
-                          {/youtu\.?be/.test(sl.link!) ? "Pozrieť video" : slideLinkLabel(sl)}
-                        </ButtonLink>
-                      ))}
-                    </div>
-                  )}
+                <Container size="wide" className="space-y-6">
+                  <ImageCarousel
+                    priority={no === 1 && firstIsSlider}
+                    slides={withImages.map((sl) => ({
+                      image: sl.image,
+                      title: sl.title,
+                      href: sl.link,
+                      linkLabel: sl.link ? slideLinkLabel(sl, sl.image?.src) : undefined,
+                    }))}
+                    label={galleryLabel()}
+                  />
                   {captioned.map((sl, j) => (
                     <Prose key={j} html={sl.excerpt!} className="mx-auto max-w-(--container-prose)" />
                   ))}

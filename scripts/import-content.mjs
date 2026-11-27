@@ -84,10 +84,23 @@ function rewriteHref(href) {
 
 function clean(html) {
   // WordPress replaces emoji with <img class="emoji" alt="🔸" src="s.w.org/...">; restore the glyph.
-  const withEmoji = (html ?? "").replace(/<img[^>]*?s\.w\.org\/images\/core\/emoji[^>]*>/g, (tag) => {
-    const alt = tag.match(/alt="([^"]*)"/)?.[1] ?? "";
-    return alt;
-  });
+  // The live database lost 4-byte characters (alt="????"), so rebuild the glyph from the file
+  // name (".../svg/1f538.svg" → 🔸; multi-codepoint names are joined with "-").
+  const withEmoji = (html ?? "")
+    .replace(/<img[^>]*?s\.w\.org\/images\/core\/emoji[^>]*>/g, (tag) => {
+      const code = tag.match(/\/([0-9a-f-]+)\.(?:svg|png)/)?.[1];
+      if (code) {
+        try {
+          return String.fromCodePoint(...code.split("-").map((h) => parseInt(h, 16)));
+        } catch {
+          /* fall through */
+        }
+      }
+      const alt = tag.match(/alt="([^"]*)"/)?.[1] ?? "";
+      return /^\?+$/.test(alt) ? "•" : alt;
+    })
+    // Emoji typed directly into posts were destroyed the same way ("???? nižšia spotreba").
+    .replace(/\?{4}/g, "•");
   const cleaned = sanitizeHtml(withEmoji, {
     allowedTags: [
       "p", "br", "strong", "b", "em", "i", "u", "ul", "ol", "li", "a", "h2", "h3", "h4",

@@ -5,8 +5,7 @@ import { CtaBand } from "@/components/blocks/CtaBand";
 import { SectionRenderer } from "@/components/blocks/SectionRenderer";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { JsonLd, breadcrumbLd } from "@/components/seo/JsonLd";
-import { Badge } from "@/components/ui/Badge";
-import { ButtonLink } from "@/components/ui/Button";
+import { IntroBand } from "@/components/layout/IntroBand";
 import { Container } from "@/components/ui/Container";
 import { Prose } from "@/components/ui/Prose";
 import {
@@ -125,30 +124,15 @@ export default async function ContentPage({ params }: PageProps<"/[...slug]">) {
   const page = getPage(route);
   if (!page) notFound();
 
-  const { title, leadHtml, actions, sections } = normalizePage(page);
+  const { title, leadHtml, intro, sections } = normalizePage(page);
   const crumbs = breadcrumbFor(route);
   const product = isProductRoute(route);
 
   return (
     <>
       <JsonLd data={breadcrumbLd([...crumbs, { label: displayTitle(page), href: route }])} />
-      <PageHeader title={title} leadHtml={leadHtml} crumbs={crumbs} pageType={pageTypeFor(route)}>
-        {product && (
-          <div className="flex flex-wrap gap-2 pt-2">
-            <Badge tone="inverse">HP DesignJet</Badge>
-            <Badge tone="inverse">Autorizovaný predaj a servis</Badge>
-          </div>
-        )}
-        {actions.length > 0 && (
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
-            {actions.map((a, i) => (
-              <ButtonLink key={a.href} href={a.href} variant={i === 0 ? "secondary" : "inverse"} arrow>
-                {a.label}
-              </ButtonLink>
-            ))}
-          </div>
-        )}
-      </PageHeader>
+      <PageHeader title={title} leadHtml={leadHtml} crumbs={crumbs} pageType={pageTypeFor(route)} />
+      {intro && <IntroBand data={intro} />}
       <SectionRenderer sections={sections} pageTitle={title} />
       {route !== "/kontakt" && (
         <CtaBand

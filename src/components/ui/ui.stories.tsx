@@ -65,7 +65,7 @@ export const SectionTones: StoryObj = {
   parameters: { layout: "fullscreen" },
   render: () => (
     <>
-      {(["default", "muted", "brand", "brand-dark"] as const).map((tone) => (
+      {(["default", "muted", "brand", "brand-strong", "brand-dark"] as const).map((tone) => (
         <Section key={tone} tone={tone} spacing="sm">
           <Container className="space-y-2">
             <Heading level={2} size="lg">Section tone: {tone}</Heading>

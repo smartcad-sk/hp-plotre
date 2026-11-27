@@ -83,6 +83,7 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
         isPanel && "rounded-(--radius-card) p-5 sm:p-6",
         isPanel && panelTone === "muted" && "bg-surface-muted",
         isPanel && panelTone === "brand" && "bg-brand-600 text-white",
+        isPanel && panelTone === "brand-strong" && "bg-brand-700 text-white",
         isPanel && panelTone === "brand-dark" && "bg-brand-800 text-white",
         !isPanel && !dark && "rounded-(--radius-card) border border-line bg-white p-5 shadow-(--shadow-card) sm:p-6",
       )}
@@ -114,13 +115,72 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
   );
 }
 
+function Grid({ data, dark }: { data: Data; dark: boolean }) {
+  return (
+    <>
+      {data.columns.length > 0 && (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12">
+          {data.columns.map((col, i) => (
+            <div key={i} className={cn("min-w-0", smSpanClass(col.span), spanClass[col.span] ?? "lg:col-span-12")}>
+              <Column col={col} dark={dark} headingLevel={data.title ? 3 : 2} />
+            </div>
+          ))}
+        </div>
+      )}
+      {data.button && (
+        <ButtonLink href={data.button.href} variant={dark ? "inverse" : "primary"} arrow>
+          {data.button.label}
+        </ButtonLink>
+      )}
+    </>
+  );
+}
+
+function Title({ data, dark, id }: { data: Data; dark: boolean; id?: string }) {
+  if (!data.title && !data.excerpt) return null;
+  return (
+    <div className="max-w-3xl space-y-3">
+      {data.title && (
+        <Heading id={id} level={2} size="xl" className={dark ? "text-white" : "text-brand-900"}>
+          {tidyHeading(data.title)}
+        </Heading>
+      )}
+      {data.excerpt && <Prose html={data.excerpt} invert={dark} className="text-lg" />}
+    </div>
+  );
+}
+
 export function ContentSection({ data }: { data: Data }) {
   const tone = data.bgImage ? "brand-dark" : toneFromColor(data.bg);
   const dark = isDarkTone(tone);
   const headingId = data.title ? `${data.id}-title` : undefined;
 
+  // Original layout: a coloured title band above the content grid.
+  if (data.titleBg && !data.bgImage) {
+    const bandTone = toneFromColor(data.titleBg);
+    return (
+      <section aria-labelledby={headingId}>
+        <Section as="div" tone={bandTone} spacing="sm">
+          <Container>
+            <Title data={data} dark={isDarkTone(bandTone)} id={headingId} />
+          </Container>
+        </Section>
+        <Section as="div" tone={tone}>
+          <Container className="space-y-8">
+            <Grid data={data} dark={dark} />
+          </Container>
+        </Section>
+      </section>
+    );
+  }
+
   return (
-    <Section tone={tone} aria-labelledby={headingId} className={cn(data.bgImage && "relative isolate overflow-hidden")}>
+    <Section
+      tone={tone}
+      spacing={data.columns.length === 0 && !data.bgImage ? "sm" : "md"}
+      aria-labelledby={headingId}
+      className={cn(data.bgImage && "relative isolate overflow-hidden")}
+    >
       {data.bgImage && (
         <>
           <Image src={data.bgImage.src} alt="" fill sizes="100vw" className="-z-20 object-cover" />
@@ -128,30 +188,8 @@ export function ContentSection({ data }: { data: Data }) {
         </>
       )}
       <Container className="space-y-8">
-        {(data.title || data.excerpt) && (
-          <div className="max-w-3xl space-y-3">
-            {data.title && (
-              <Heading id={headingId} level={2} size="xl" className={dark ? "text-white" : "text-brand-900"}>
-                {tidyHeading(data.title)}
-              </Heading>
-            )}
-            {data.excerpt && <Prose html={data.excerpt} invert={dark} className="text-lg" />}
-          </div>
-        )}
-        {data.columns.length > 0 && (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12">
-            {data.columns.map((col, i) => (
-              <div key={i} className={cn("min-w-0", smSpanClass(col.span), spanClass[col.span] ?? "lg:col-span-12")}>
-                <Column col={col} dark={dark} headingLevel={data.title ? 3 : 2} />
-              </div>
-            ))}
-          </div>
-        )}
-        {data.button && (
-          <ButtonLink href={data.button.href} variant={dark ? "inverse" : "primary"} arrow>
-            {data.button.label}
-          </ButtonLink>
-        )}
+        <Title data={data} dark={dark} id={headingId} />
+        <Grid data={data} dark={dark} />
       </Container>
     </Section>
   );

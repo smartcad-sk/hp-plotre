@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { IntroBand } from "@/components/layout/IntroBand";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ContactForm } from "./ContactForm";
 import { ContentSection } from "./ContentSection";
@@ -21,6 +22,22 @@ export const Header: StoryObj = {
   ),
 };
 
+export const Intro: StoryObj = {
+  name: "Intro band (subtitle + actions)",
+  render: () => (
+    <IntroBand
+      data={{
+        title: "36-palcová farebná veľkoformátová tlačiareň",
+        excerptHtml: "<p>s automatickým prepínaním tlače medzi rolkou a zásobníkom na A4/A3 listy</p>",
+        actions: [
+          { href: "https://hpplotre.sk/spec.pdf", label: "Technická špecifikácia" },
+          { href: "https://kancelaria.smartcad.sk/t850-36in/", label: "Zakúpiť na e-shope" },
+        ],
+      }}
+    />
+  ),
+};
+
 export const BreadcrumbsLight: StoryObj = {
   render: () => (
     <div className="p-6">
@@ -37,6 +54,7 @@ export const ContentGrid: StoryObj = {
         type: "content",
         id: "story",
         title: "Ideálna veľkoformátová tlačiareň pre menšie tímy",
+        titleBg: "#49a7b1",
         columns: [
           { span: 4, image: { src: "/media/2023/10/T850.1.png", alt: "", width: 1701, height: 1694 }, html: "<p>Vstupný zásobník na 50 listov A3.</p>" },
           { span: 4, title: "Atramenty", html: "<p>130 ml alebo 300 ml originálne pigmentové atramenty.</p>" },

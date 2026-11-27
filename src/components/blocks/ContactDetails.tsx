@@ -1,3 +1,4 @@
+import type { Tone } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Container } from "@/components/ui/Container";
 import { Heading } from "@/components/ui/Heading";
@@ -5,13 +6,13 @@ import { Icon } from "@/components/ui/Icon";
 import { Section } from "@/components/ui/Section";
 
 /** Company contact card – replaces the WordPress map/contact widget. */
-export function ContactDetails() {
+export function ContactDetails({ tone = "muted" }: { tone?: Tone } = {}) {
   const tel = site.phone.replace(/\s/g, "");
   const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     `${site.company}, ${site.address.street}, ${site.address.zip} ${site.address.city}`,
   )}`;
   return (
-    <Section tone="muted" aria-labelledby="kontakt-udaje">
+    <Section tone={tone} aria-labelledby="kontakt-udaje">
       <Container>
         <div className="grid gap-6 md:grid-cols-3">
           <div className="rounded-(--radius-card) bg-white p-6 shadow-(--shadow-card)">

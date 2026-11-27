@@ -5,10 +5,11 @@ export const toneClasses: Record<Tone, string> = {
   default: "bg-surface text-ink",
   muted: "bg-surface-muted text-ink",
   brand: "bg-brand-600 text-white",
+  "brand-strong": "bg-brand-700 text-white",
   "brand-dark": "bg-brand-800 text-white",
 };
 
-export const isDarkTone = (tone: Tone) => tone === "brand" || tone === "brand-dark";
+export const isDarkTone = (tone: Tone) => tone === "brand" || tone === "brand-strong" || tone === "brand-dark";
 
 type Props = React.HTMLAttributes<HTMLElement> & {
   tone?: Tone;
