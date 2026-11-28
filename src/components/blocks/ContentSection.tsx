@@ -9,6 +9,7 @@ import { Heading } from "@/components/ui/Heading";
 import { Prose } from "@/components/ui/Prose";
 import { Section, isDarkTone } from "@/components/ui/Section";
 import { ContactForm } from "./ContactForm";
+import { ContactFormSection } from "./ContactFormSection";
 import { YouTubeEmbed } from "./YouTubeEmbed";
 
 type Data = Extract<ContentSectionData, { type: "content" }>;
@@ -118,10 +119,33 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
     );
   }
 
+  // Small icons (warning sign, download arrow…) align with the text instead of floating centred;
+  // in wide panels the icon sits beside the content like a notice.
+  const icon = col.image && (col.image.width ?? Infinity) <= 160 && col.title;
+  const iconAside = icon && col.span >= 8;
+
+  const image = col.image && (
+    <MaybeLink href={col.image.href} label={imageLinkLabel(col)}>
+      <Image
+        src={col.image.src}
+        alt={col.image.alt}
+        width={col.image.width ?? 800}
+        height={col.image.height ?? 600}
+        sizes={icon ? `${col.image.width}px` : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
+        className={cn(
+          "object-contain",
+          icon ? "h-12 w-auto sm:h-14" : "mx-auto h-auto max-h-80 w-full rounded-lg",
+        )}
+        style={icon ? undefined : { maxWidth: col.image.width ? `min(100%, ${col.image.width}px)` : undefined }}
+      />
+    </MaybeLink>
+  );
+
   return (
     <div
       className={cn(
         "flex h-full flex-col gap-4",
+        iconAside && "sm:flex-row sm:items-start sm:gap-6",
         isPanel && "rounded-(--radius-card) p-5 sm:p-6",
         isPanel && panelTone === "muted" && "bg-surface-muted",
         isPanel && panelTone === "brand" && "bg-brand-600 text-white",
@@ -130,32 +154,22 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
         !isPanel && !dark && "rounded-(--radius-card) border border-line bg-white p-5 shadow-(--shadow-card) sm:p-6",
       )}
     >
-      {col.image && (
-        <MaybeLink href={col.image.href} label={imageLinkLabel(col)}>
-        <Image
-          src={col.image.src}
-          alt={col.image.alt}
-          width={col.image.width ?? 800}
-          height={col.image.height ?? 600}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="mx-auto h-auto max-h-80 w-full rounded-lg object-contain"
-          style={{ maxWidth: col.image.width ? `min(100%, ${col.image.width}px)` : undefined }}
-        />
-        </MaybeLink>
-      )}
-      {/* Media first, like image panels: video, then heading and text. */}
-      {col.youtubeId && <YouTubeEmbed id={col.youtubeId} title={col.title ? tidyHeading(col.title) : "Video"} />}
-      {col.title && (
-        <Heading level={headingLevel} size="md" className={panelDark ? "text-white" : "text-brand-800"}>
-          {tidyHeading(col.title)}
-        </Heading>
-      )}
-      {col.html && <Prose html={col.html} invert={panelDark} className="flex-1" />}
-      {col.button && (
-        <ButtonLink href={col.button.href} variant={panelDark ? "inverse" : "outline"} arrow className="self-start">
-          {col.button.label}
-        </ButtonLink>
-      )}
+      {iconAside ? <div className="shrink-0">{image}</div> : image}
+      <div className={cn("flex flex-1 flex-col gap-4", iconAside && "min-w-0")}>
+        {/* Media first, like image panels: video, then heading and text. */}
+        {col.youtubeId && <YouTubeEmbed id={col.youtubeId} title={col.title ? tidyHeading(col.title) : "Video"} />}
+        {col.title && (
+          <Heading level={headingLevel} size="md" className={panelDark ? "text-white" : "text-brand-800"}>
+            {tidyHeading(col.title)}
+          </Heading>
+        )}
+        {col.html && <Prose html={col.html} invert={panelDark} className="flex-1" />}
+        {col.button && (
+          <ButtonLink href={col.button.href} variant={panelDark ? "inverse" : "outline"} arrow className="self-start">
+            {col.button.label}
+          </ButtonLink>
+        )}
+      </div>
     </div>
   );
 }
@@ -214,6 +228,10 @@ function Title({ data, dark, id }: { data: Data; dark: boolean; id?: string }) {
 }
 
 export function ContentSection({ data }: { data: Data }) {
+  // Every imported form (with its GDPR note column) renders as the one unified form block.
+  if (data.columns.some((c) => c.form)) {
+    return <ContactFormSection id={data.id} title={data.title} excerpt={data.excerpt} />;
+  }
   const tone = data.bgImage ? "brand-dark" : toneFromColor(data.bg);
   const dark = isDarkTone(tone);
   const headingId = data.title ? `${data.id}-title` : undefined;

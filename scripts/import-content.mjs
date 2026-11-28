@@ -298,7 +298,8 @@ function parseLayers($) {
           link: slideHref && !/^(#|\/?#more$)/.test(slideHref.replace(/^https?:\/\/hpplotre\.sk/, "")) ? rewriteHref(slideHref) : undefined,
         });
       });
-      const real = slides.filter((s) => s.image || s.link || (s.title && s.title.length > 2) || /<a /.test(s.excerpt ?? ""));
+      // Layers' default demo slide ("Slider Title" / "Short Excerpt" / "See More") left on many pages.
+      const real = slides.filter((s) => !(s.title === "Slider Title" && !s.image)).filter((s) => s.image || s.link || (s.title && s.title.length > 2) || /<a /.test(s.excerpt ?? ""));
       if (real.length) sections.push({ type: "slider", id, slides: real });
     } else if ($w.hasClass("widget_media_video")) {
       const src = $w.find("source[type='video/youtube'], iframe").first().attr("src") ?? "";
@@ -325,7 +326,7 @@ function parsePost($) {
   story.find("script, style, noscript, iframe, form").remove();
   // A WordPress fatal error page sometimes gets injected into the story; cut there.
   let html = story.html() ?? "";
-  const cut = html.search(/<!DOCTYPE html>|WordPress &rsaquo; Chyba/i);
+  const cut = html.search(/<!DOCTYPE html>|WordPress (?:&rsaquo;|›) Chyba/i);
   const truncated = cut >= 0;
   if (truncated) html = html.slice(0, cut);
   return { thumbnail: thumb, html: clean(html), truncated };

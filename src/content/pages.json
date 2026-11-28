@@ -1472,20 +1472,6 @@
         ]
       },
       {
-        "type": "slider",
-        "id": "layers-widget-slide-219",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
         "type": "content",
         "id": "layers-widget-column-231",
         "excerpt": "<p>Máte otázky? Neváhajte a zavolajte nám na: <strong>0940 636 481</strong> alebo napíšte :</p>",
@@ -2502,28 +2488,6 @@
         ]
       },
       {
-        "type": "slider",
-        "id": "layers-widget-slide-208",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          },
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
         "type": "content",
         "id": "layers-widget-column-183",
         "excerpt": "<p>Máte otázky? Neváhajte a zavolajte nám na: <strong>0940 636 481</strong> alebo napíšte:</p>",
@@ -2875,20 +2839,6 @@
               "href": "https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc"
             },
             "html": "<ul><li><a href=\"https://kancelaria.smartcad.sk/pr80g/\" target=\"_blank\" rel=\"noopener noreferrer\">297mm až 914mm&nbsp;</a></li><li>technická tlač: 80 g/m² – 90g/m²</li><li>do 280 g/m² – na objednávku</li></ul><p><a href=\"https://kancelaria.smartcad.sk/plotroverole/?productList-sortBy%5Bprice_base%5D=asc\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;CHCEM OBJEDNAŤ cez e-shop&nbsp;</a></p>"
-          }
-        ]
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-202",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
           }
         ]
       },
@@ -3530,14 +3480,6 @@
           {
             "excerpt": "<p><strong>&gt;&gt;</strong><strong>Chcem prejsť do e-shopu a objednať si tlačiareň </strong><strong>&lt;&lt;</strong></p>",
             "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+designjet+T2600"
-          },
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
           }
         ]
       },
@@ -3664,14 +3606,6 @@
           {
             "excerpt": "<p><strong>&gt;&gt; Chcem prejsť do e-shopu a objednať si tlačiareň &lt;&lt;</strong></p>",
             "link": "https://kancelaria.smartcad.sk/vyhladavanie/?query=HP+designjet+T1600"
-          },
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
           }
         ]
       },
@@ -4295,28 +4229,6 @@
         ]
       },
       {
-        "type": "slider",
-        "id": "layers-widget-slide-212",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          },
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
         "type": "content",
         "id": "layers-widget-column-107",
         "excerpt": "<p>Máte otázky? Neváhajte a zavolajte nám na: <strong>0940 636 481</strong> alebo napíšte :</p>",
@@ -4669,20 +4581,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-92",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-93",
         "slides": [
           {
@@ -4959,20 +4857,6 @@
             "html": "<p>* * *</p><p>Vyplnením Vašich osobných údajov sa smartCAD s.r.o. stáva prevádzkovateľom Vašich osobných údajov.&nbsp;</p><p>Odoslaním formulára súhlasíte so spracovaním osobných údajov v súlade s pravidlami GDPR. Viac informácii nájdete na našej stránke.</p><p><a href=\"http://www.smartcad.sk/gdpr\" target=\"_blank\" rel=\"noopener noreferrer\">www.smartcad.sk/gdpr</a></p>"
           }
         ]
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-228",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       }
     ]
   },
@@ -5085,20 +4969,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-80",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-81",
         "slides": [
           {
@@ -5175,20 +5045,6 @@
         "id": "layers-widget-column-58",
         "excerpt": "<p><strong>&gt;&gt;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2016/10/Z2600.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>stiahnúť technickú špecifikáciu</strong>&nbsp;</a><strong>&lt;&lt;</strong></p>",
         "columns": []
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-77",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       },
       {
         "type": "slider",
@@ -5511,20 +5367,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-71",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-72",
         "slides": [
           {
@@ -5661,20 +5503,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-66",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-67",
         "slides": [
           {
@@ -5752,20 +5580,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-63",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-64",
         "slides": [
           {
@@ -5813,20 +5627,6 @@
         "id": "layers-widget-column-54",
         "excerpt": "<p><strong>&gt;&gt;</strong><strong><a href=\"https://hpplotre.sk/wp-content/uploads/2016/10/T795.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">stiahnúť technickú špecifikáciu</a>&nbsp;</strong><strong>&lt;&lt;</strong></p>",
         "columns": []
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-60",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       },
       {
         "type": "slider",
@@ -5907,20 +5707,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-57",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-58",
         "slides": [
           {
@@ -5968,20 +5754,6 @@
         "id": "layers-widget-column-23",
         "excerpt": "<p><strong>&gt;&gt;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2016/08/HP-Designjet-Z6200-Photo..pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>stiahnúť technickú špecifikáciu</strong>&nbsp;</a><strong>&lt;&lt;</strong></p>",
         "columns": []
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-54",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       },
       {
         "type": "slider",
@@ -6035,20 +5807,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-51",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-52",
         "slides": [
           {
@@ -6096,20 +5854,6 @@
         "id": "layers-widget-column-21",
         "excerpt": "<p><strong>&gt;&gt;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2016/08/HP-Designjet-Z3200-Photo..pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>stiahnúť technickú špecifikáciu</strong>&nbsp;</a><strong>&lt;&lt;</strong></p>",
         "columns": []
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-48",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       },
       {
         "type": "slider",
@@ -6163,20 +5907,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-45",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-46",
         "slides": [
           {
@@ -6224,20 +5954,6 @@
         "id": "layers-widget-column-19",
         "excerpt": "<p><strong>&gt;&gt;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2016/08/HP-Designjet-T3500-Production..pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>stiahnúť technickú špecifikáciu</strong>&nbsp;</a><strong>&lt;&lt;</strong></p>",
         "columns": []
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-42",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       },
       {
         "type": "slider",
@@ -6291,20 +6007,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-39",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-40",
         "slides": [
           {
@@ -6352,20 +6054,6 @@
         "id": "layers-widget-column-17",
         "excerpt": "<p><strong>&gt;&gt;</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2016/08/HP-DesignJet-T7200-Production-Printer..pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>stiahnúť technickú špecifikáciu</strong>&nbsp;</a><strong>&lt;&lt;</strong></p>",
         "columns": []
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-36",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       },
       {
         "type": "slider",
@@ -6419,20 +6107,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-33",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-34",
         "slides": [
           {
@@ -6480,20 +6154,6 @@
         "id": "layers-widget-column-15",
         "excerpt": "<p><strong>&gt;&gt;</strong><strong>&nbsp;<a href=\"https://hpplotre.sk/wp-content/uploads/2016/08/HP-Designjet-T930-ePrinter..pdf\" target=\"_blank\" rel=\"noopener noreferrer\">stiahnúť technickú špecifikáciu</a></strong>\n<strong>&lt;&lt;</strong></p>",
         "columns": []
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-30",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       },
       {
         "type": "slider",
@@ -6749,20 +6409,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-24",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-25",
         "slides": [
           {
@@ -6898,20 +6544,6 @@
       },
       {
         "type": "slider",
-        "id": "layers-widget-slide-21",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
-      },
-      {
-        "type": "slider",
         "id": "layers-widget-slide-22",
         "slides": [
           {
@@ -7008,20 +6640,6 @@
         "id": "layers-widget-column-25",
         "excerpt": "<p><strong>&gt;&gt;</strong><strong>&nbsp;<a href=\"https://hpplotre.sk/wp-content/uploads/2016/08/HP-Designjet-T120-ePrinter..pdf\" target=\"_blank\" rel=\"noopener noreferrer\">stiahnúť technickú špecifikáciu</a></strong>\n<strong>&lt;&lt;</strong></p>",
         "columns": []
-      },
-      {
-        "type": "slider",
-        "id": "layers-widget-slide-17",
-        "slides": [
-          {
-            "title": "Slider Title",
-            "excerpt": "<p>Short Excerpt</p>",
-            "button": {
-              "href": "/#more",
-              "label": "See More"
-            }
-          }
-        ]
       },
       {
         "type": "slider",

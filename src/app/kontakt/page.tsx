@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactDetails } from "@/components/blocks/ContactDetails";
-import { ContactForm } from "@/components/blocks/ContactForm";
+import { ContactFormSection } from "@/components/blocks/ContactFormSection";
 import { IntroBand } from "@/components/layout/IntroBand";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { JsonLd, breadcrumbLd, organizationLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { Heading } from "@/components/ui/Heading";
 import { Section } from "@/components/ui/Section";
-import { contactPeople, site } from "@/lib/site";
+import { contactPeople } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kontakt",
@@ -71,33 +71,7 @@ export default function ContactPage() {
         </Container>
       </Section>
 
-      <section aria-labelledby="otazky">
-        <Section as="div" tone="brand" spacing="sm">
-          <Container>
-            <Heading id="otazky" level={2} size="xl">
-              Máte otázky? Pýtajte sa, radi vám odpovieme
-            </Heading>
-          </Container>
-        </Section>
-        <Section as="div" tone="muted">
-          <Container className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
-            <ContactForm heading="Napíšte nám" />
-            <div className="space-y-3 text-ink-muted lg:pt-8">
-              <p>
-                Vyplnením vašich osobných údajov sa {site.company} stáva prevádzkovateľom vašich osobných údajov.
-              </p>
-              <p>
-                Odoslaním formulára súhlasíte so spracovaním osobných údajov v súlade s pravidlami GDPR. Viac informácií nájdete
-                na našej stránke{" "}
-                <a href={site.gdpr} target="_blank" rel="noopener noreferrer" className="font-medium text-brand-700 underline">
-                  www.smartcad.sk/gdpr<span className="sr-only"> (otvorí sa v novom okne)</span>
-                </a>
-                .
-              </p>
-            </div>
-          </Container>
-        </Section>
-      </section>
+      <ContactFormSection />
 
       <ContactDetails tone="default" />
     </>
