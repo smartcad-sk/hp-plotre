@@ -3191,20 +3191,6 @@
         "columns": []
       },
       {
-        "type": "slider",
-        "id": "layers-widget-slide-131",
-        "slides": [
-          {
-            "image": {
-              "src": "/media/2020/06/planografia.jpg",
-              "alt": "",
-              "width": 2000,
-              "height": 671
-            }
-          }
-        ]
-      },
-      {
         "type": "content",
         "id": "layers-widget-column-155",
         "excerpt": "<ul><li>V Bratislave aj v Banskej Bystrici máme plotre a skladačky.</li><li>Váš projekt vytlačíme, výkresy poskladáme, dokumentáciu skompletizujeme do obálok s popiskami a dovezieme. </li><li>Cenovo nerozlišujeme medzi čiernou a farebnou tlačou.</li><li>Stačí poslať výkresy na náš email <strong>plot@smartcad.sk</strong></li></ul>",
@@ -4869,20 +4855,6 @@
     "modified": "2026-07-14T14:28:38",
     "sections": [
       {
-        "type": "slider",
-        "id": "layers-widget-slide-133",
-        "slides": [
-          {
-            "image": {
-              "src": "/media/2018/03/PRODUCTION_MAIN_1430x600_tcm132_2352845_tcm132_2352850_tcm132-2352845.jpg",
-              "alt": "",
-              "width": 1430,
-              "height": 600
-            }
-          }
-        ]
-      },
-      {
         "type": "content",
         "id": "layers-widget-column-157",
         "title": "Vymeňte svoj starý ploter za nový",
@@ -4915,7 +4887,8 @@
           {
             "span": 4,
             "title": "Ekologický zber a recyklácia",
-            "html": "<ul><li>Máme zelený cerfikát a sme aj súčasťou HP recyklačného programu.</li><li>Staré zariadenia, nefunkčné diely, prázdne alebo poškodené náplne zbierame a odovzdávame na <strong>ekologickú likvidáciu a recykláciu plastu</strong>.</li><li>Spoločnosť HP ďalej vo veľkej miere používa recyklovaný obsah v obaloch vrátane kartónového papiera a lepenky. </li></ul>"
+            "html": "<ul><li>Máme zelený cerfikát a sme aj súčasťou HP recyklačného programu.</li><li>Staré zariadenia, nefunkčné diely, prázdne alebo poškodené náplne zbierame a odovzdávame na <strong>ekologickú likvidáciu a recykláciu plastu</strong>.</li><li>Spoločnosť HP ďalej vo veľkej miere používa recyklovaný obsah v obaloch vrátane kartónového papiera a lepenky. </li></ul>",
+            "plain": true
           }
         ]
       },
@@ -6794,19 +6767,11 @@
         ]
       },
       {
-        "type": "content",
-        "id": "layers-widget-column-289",
-        "title": "Aktuálne portfólio plotrov pre rok 2026",
-        "bg": "#49a7b1",
-        "columns": []
-      },
-      {
-        "type": "content",
+        "type": "portfolio",
         "id": "layers-widget-column-8",
-        "bg": "#e8e8e8",
-        "columns": [
+        "title": "Aktuálne portfólio plotrov pre rok 2026",
+        "categories": [
           {
-            "span": 3,
             "title": "Technické tlačiarne",
             "image": {
               "src": "/media/2023/10/T850_3_1.png",
@@ -6814,11 +6779,55 @@
               "width": 4326,
               "height": 1667
             },
-            "html": "<ul><li><a href=\"/hp-designjet-t200\">HP DesignJet T200 Printer</a><ul><li><a href=\"/hp-designjet-t200\">DesignJet T230 Printer</a></li><li><a href=\"/hp-designjet-t200\">DesignJet T250 Printer</a></li></ul></li><li><a href=\"/hp-designjet-t600-printer-series\">HP DesignJet T600 Printer Series</a><ul><li><a href=\"/hp-designjet-t600-printer-series\">DesignJet T630 Printer</a></li><li><a href=\"/hp-designjet-t600-printer-series\">DesignJet T650 Printer</a></li></ul></li><li><a href=\"/t850\">HP DesignJet <strong>T850 Printer</strong></a>\n<em>novinka</em></li><li><a href=\"/hp-designjet-t870-printer\">HP DesignJet <strong>T870 Printer</strong></a>\n<em>novinka</em></li><li><a href=\"/t950_printer\">HP DesignJet <strong>T950 Printer</strong></a>\n<em>novinka</em></li><li><a href=\"/hp-designjet-t1600-printer-series\">HP DesignJet T1600 Printer Series</a></li><li><a href=\"/hp-designjet-t1700\">HP DesignJet T1700 Printer / PostScript® / Dual Roll</a></li></ul>",
-            "bg": "#ffffff"
+            "models": [
+              {
+                "label": "HP DesignJet T200 Printer",
+                "href": "/hp-designjet-t200"
+              },
+              {
+                "label": "DesignJet T230 Printer",
+                "href": "/hp-designjet-t200"
+              },
+              {
+                "label": "DesignJet T250 Printer",
+                "href": "/hp-designjet-t200"
+              },
+              {
+                "label": "HP DesignJet T600 Printer Series",
+                "href": "/hp-designjet-t600-printer-series"
+              },
+              {
+                "label": "DesignJet T630 Printer",
+                "href": "/hp-designjet-t600-printer-series"
+              },
+              {
+                "label": "DesignJet T650 Printer",
+                "href": "/hp-designjet-t600-printer-series"
+              },
+              {
+                "label": "HP DesignJet T850 Printer",
+                "href": "/t850"
+              },
+              {
+                "label": "HP DesignJet T870 Printer",
+                "href": "/hp-designjet-t870-printer"
+              },
+              {
+                "label": "HP DesignJet T950 Printer",
+                "href": "/t950_printer"
+              },
+              {
+                "label": "HP DesignJet T1600 Printer Series",
+                "href": "/hp-designjet-t1600-printer-series"
+              },
+              {
+                "label": "HP DesignJet T1700 Printer / PostScript® / Dual Roll",
+                "href": "/hp-designjet-t1700"
+              }
+            ],
+            "description": "Plotre na tlač výkresov CAD, GIS a projektovej dokumentácie – pre architektúru, strojárstvo a stavebníctvo."
           },
           {
-            "span": 3,
             "title": "Multifunkčné tlačiarne",
             "image": {
               "src": "/media/2023/10/T950.1.png",
@@ -6826,11 +6835,47 @@
               "width": 2293,
               "height": 1663
             },
-            "html": "<ul><li><a href=\"/hp-designjet-t830-printer\">HP DesignJet T830 Multifunction Printer</a></li><li><a href=\"/t850-mfp\">HP DesignJet <strong>T850 MFP</strong></a>\n<em>novinka</em></li><li><a href=\"/t950_mfp\">HP DesignJet <strong>T950 MFP</strong></a>\n<em>novinka</em></li><li><a href=\"/hp-designjet-t2600-multifunction-printer-series\">HP DesignJet T2600 Multifunction Printer Series</a></li></ul><p><strong>Veľkoformátové skenery</strong></p><ul><li><a href=\"/hp-sd-pro-scanner\">HP SD Pro 44-in Scanner</a></li><li><a href=\"/hp-hd-pro2-scanner\">HP HD Pro 42-in Scanner</a></li></ul>",
-            "bg": "#ffffff"
+            "models": [
+              {
+                "label": "HP DesignJet T830 Multifunction Printer",
+                "href": "/hp-designjet-t830-printer"
+              },
+              {
+                "label": "HP DesignJet T850 MFP",
+                "href": "/t850-mfp"
+              },
+              {
+                "label": "HP DesignJet T950 MFP",
+                "href": "/t950_mfp"
+              },
+              {
+                "label": "HP DesignJet T2600 Multifunction Printer Series",
+                "href": "/hp-designjet-t2600-multifunction-printer-series"
+              }
+            ],
+            "description": "Tlač, kopírovanie a skenovanie v jednom zariadení – skenuje, kopíruje a tlačí na 1 klik."
           },
           {
-            "span": 3,
+            "title": "Veľkoformátové skenery",
+            "image": {
+              "src": "/media/2022/01/HP-SD-Pro.png",
+              "alt": "",
+              "width": 575,
+              "height": 600
+            },
+            "models": [
+              {
+                "label": "HP SD Pro 44-in Scanner",
+                "href": "/hp-sd-pro-scanner"
+              },
+              {
+                "label": "HP HD Pro 42-in Scanner",
+                "href": "/hp-hd-pro2-scanner"
+              }
+            ],
+            "description": "Samostatné veľkoformátové skenery na digitalizáciu výkresov a grafických predlôh."
+          },
+          {
             "title": "Produkčné tlačiarne",
             "image": {
               "src": "/media/2023/10/XL3800.png",
@@ -6838,11 +6883,27 @@
               "width": 2292,
               "height": 1662
             },
-            "html": "<ul><li><a href=\"/hp-designjet-xl-3600-multifunction-printer-series\">HP DesignJet XL 3600 Multifunction Printer Series</a></li><li><a href=\"/xl-3800-printer\">HP DesignJet <strong>XL 3800</strong> Multifunction Printer</a>\n<em>novinka</em></li><li><a href=\"/hp-designjet-z6610-printer\">HP DesignJet Z6610 Production Printer</a></li><li><a href=\"/hp-designjet-z6810-printer\">HP DesignJet Z6810 Production Printer</a></li></ul>",
-            "bg": "#ffffff"
+            "models": [
+              {
+                "label": "HP DesignJet XL 3600 Multifunction Printer Series",
+                "href": "/hp-designjet-xl-3600-multifunction-printer-series"
+              },
+              {
+                "label": "HP DesignJet XL 3800 Multifunction Printer",
+                "href": "/xl-3800-printer"
+              },
+              {
+                "label": "HP DesignJet Z6610 Production Printer",
+                "href": "/hp-designjet-z6610-printer"
+              },
+              {
+                "label": "HP DesignJet Z6810 Production Printer",
+                "href": "/hp-designjet-z6810-printer"
+              }
+            ],
+            "description": "Výkonné tlačiarne pre veľké objemy technickej aj grafickej tlače."
           },
           {
-            "span": 3,
             "title": "Grafické tlačiarne",
             "image": {
               "src": "/media/2018/10/Z9-44-palc.png",
@@ -6850,8 +6911,127 @@
               "width": 573,
               "height": 367
             },
-            "html": "<ul><li>&nbsp;<a href=\"/hp-designjet-z6\">séria HP DesignJet Z6 PostScript</a></li><li><a href=\"/hp-designjet-z6-pro\">HP DesignJet Z6 Pro 64-in Printer</a></li><li><a href=\"/hp-designjet-z9\">séria HP DesignJet Z9+ PostScript</a></li><li><a href=\"/hp-designjet-z9-pro\">séria HP DesignJet Z9+ Pro 64-in Printer</a></li><li><a href=\"/hp-designjet-z6610-printer\">HP DesignJet Z6610 Production Printer</a></li><li><a href=\"/hp-designjet-z6810-printer\">HP DesignJet Z6810 Production Printer</a></li></ul>",
-            "bg": "#ffffff"
+            "models": [
+              {
+                "label": "séria HP DesignJet Z6 PostScript",
+                "href": "/hp-designjet-z6"
+              },
+              {
+                "label": "HP DesignJet Z6 Pro 64-in Printer",
+                "href": "/hp-designjet-z6-pro"
+              },
+              {
+                "label": "séria HP DesignJet Z9+ PostScript",
+                "href": "/hp-designjet-z9"
+              },
+              {
+                "label": "séria HP DesignJet Z9+ Pro 64-in Printer",
+                "href": "/hp-designjet-z9-pro"
+              },
+              {
+                "label": "HP DesignJet Z6610 Production Printer",
+                "href": "/hp-designjet-z6610-printer"
+              },
+              {
+                "label": "HP DesignJet Z6810 Production Printer",
+                "href": "/hp-designjet-z6810-printer"
+              }
+            ],
+            "description": "Profesionálna tlač fotografií, plátna a grafiky pre fotografov a dizajnérov."
+          },
+          {
+            "title": "Latexové tlačiarne",
+            "href": "/latex",
+            "image": {
+              "src": "/media/2021/05/335-1.png",
+              "alt": "",
+              "width": 240,
+              "height": 173
+            },
+            "models": [
+              {
+                "label": "HP Latex 115 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 315 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 335 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 365 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 375 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 560 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 570 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 700 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 700 W Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 800 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 800 W Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 3600 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex R1000 Printer",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex 1500",
+                "href": "/latex"
+              },
+              {
+                "label": "HP Latex R2000 Printer",
+                "href": "/latex"
+              }
+            ],
+            "description": "Latexové tlačiarne HP na tlač reklamy a polepov – od HP Latex 115 po R2000."
+          },
+          {
+            "title": "Vyrezávacie plotre",
+            "href": "/vyrezavacie-plotre",
+            "image": {
+              "src": "/media/2021/06/summa-S2.jpg",
+              "alt": "",
+              "width": 610,
+              "height": 386
+            },
+            "models": [
+              {
+                "label": "Summa S2 series",
+                "href": "/vyrezavacie-plotre"
+              },
+              {
+                "label": "Summa SC series",
+                "href": "/vyrezavacie-plotre"
+              }
+            ],
+            "description": "Rezacie plotre Summa s tangenciálnym alebo drag systémom."
           }
         ]
       },

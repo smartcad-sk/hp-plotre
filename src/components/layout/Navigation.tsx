@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import type { NavItem } from "@/lib/site";
-import { blogNav, site } from "@/lib/site";
+import { site } from "@/lib/site";
 import { cn } from "@/lib/cn";
 import { Icon } from "@/components/ui/Icon";
 import { buttonClasses } from "@/components/ui/Button";
@@ -22,7 +22,6 @@ function NavLink({ item, className, onNavigate }: { item: NavItem; className?: s
     return (
       <a href={item.href} target="_blank" rel="noopener noreferrer" className={className} onClick={onNavigate}>
         {item.label}
-        <Icon name="external" className="size-3.5 opacity-70" />
         <span className="sr-only"> (otvorí sa v novom okne)</span>
       </a>
     );
@@ -231,9 +230,6 @@ export function MobileNav({ items }: { items: NavItem[] }) {
                   </li>
                 ),
               )}
-              <li className="mt-2 border-t border-line pt-2">
-                <NavLink item={blogNav} onNavigate={close} className={linkClass} />
-              </li>
             </ul>
           </nav>
           <div className="space-y-2 border-t border-line p-4 text-sm">

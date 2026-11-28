@@ -151,7 +151,8 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
         isPanel && panelTone === "brand" && "bg-brand-600 text-white",
         isPanel && panelTone === "brand-strong" && "bg-brand-700 text-white",
         isPanel && panelTone === "brand-dark" && "bg-brand-800 text-white",
-        !isPanel && !dark && "rounded-(--radius-card) border border-line bg-white p-5 shadow-(--shadow-card) sm:p-6",
+        !isPanel && !dark && !col.plain && "rounded-(--radius-card) border border-line bg-white p-5 shadow-(--shadow-card) sm:p-6",
+        col.plain && "py-2",
       )}
     >
       {iconAside ? <div className="shrink-0">{image}</div> : image}

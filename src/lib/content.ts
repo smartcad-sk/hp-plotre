@@ -14,6 +14,8 @@ export type ContentColumn = {
   button?: ContentLink;
   bg?: string;
   form?: boolean;
+  /** Render as standard text, not as a card (set by scripts/copy-edits.mjs). */
+  plain?: boolean;
 };
 
 export type ContentSection =
@@ -38,7 +40,17 @@ export type ContentSection =
   | { type: "html"; id: string; html: string }
   | { type: "contact"; id: string }
   /** Produced by normalizePage from link-only slides (spec PDF, e-shop, video bars). */
-  | { type: "links"; id: string; links: ContentLink[] };
+  | { type: "links"; id: string; links: ContentLink[] }
+  /** Product categories with their models (built by scripts/copy-edits.mjs). */
+  | { type: "portfolio"; id: string; title: string; categories: PortfolioCategory[] };
+
+export type PortfolioCategory = {
+  title: string;
+  description: string;
+  href?: string;
+  image?: ContentImage;
+  models: ContentLink[];
+};
 
 export type Page = {
   id: number;

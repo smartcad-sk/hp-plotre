@@ -10,6 +10,7 @@ import { Section } from "@/components/ui/Section";
 import { ContactDetails } from "./ContactDetails";
 import { ContentSection } from "./ContentSection";
 import { ImageCarousel } from "./ImageCarousel";
+import { PortfolioSection } from "./PortfolioSection";
 import { Html5Video } from "./Html5Video";
 import { YouTubeEmbed } from "./YouTubeEmbed";
 
@@ -28,6 +29,8 @@ export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pag
     <>
       {sections.map((s, i) => {
         switch (s.type) {
+          case "portfolio":
+            return <PortfolioSection key={s.id + i} data={s} />;
           case "content":
             return <ContentSection key={s.id + i} data={s} />;
           case "slider": {

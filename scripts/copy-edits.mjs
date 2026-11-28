@@ -260,6 +260,15 @@ const REWRITES = [
   },
 ];
 
+/** Title images the owner asked to remove (matched by image file name). */
+const REMOVE_IMAGE_SLIDERS = [
+  { route: "/stary_za_novy", image: "PRODUCTION_MAIN_1430x600" },
+  { route: "/plotrovanie", image: "planografia.jpg" },
+];
+
+/** Columns shown as standard text instead of a card. */
+const PLAIN_COLUMNS = [{ route: "/stary_za_novy", title: "Ekologický zber a recyklácia" }];
+
 /** Bazár: price as "690 € bez DPH" right under the heading, long spec bullets split. */
 function bazaar(page) {
   for (const s of page.sections) {
@@ -317,5 +326,89 @@ export function applyCopyEdits(pages, posts) {
 
   const bazar = pages.find((p) => p.route === "/bazar-plotrov");
   if (bazar) bazaar(bazar);
+
+  // Layout edits requested by the owner.
+  for (const { route, image } of REMOVE_IMAGE_SLIDERS) {
+    const p = pages.find((x) => x.route === route);
+    const i = p?.sections.findIndex((s) => s.type === "slider" && s.slides.some((sl) => sl.image?.src.includes(image))) ?? -1;
+    if (i >= 0) p.sections.splice(i, 1);
+    else missed.push(`${route}: title image ${image}`);
+  }
+  for (const { route, title } of PLAIN_COLUMNS) {
+    const col = pages.find((x) => x.route === route)?.sections.flatMap((s) => s.columns ?? []).find((c) => c.title === title);
+    if (col) col.plain = true;
+    else missed.push(`${route}: column "${title}"`);
+  }
+  if (!portfolio(pages)) missed.push('/velkoformatove-tlaciarne: "Aktuálne portfólio" section');
   return { missed };
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* Product overview: "Aktuálne portfólio" as category cards (image, short description, models).  */
+/* Models come from the imported link columns; scanners get their own category; Latex and       */
+/* cutting plotters are added from their own pages.                                              */
+/* ---------------------------------------------------------------------------------------------- */
+
+const CATEGORY_COPY = {
+  "Technické tlačiarne": "Plotre na tlač výkresov CAD, GIS a projektovej dokumentácie – pre architektúru, strojárstvo a stavebníctvo.",
+  "Multifunkčné tlačiarne": "Tlač, kopírovanie a skenovanie v jednom zariadení – skenuje, kopíruje a tlačí na 1 klik.",
+  "Veľkoformátové skenery": "Samostatné veľkoformátové skenery na digitalizáciu výkresov a grafických predlôh.",
+  "Produkčné tlačiarne": "Výkonné tlačiarne pre veľké objemy technickej aj grafickej tlače.",
+  "Grafické tlačiarne": "Profesionálna tlač fotografií, plátna a grafiky pre fotografov a dizajnérov.",
+  "Latexové tlačiarne": "Latexové tlačiarne HP na tlač reklamy a polepov – od HP Latex 115 po R2000.",
+  "Vyrezávacie plotre": "Rezacie plotre Summa s tangenciálnym alebo drag systémom.",
+};
+
+function linksFrom(html) {
+  const $ = cheerio.load(html ?? "", null, false);
+  const seen = new Set();
+  return $("a")
+    .toArray()
+    .map((a) => ({ label: $(a).text().replace(/\s+/g, " ").trim(), href: $(a).attr("href") }))
+    .filter((l) => l.label && l.href && !seen.has(l.label) && seen.add(l.label));
+}
+
+function portfolio(pages) {
+  const page = pages.find((p) => p.route === "/velkoformatove-tlaciarne");
+  const i = page?.sections.findIndex((s) => s.type === "content" && /^Aktuálne portfólio/.test(s.title ?? ""));
+  if (!page || i < 0) return false;
+  const band = page.sections[i];
+  const grid = band.columns.length ? band : page.sections[i + 1];
+  if (!grid?.columns?.length) return false;
+
+  const cats = grid.columns
+    .filter((c) => c.title)
+    .map((c) => ({ title: c.title.trim(), image: c.image, models: linksFrom(c.html) }));
+  const mfp = cats.find((c) => c.title === "Multifunkčné tlačiarne");
+  const isScanner = (m) => /scanner|skener/i.test(m.href + m.label);
+  const scanners = mfp ? mfp.models.filter(isScanner) : [];
+  if (mfp) mfp.models = mfp.models.filter((m) => !isScanner(m));
+  if (scanners.length) {
+    const sd = pages.find((p) => p.route === "/hp-sd-pro-scanner");
+    const img = sd?.sections.flatMap((s) => s.slides ?? []).map((s) => s.image).find((im) => im?.src.includes("HP-SD-Pro"));
+    cats.splice(cats.indexOf(mfp) + 1, 0, { title: "Veľkoformátové skenery", image: img, models: scanners });
+  }
+  const fromPage = (route, title, imageMatch) => {
+    const p = pages.find((x) => x.route === route);
+    if (!p) return null;
+    const cols = p.sections.flatMap((s) => s.columns ?? []).filter((c) => c.title && c.image);
+    return {
+      title,
+      href: route,
+      image: cols.find((c) => c.image.src.includes(imageMatch))?.image ?? cols[0]?.image,
+      models: cols.map((c) => ({ label: c.title.trim(), href: route })),
+    };
+  };
+  for (const extra of [fromPage("/latex", "Latexové tlačiarne", "335"), fromPage("/vyrezavacie-plotre", "Vyrezávacie plotre", "summa-S2")]) {
+    if (extra?.models.length) cats.push(extra);
+  }
+
+  const section = {
+    type: "portfolio",
+    id: grid.id,
+    title: band.title,
+    categories: cats.map((c) => ({ ...c, description: CATEGORY_COPY[c.title] ?? "" })),
+  };
+  page.sections.splice(i, grid === band ? 1 : 2, section);
+  return true;
 }
