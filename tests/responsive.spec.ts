@@ -122,7 +122,7 @@ test("desktop dropdown works with keyboard", async ({ page }) => {
   const width = page.viewportSize()?.width ?? 0;
   test.skip(width < 1024, "mobile uses the drawer");
   await page.goto("/");
-  const trigger = page.getByRole("navigation", { name: "Hlavná navigácia" }).getByRole("button", { name: "Produkty" });
+  const trigger = page.getByRole("navigation", { name: "Hlavná navigácia" }).getByRole("button", { name: "Podmenu Produkty" });
   await trigger.focus();
   await page.keyboard.press("Enter");
   await expect(trigger).toHaveAttribute("aria-expanded", "true");

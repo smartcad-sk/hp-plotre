@@ -60,7 +60,8 @@ export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pag
                       width={only.image.width ?? 600}
                       height={only.image.height ?? 400}
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="mx-auto h-auto w-full max-w-xs rounded-(--radius-card) object-contain"
+                      className="mx-auto h-auto max-h-80 w-full rounded-(--radius-card) object-contain"
+                      style={{ maxWidth: only.image.width ? `min(100%, ${only.image.width}px)` : undefined }}
                     />
                     <div className="space-y-4">
                       {only.title && (

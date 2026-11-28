@@ -18,7 +18,7 @@ Content language is **Slovak** (`lang="sk"`); keep all UI copy in Slovak.
 | Dev server | `npm run dev` (http://localhost:3000) |
 | Production build | `npm run build` then `npm start` |
 | Lint / types | `npm run lint` · `npm run typecheck` |
-| E2E tests (all devices) | `npm run test:e2e` |
+| E2E tests (all devices) | `npm run build` then `npm run test:e2e` (starts its own server on :3100) |
 | Storybook | `npm run storybook` (http://localhost:6006) |
 | Re-import content | `npm run import:content` (crawls live hpplotre.sk) |
 

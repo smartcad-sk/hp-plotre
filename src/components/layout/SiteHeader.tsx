@@ -9,8 +9,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
       {/* Utility bar */}
       <div className="hidden bg-brand-900 text-sm text-white md:block">
-        <div className="mx-auto flex max-w-(--container-content) items-center justify-between gap-4 px-4 py-1.5 sm:px-6 lg:px-8">
-          <p className="text-white/85">{site.tagline}</p>
+        <div className="mx-auto flex max-w-(--container-content) items-center justify-end gap-4 px-4 py-1.5 sm:px-6 lg:justify-between lg:px-8">
+          <p className="hidden text-white/85 lg:block">{site.tagline}</p>
           <ul className="flex items-center gap-5">
             <li>
               <Link href={blogNav.href} className="inline-flex items-center gap-1.5 py-1 font-semibold hover:underline pointer-coarse:min-h-11">

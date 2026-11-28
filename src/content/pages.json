@@ -1883,6 +1883,10 @@
         "columns": [
           {
             "span": 4,
+            "youtubeId": "cTZ6CcY-UBo"
+          },
+          {
+            "span": 4,
             "image": {
               "src": "/media/2021/06/poskladane-vykresy1.png",
               "alt": "",
@@ -7477,6 +7481,7 @@
           {
             "span": 3,
             "title": "Už nebojujte!",
+            "youtubeId": "5J77-W1_nLo",
             "html": "<p>Máte komplikácie s plotrom? Nezdržiavajte sa . . . </p><p>Takto pohodlne si u nás obstaráte nový a spoľahlivý stroj. Radi Vám poradíme.</p>",
             "bg": "#ffffff"
           },

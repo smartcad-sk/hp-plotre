@@ -244,15 +244,25 @@ function parseLayers($) {
           return;
         }
         const image = imageFrom($, $c.find(".media-image").first());
+        // YouTube iframes inside a panel (Complianz keeps the real URL in data-src-cmplz).
+        // The sanitizer drops iframes, so lift them out and render them as a click-to-play video.
+        let youtubeId;
+        $c.find("iframe").each((___, f) => {
+          const url = $(f).attr("data-src-cmplz") || $(f).attr("src") || "";
+          const yt = url.match(/youtube(?:-nocookie)?\.com\/embed\/([\w-]{11})/)?.[1];
+          if (yt && !youtubeId) youtubeId = yt;
+          if (yt) $(f).remove();
+        });
         const col = {
           span,
           title: text($c.find(".media-body .heading").first().text()) || undefined,
           image,
+          youtubeId,
           html: clean(ex.html()) || undefined,
           button: buttonFrom($, $c.find(".media-body")),
           bg: css[$c.attr("id")]?.bg,
         };
-        if (col.title || col.image || col.html || col.button) columns.push(col);
+        if (col.title || col.image || col.youtubeId || col.html || col.button) columns.push(col);
       });
       const sectionButton = buttonFrom($, $w.find("> .container .section-title"));
       if (!title && !excerptHtml && !columns.length) return;

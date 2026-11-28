@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const PORT = Number(process.env.PORT ?? 3000);
+// Tests run their own production server on 3100 so they never reuse the dev server on 3000.
+const PORT = Number(process.env.TEST_PORT ?? 3100);
 const baseURL = process.env.BASE_URL ?? `http://localhost:${PORT}`;
 
 /**
@@ -41,7 +42,7 @@ export default defineConfig({
     { name: "seo", testMatch: /seo\.spec\.ts/, use: viewports[6].use },
   ],
   webServer: {
-    command: "npm run start",
+    command: `npx next start -p ${PORT}`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

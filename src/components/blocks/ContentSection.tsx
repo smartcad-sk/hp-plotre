@@ -9,16 +9,53 @@ import { Heading } from "@/components/ui/Heading";
 import { Prose } from "@/components/ui/Prose";
 import { Section, isDarkTone } from "@/components/ui/Section";
 import { ContactForm } from "./ContactForm";
+import { YouTubeEmbed } from "./YouTubeEmbed";
 
 type Data = Extract<ContentSectionData, { type: "content" }>;
 
-// Literal class names so Tailwind can see them.
-const spanClass: Record<number, string> = {
-  1: "lg:col-span-3", 2: "lg:col-span-3", 3: "lg:col-span-3", 4: "lg:col-span-4", 5: "lg:col-span-6",
-  6: "lg:col-span-6", 7: "lg:col-span-8", 8: "lg:col-span-8", 9: "lg:col-span-9", 10: "lg:col-span-12",
-  11: "lg:col-span-12", 12: "lg:col-span-12",
+/*
+ * Panel layout. Layers stored a 12-column span per panel, often mixed within one group
+ * (3+4+4, 6+6+5…). Instead of mapping spans 1:1 (which leaves uneven "2 + 1" rows), each
+ * group is laid out as a whole:
+ *  - panels per row from the typical span: 3 → 4-up, 4 → 3-up, 5–6 → 2-up, wider → 1-up,
+ *    stepping down on tablets (4-up → 2×2, 3-up stays 3-up from 768px) and phones;
+ *  - a shorter last row is centred;
+ *  - exactly two panels of clearly different widths (image + text) keep their proportion;
+ *  - full-width panels (span ≥ 10) stay full width.
+ * Literal class names so Tailwind can see them. Widths subtract the 1.5rem gap.
+ */
+const W = {
+  sm2: "sm:w-[calc((100%-1.5rem)/2)]",
+  md2: "md:w-[calc((100%-1.5rem)/2)]",
+  md3: "md:w-[calc((100%-3rem)/3)]",
+  lg2: "lg:w-[calc((100%-1.5rem)/2)]",
+  lg3: "lg:w-[calc((100%-3rem)/3)]",
+  lg4: "lg:w-[calc((100%-4.5rem)/4)]",
 };
-const smSpanClass = (span: number) => (span >= 7 ? "sm:col-span-2" : "sm:col-span-1");
+const perRowClasses: Record<1 | 2 | 3 | 4, string> = {
+  1: "",
+  2: cn(W.sm2, W.md2, W.lg2),
+  3: cn(W.md3, W.lg3), // phones: 1 per row (no 2 + 1), tablets+: 3
+  4: cn(W.sm2, W.md2, W.lg4), // phones/tablets: 2×2, desktop: 4
+};
+// md:col-span-4 … md:col-span-8 for the proportional two-panel case.
+const mdSpan: Record<number, string> = {
+  4: "md:col-span-4", 5: "md:col-span-5", 6: "md:col-span-6", 7: "md:col-span-7", 8: "md:col-span-8",
+};
+
+function layoutFor(columns: ContentColumn[]) {
+  const regular = columns.filter((c) => c.span < 10);
+  const spans = regular.map((c) => c.span).sort((a, b) => a - b);
+  const median = spans[Math.floor(spans.length / 2)] ?? 12;
+  const raw = median <= 3 ? 4 : median <= 4 ? 3 : median <= 6 ? 2 : 1;
+  const perRow = Math.max(1, Math.min(raw, regular.length)) as 1 | 2 | 3 | 4;
+  // Two panels with clearly different widths (4+8, 3+6, 4+7…): keep the proportion.
+  if (columns.length === 2 && regular.length === 2 && Math.abs(regular[0].span - regular[1].span) >= 3) {
+    const a = Math.min(8, Math.max(4, Math.round((12 * regular[0].span) / (regular[0].span + regular[1].span))));
+    return { kind: "split" as const, spans: [a, 12 - a] };
+  }
+  return { kind: "flow" as const, perRow };
+}
 
 /** Wraps an image in its original link (service tiles, e-shop consumables). */
 function MaybeLink({ href, label, children }: { href?: string; label: string; children: React.ReactNode }) {
@@ -59,7 +96,11 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
   const panelTone = toneFromColor(col.bg);
   const isPanel = col.bg && panelTone !== "default";
   const panelDark = isPanel ? isDarkTone(panelTone) : dark;
-  const imageOnly = col.image && !col.title && !col.html && !col.button;
+  const imageOnly = col.image && !col.title && !col.html && !col.button && !col.youtubeId;
+
+  if (col.youtubeId && !col.title && !col.html && !col.image) {
+    return <YouTubeEmbed id={col.youtubeId} title="Video" />;
+  }
 
   if (imageOnly && col.image) {
     return (
@@ -70,7 +111,8 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
         width={col.image.width ?? 1200}
         height={col.image.height ?? 800}
         sizes={col.span >= 10 ? "(min-width: 1152px) 1152px, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
-        className="h-auto w-full rounded-(--radius-card) object-contain"
+        className="mx-auto h-auto w-full rounded-(--radius-card) object-contain"
+        style={{ maxWidth: col.image.width ? `min(100%, ${col.image.width}px)` : undefined }}
       />
       </MaybeLink>
     );
@@ -96,7 +138,8 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
           width={col.image.width ?? 800}
           height={col.image.height ?? 600}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="h-auto max-h-80 w-full rounded-lg object-contain"
+          className="mx-auto h-auto max-h-80 w-full rounded-lg object-contain"
+          style={{ maxWidth: col.image.width ? `min(100%, ${col.image.width}px)` : undefined }}
         />
         </MaybeLink>
       )}
@@ -105,6 +148,7 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
           {tidyHeading(col.title)}
         </Heading>
       )}
+      {col.youtubeId && <YouTubeEmbed id={col.youtubeId} title={col.title ? tidyHeading(col.title) : "Video"} />}
       {col.html && <Prose html={col.html} invert={panelDark} className="flex-1" />}
       {col.button && (
         <ButtonLink href={col.button.href} variant={panelDark ? "inverse" : "outline"} arrow className="self-start">
@@ -115,18 +159,36 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
   );
 }
 
+function Panels({ data, dark }: { data: Data; dark: boolean }) {
+  const layout = layoutFor(data.columns);
+  const level = data.title ? 3 : 2;
+  if (layout.kind === "split") {
+    return (
+      <div data-panels="" className="grid grid-cols-1 gap-6 md:grid-cols-12">
+        {data.columns.map((col, i) => (
+          <div key={i} className={cn("min-w-0", mdSpan[layout.spans[i]])}>
+            <Column col={col} dark={dark} headingLevel={level} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return (
+    // Flex-wrap so an incomplete last row is centred; items stretch to equal height per row.
+    <div data-panels="" className="flex flex-wrap justify-center gap-6">
+      {data.columns.map((col, i) => (
+        <div key={i} className={cn("w-full min-w-0", col.span < 10 && perRowClasses[layout.perRow])}>
+          <Column col={col} dark={dark} headingLevel={level} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Grid({ data, dark }: { data: Data; dark: boolean }) {
   return (
     <>
-      {data.columns.length > 0 && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-12">
-          {data.columns.map((col, i) => (
-            <div key={i} className={cn("min-w-0", smSpanClass(col.span), spanClass[col.span] ?? "lg:col-span-12")}>
-              <Column col={col} dark={dark} headingLevel={data.title ? 3 : 2} />
-            </div>
-          ))}
-        </div>
-      )}
+      {data.columns.length > 0 && <Panels data={data} dark={dark} />}
       {data.button && (
         <ButtonLink href={data.button.href} variant={dark ? "inverse" : "primary"} arrow>
           {data.button.label}

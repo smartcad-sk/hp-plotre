@@ -118,6 +118,9 @@ export function ImageCarousel({
                   sizes="(min-width: 1536px) 1536px, 100vw"
                   className="object-contain"
                   priority={priority && i === 0}
+                  // Slides sit side by side in a horizontal scroller; Safari/Firefox don't reliably
+                  // lazy-load images there, so off-screen slides would appear blank when they rotate in.
+                  loading={priority && i === 0 ? undefined : "eager"}
                 />
               )}
               {s.title && (

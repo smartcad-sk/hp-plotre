@@ -8,6 +8,8 @@ export type ContentColumn = {
   span: number;
   title?: string;
   image?: ContentImage;
+  /** YouTube video embedded in the panel (rendered click-to-play). */
+  youtubeId?: string;
   html?: string;
   button?: ContentLink;
   bg?: string;
