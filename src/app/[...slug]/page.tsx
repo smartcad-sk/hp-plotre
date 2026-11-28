@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { CtaBand } from "@/components/blocks/CtaBand";
 import { SectionRenderer } from "@/components/blocks/SectionRenderer";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -72,7 +73,25 @@ export async function generateMetadata({ params }: PageProps<"/[...slug]">): Pro
 
 const dateFmt = new Intl.DateTimeFormat("sk-SK", { day: "numeric", month: "long", year: "numeric" });
 
-export default async function ContentPage({ params }: PageProps<"/[...slug]">) {
+/*
+ * Every part of this catch-all page depends on the URL, so the params read lives inside
+ * <Suspense>: the shared App Shell (header/footer from the layout + this placeholder band)
+ * renders instantly on client navigation while the page content streams in. All routes are
+ * prerendered via generateStaticParams, so full page loads still get complete HTML.
+ */
+export default function Page({ params }: PageProps<"/[...slug]">) {
+  return (
+    <Suspense fallback={<PageHeaderPlaceholder />}>
+      <ContentPage params={params} />
+    </Suspense>
+  );
+}
+
+function PageHeaderPlaceholder() {
+  return <div aria-hidden="true" className="h-40 bg-brand-700 sm:h-48" />;
+}
+
+async function ContentPage({ params }: Pick<PageProps<"/[...slug]">, "params">) {
   const route = toRoute((await params).slug);
 
   const post = getPost(route);

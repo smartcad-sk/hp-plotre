@@ -12,6 +12,7 @@ import path from "node:path";
 import * as cheerio from "cheerio";
 import sanitizeHtml from "sanitize-html";
 import { imageSize } from "image-size";
+import { trimTransparentBorders } from "./trim-images.mjs";
 import { readFile } from "node:fs/promises";
 
 const ORIGIN = "https://hpplotre.sk";
@@ -356,6 +357,7 @@ async function downloadImages() {
         if (!res.ok) throw new Error(String(res.status));
         await mkdir(path.dirname(dest), { recursive: true });
         await writeFile(dest, Buffer.from(await res.arrayBuffer()));
+        await trimTransparentBorders(dest); // empty transparent margins would become page padding
         ok++;
       } catch (e) {
         failed.push(`${remote} (${e.message})`);

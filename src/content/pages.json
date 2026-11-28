@@ -40,7 +40,7 @@
             "image": {
               "src": "/media/2025/11/870-left-1366x768-1.png",
               "alt": "",
-              "width": 1366,
+              "width": 852,
               "height": 768
             }
           },
@@ -48,7 +48,7 @@
             "image": {
               "src": "/media/2025/11/870-less-left-1366x768-1.png",
               "alt": "",
-              "width": 1366,
+              "width": 882,
               "height": 768
             }
           },
@@ -56,7 +56,7 @@
             "image": {
               "src": "/media/2025/11/870-center-1366x768-1.png",
               "alt": "",
-              "width": 1366,
+              "width": 881,
               "height": 768
             }
           },
@@ -64,7 +64,7 @@
             "image": {
               "src": "/media/2025/11/870-less-right-1366x768-1.png",
               "alt": "",
-              "width": 1366,
+              "width": 827,
               "height": 768
             }
           },
@@ -72,7 +72,7 @@
             "image": {
               "src": "/media/2025/11/870-right-1366x768-1.png",
               "alt": "",
-              "width": 1366,
+              "width": 862,
               "height": 768
             }
           },
@@ -80,7 +80,7 @@
             "image": {
               "src": "/media/2025/11/870-back-1366x768-1.png",
               "alt": "",
-              "width": 1366,
+              "width": 886,
               "height": 768
             }
           }
@@ -103,7 +103,7 @@
             "image": {
               "src": "/media/2025/11/HP-DesignJet-T870-Printer-CloseUp-02_4575800-scaled.png",
               "alt": "",
-              "width": 2560,
+              "width": 2101,
               "height": 1707
             },
             "html": "<p><strong>Intuitívny dotykový panel s rýchlym prístupom k tlači a správam úloh</strong> – moderné rozhranie zjednodušuje obsluhu a zvyšuje efektivitu práce.</p>"
@@ -123,8 +123,8 @@
             "image": {
               "src": "/media/2025/11/Bez-nazvu-1-scaled.png",
               "alt": "",
-              "width": 2560,
-              "height": 1706
+              "width": 2426,
+              "height": 1402
             },
             "html": "<p><strong>Jednoduchý prístup k atramentom</strong> – pohodlné plnenie 130 ml alebo 300 ml kaziet zabezpečuje nepretržitú tlač bez zbytočných prestojov.</p>"
           }
@@ -1331,7 +1331,7 @@
             "image": {
               "src": "/media/2022/02/HP-HD-Pro-2-42-in-1024x769.png",
               "alt": "",
-              "width": 1024,
+              "width": 728,
               "height": 769
             },
             "title": "Špičkové farebné skenovanie pomocou technológie CCD",
@@ -1433,7 +1433,7 @@
             "image": {
               "src": "/media/2022/01/HP-SD-Pro.png",
               "alt": "",
-              "width": 800,
+              "width": 575,
               "height": 600
             },
             "title": "Špičkové farebné skenovanie pomocou CIS technológie",
@@ -1525,7 +1525,7 @@
               "src": "/media/2022/01/HP-DJ-Z9-1024x769.png",
               "alt": "",
               "width": 1024,
-              "height": 769
+              "height": 599
             },
             "title": "HP DesignJet Z9+ Pro 64-in Printer (2RM82A)",
             "excerpt": "<ul><li>Z9+ Pro je profesionálny grafický ploter určený pre fotografov a dizajnérov, ktorý tlačia profesionálne fotografie, plátno, spotrebiteľské fotografie a pod.</li><li>Dosahuje najširší gamut vo svojej kategórií s chromatickými RGB atramentmi: chromatic red, chromotic green, chromatic blue.</li><li>9 atramentový farebný systém je rozšíriteľný na 10 pomocou HP Gloss Enhancer Upgrade Kit – poskytuje kvalitu až 12 atramentového systému!</li><li>Z9+ Pro je 2-rolový model s bezvretenovým, jednoduchým zakladaním rolí a automatickým prepínaním medzi nimi.</li><li>Optimalizované rozlíšenie – až 2 400 × 1 200 dpi. </li></ul>"
@@ -1580,7 +1580,7 @@
               "src": "/media/2022/01/cyan.png",
               "alt": "",
               "width": 320,
-              "height": 240,
+              "height": 191,
               "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+776"
             }
           },
@@ -1655,7 +1655,7 @@
               "src": "/media/2021/12/Z6-PRO.png",
               "alt": "",
               "width": 800,
-              "height": 600
+              "height": 471
             },
             "title": "HP DesignJet Z6 Pro 64-in Printer (2QU25A)",
             "excerpt": "<ul><li>Profesionálna grafická veľkoformátová tlačiareň s max šírkou média až 1626 mm.</li><li>Určená pre tlač GIS formátov, máp, technických výkresov, plagátov, POP/POS, roll-up bannerov a pod.</li><li>Z6 Pro je 2-rolový model, s ktorým ušetríte do 40% času pri manipulácií s rolkami.</li><li>Nádherné výsledky dosahuje pomocou veľkokapacitných 6-tich farebných atramentových náplní (cyan, magenta, yellow, matte black, photo black, chromatic red).</li><li>Optimalizované rozlíšenie je až 2 400 × 1 200 dpi.</li></ul>"
@@ -2026,7 +2026,7 @@
               "src": "/media/2021/05/latexove-plotre.png",
               "alt": "",
               "width": 1659,
-              "height": 1246
+              "height": 355
             }
           }
         ]
@@ -2048,7 +2048,7 @@
               "src": "/media/2021/05/115...png",
               "alt": "",
               "width": 247,
-              "height": 185
+              "height": 162
             },
             "html": "<p>Cut Plus Solution</p>"
           },
@@ -2059,7 +2059,7 @@
               "src": "/media/2021/05/315.png",
               "alt": "",
               "width": 240,
-              "height": 180
+              "height": 158
             },
             "html": "<p>Cut Plus Solution</p>"
           },
@@ -2070,7 +2070,7 @@
               "src": "/media/2021/05/335-1.png",
               "alt": "",
               "width": 240,
-              "height": 180
+              "height": 173
             },
             "html": "<p>Cut Plus Solution</p>",
             "bg": "#ffffff"
@@ -2088,7 +2088,7 @@
               "src": "/media/2021/05/365.png",
               "alt": "",
               "width": 240,
-              "height": 180
+              "height": 168
             }
           },
           {
@@ -2098,7 +2098,7 @@
               "src": "/media/2021/05/375.png",
               "alt": "",
               "width": 257,
-              "height": 193
+              "height": 154
             }
           },
           {
@@ -2134,7 +2134,7 @@
               "src": "/media/2021/05/700.png",
               "alt": "",
               "width": 240,
-              "height": 180
+              "height": 158
             }
           },
           {
@@ -2144,7 +2144,7 @@
               "src": "/media/2021/05/700W.png",
               "alt": "",
               "width": 240,
-              "height": 180
+              "height": 158
             }
           }
         ]
@@ -2196,7 +2196,7 @@
               "src": "/media/2021/05/R1000.png",
               "alt": "",
               "width": 240,
-              "height": 180
+              "height": 145
             }
           },
           {
@@ -2206,7 +2206,7 @@
               "src": "/media/2021/05/1500.png",
               "alt": "",
               "width": 240,
-              "height": 180
+              "height": 155
             }
           },
           {
@@ -2216,7 +2216,7 @@
               "src": "/media/2021/05/R2000.png",
               "alt": "",
               "width": 240,
-              "height": 180
+              "height": 132
             }
           }
         ]
@@ -2392,7 +2392,7 @@
               "src": "/media/2021/05/HP-designjet-T6610.png",
               "alt": "HP DesignJet Z6610",
               "width": 800,
-              "height": 600
+              "height": 466
             },
             "title": "HP DesignJet Z6610 60-in Production Printer (2QU13A)",
             "excerpt": "<p>Veľkoformátová tlačiareň Z6610 je najrýchlejšou výrobnou tlačiarňou pre grafickú oblasť. Dosahuje špičkové výstupy v perokresbe aj fototlači. </p><p>Je určená pre malých a stredne veľkých poskytovateľov, ktorý požadujú výkonnosť, vysokú kvalitu tlače a jednoduchú obsluhu.</p><ul><li>rýchlosť tlače vo ,fast-eco“ móde: až 140 m² / hod</li><li>maximálna šírka rolky: 1524 mm</li><li>rozlíšenie až 2400 x 1200 optimised dpi</li><li>6 farebných zásobníkov (cyan, magenta, yellow, photo black, matte black, grey)</li><li>6 x tlačová hlava</li><li>pamäť 64 GB / pevný disk 500 GB</li><li>záruka na HW : 1rok</li></ul>"
@@ -2742,7 +2742,7 @@
             "image": {
               "src": "/media/2020/10/T630-36in.png",
               "alt": "",
-              "width": 800,
+              "width": 689,
               "height": 600
             },
             "title": "HP DesignJet T600 Printer Series",
@@ -2771,7 +2771,7 @@
             "image": {
               "src": "/media/2022/03/630-24in-300x225.png",
               "alt": "",
-              "width": 300,
+              "width": 212,
               "height": 225
             },
             "html": "<p><a href=\"https://kancelaria.smartcad.sk/t630-24in-5hb09d/\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;HP DJ T630 24-in&nbsp;</a></p>"
@@ -2781,7 +2781,7 @@
             "image": {
               "src": "/media/2022/03/650-24in-300x225.png",
               "alt": "",
-              "width": 300,
+              "width": 216,
               "height": 225
             },
             "html": "<p><a href=\"https://kancelaria.smartcad.sk/t650-24in-5hb08d/\" target=\"_blank\" rel=\"noopener noreferrer\">&nbsp;HP DJ T650 24-in&nbsp;</a></p>"
@@ -2932,7 +2932,7 @@
               "src": "/media/2020/10/T230-24.png",
               "alt": "",
               "width": 400,
-              "height": 400
+              "height": 186
             },
             "title": "HP DesignJet T200 Printer Series (5HB07A, 5HB06A)",
             "excerpt": "<p><u>Modely v sérii:</u></p><ul><li><strong>HP DesignJet T230 , <strong><a href=\"https://kancelaria.smartcad.sk/t230-24in-5hb07d/\" target=\"_blank\" rel=\"noopener noreferrer\">5HB07D</a></strong></strong></li></ul><p>1-ročná záruka / 24-in Printer / tlač A1 za 35 s</p><ul><li><strong>HP DesignJet T250 , <strong><a href=\"https://kancelaria.smartcad.sk/t250-24in-5hb06d/\" target=\"_blank\" rel=\"noopener noreferrer\">5HB06D</a></strong></strong></li></ul><p>2-ročná záruka / 24-in Printer / tlač A1 za 30 s</p><p>rozlíšenie 2400 x 1200 dpi</p><p>4 farebné atramenty /C,Y,M,Bl/&nbsp;</p><p>512 MB pamäť</p><p>šírka plotrovacej role max 610mm</p><p>vyrobené z 30% recyklovaného plastu</p>"
@@ -3114,7 +3114,7 @@
             "image": {
               "src": "/media/2022/03/studio-wood-24-in.png",
               "alt": "",
-              "width": 800,
+              "width": 603,
               "height": 600
             }
           },
@@ -3124,7 +3124,7 @@
             "image": {
               "src": "/media/2022/03/studio-wood.png",
               "alt": "",
-              "width": 800,
+              "width": 616,
               "height": 600
             }
           },
@@ -3134,7 +3134,7 @@
             "image": {
               "src": "/media/2022/03/dtudio.png",
               "alt": "",
-              "width": 800,
+              "width": 527,
               "height": 600
             }
           },
@@ -3144,7 +3144,7 @@
             "image": {
               "src": "/media/2022/03/studio-steel.png",
               "alt": "",
-              "width": 800,
+              "width": 712,
               "height": 600
             }
           }
@@ -3351,7 +3351,7 @@
             "image": {
               "src": "/media/2019/08/XL3600MFP.-1.png",
               "alt": "",
-              "width": 1659,
+              "width": 1336,
               "height": 1246
             },
             "title": "HP DesignJet XL 3600 Multifunction Printer series (6KD26A)",
@@ -3383,8 +3383,8 @@
             "image": {
               "src": "/media/2019/08/XL3600..png",
               "alt": "",
-              "width": 1637,
-              "height": 2452
+              "width": 1435,
+              "height": 2400
             }
           },
           {
@@ -3482,7 +3482,7 @@
             "image": {
               "src": "/media/2019/07/HP-T2600..png",
               "alt": "",
-              "width": 800,
+              "width": 685,
               "height": 600
             },
             "title": "HP DesignJet T2600 Multifunction Printer series (3XB78A)",
@@ -3635,7 +3635,7 @@
             "image": {
               "src": "/media/2019/07/hp-T1600.png",
               "alt": "",
-              "width": 800,
+              "width": 704,
               "height": 600
             },
             "title": "HP DesignJet T1600 printer series (3EK10A, 3EK11A, 3EK12A, 3EK13A)",
@@ -3804,7 +3804,7 @@
             "image": {
               "src": "/media/2019/07/HP-711-ink.png",
               "alt": "",
-              "width": 700,
+              "width": 453,
               "height": 525,
               "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+711"
             },
@@ -3912,7 +3912,7 @@
             "image": {
               "src": "/media/2019/07/HP-711-ink.png",
               "alt": "",
-              "width": 700,
+              "width": 453,
               "height": 525,
               "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+711"
             },
@@ -4018,7 +4018,7 @@
             "image": {
               "src": "/media/2018/10/Z9-24-palc.png",
               "alt": "",
-              "width": 573,
+              "width": 518,
               "height": 430
             }
           },
@@ -4029,7 +4029,7 @@
               "src": "/media/2018/10/Z9-44-palc.png",
               "alt": "",
               "width": 573,
-              "height": 430
+              "height": 367
             }
           },
           {
@@ -4089,7 +4089,7 @@
             "image": {
               "src": "/media/2018/10/c06020746-300x225.png",
               "alt": "",
-              "width": 300,
+              "width": 252,
               "height": 225
             }
           },
@@ -4190,8 +4190,8 @@
             "image": {
               "src": "/media/2018/10/Z6-24-palc.png",
               "alt": "",
-              "width": 1045,
-              "height": 730
+              "width": 670,
+              "height": 575
             },
             "bg": "#ffffff"
           },
@@ -4212,8 +4212,8 @@
             "image": {
               "src": "/media/2018/10/Z6-44-palc-dual-roll.png",
               "alt": "HP DesignJet Z6 dual roll 44-in PostScript® Printer with Vertical Trimmer",
-              "width": 1045,
-              "height": 730
+              "width": 961,
+              "height": 601
             },
             "bg": "#ffffff"
           }
@@ -4263,7 +4263,7 @@
             "image": {
               "src": "/media/2018/10/c06020746.png",
               "alt": "",
-              "width": 474,
+              "width": 388,
               "height": 356
             }
           },
@@ -4383,8 +4383,8 @@
             "image": {
               "src": "/media/2018/03/bezpecnost-HP-DJ-T1700.png",
               "alt": "",
-              "width": 1168,
-              "height": 959
+              "width": 982,
+              "height": 920
             },
             "html": "<ul><li>Ochrana dát, informácií a dokumentov</li><li>Správa zabezpečenia tlačiarne</li><li>Kontrola a optimalizácia tlačových nákladov </li></ul><p><strong>Prečo je T1700 najbezpečnejšia tlačiareň :</strong></p><p><strong>SecureBoot </strong>– táto funkcia overuje integritu bootovacieho kódu už v štartovaciom cykle a zabraňuje načítaniu neoprávnených operačných systémov.</p><p><strong>Whitelisting</strong> – počas štartovacieho procesu sa overuje integrita systémových súborov firmware. Pokiaľ overenie zlyhá zariadenie sa reštartuje a udržiava sa v stave předběžného spustenia. </p><p><strong>Self-Encrypted HDD</strong> – dáta uložené v tlačiarni sú čitateľné len tlačiarňou a sú automaticky šifrované při každom odoslaní do tlačiarne a zápisu do jednotky.</p><p><strong>PIN printing</strong> – ako užívateľ máte možnosť nastaviť tlačové úlohy s identifikačným kódom- PINom.</p>"
           },
@@ -4485,7 +4485,7 @@
             "image": {
               "src": "/media/2018/03/hlava-731.png",
               "alt": "",
-              "width": 382,
+              "width": 329,
               "height": 338,
               "href": "https://kancelaria.smartcad.sk/p2v27a"
             },
@@ -4582,7 +4582,7 @@
             "image": {
               "src": "/media/2019/07/hp-T1600.png",
               "alt": "",
-              "width": 800,
+              "width": 704,
               "height": 600
             },
             "html": "<ul><li>rýchlosť tlače – 180 A1/hod</li><li>max. šírka média pre tlač a skenovanie – 914 mm</li><li>dva automatické podávače kotúčov s vkladaním spredu, inteligentné prepínanie kotúčov</li><li>6 farebných zásobníkov</li><li>1x univerzálna tlačová hlava</li></ul><p><strong>↘</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2019/07/HP-DJ-T1600.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>TECHNICKÁ ŠPECIFIKÁCIA</strong></a></p><p><strong>2300,- Eur <strong><strong>bez DPH</strong></strong></strong></p>"
@@ -4604,7 +4604,7 @@
             "image": {
               "src": "/media/2019/08/XL3600MFP.-1.png",
               "alt": "",
-              "width": 1659,
+              "width": 1336,
               "height": 1246
             },
             "html": "<ul><li>rýchlosť tlače – 180 A1/hod</li><li>max. šírka média pre tlač a skenovanie – 914 mm</li><li>dva automatické podávače kotúčov s vkladaním spredu, inteligentné prepínanie kotúčov</li><li>podávač hárkov; Výstup: integrovaný výstupný stohovač (od A4 do A0, s kapacitou až 100 formátu A1), priehradka na médiá, automatická rezačka; Skener: priama dráha skenovania papiera pre listové a kartónové originály</li></ul><p><strong>↘</strong><a href=\"https://hpplotre.sk/wp-content/uploads/2022/03/HP-Designjet-XL-3600-Multi-Printer.pdf\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>TECHNICKÁ ŠPECIFIKÁCIA</strong></a></p><p><strong>cenová ponuka na vyžiadanie&nbsp;</strong></p>"
@@ -4717,7 +4717,7 @@
               "src": "/media/2017/03/72.png",
               "alt": "",
               "width": 573,
-              "height": 430
+              "height": 381
             }
           }
         ]
@@ -5355,8 +5355,8 @@
             "image": {
               "src": "/media/2017/09/dovnload-6.png",
               "alt": "",
-              "width": 227,
-              "height": 81,
+              "width": 113,
+              "height": 74,
               "href": "/smart-sluzby/ovladace-pre-hp-plotre"
             },
             "html": "<p>Už nehľadajte! Na našej stránke nájdete potrebný driver pre Váš ploter.</p>",
@@ -5368,7 +5368,7 @@
             "image": {
               "src": "/media/2017/09/service-1.png",
               "alt": "",
-              "width": 221,
+              "width": 84,
               "height": 79,
               "href": "/bazar"
             },
@@ -5381,7 +5381,7 @@
             "image": {
               "src": "/media/2021/04/error.png",
               "alt": "",
-              "width": 230,
+              "width": 86,
               "height": 82
             },
             "html": "<p>Hlási Váš ploter chybu : <strong>System Error 79_02_04 </strong>na plotri HP DesignJet T920 – T930 – T1500 – T1530 – T2500 – T2530 ?</p><p><strong>Volajte servis 0940 636 489</strong></p>",
@@ -5400,7 +5400,7 @@
             "image": {
               "src": "/media/2021/04/koniec-podpory.png",
               "alt": "",
-              "width": 230,
+              "width": 98,
               "height": 82
             },
             "html": "<p>Spoločnosť HP postupne ukončuje poskytovanie technickej podpory pre staršie plotre.</p><ul><li><strong>od 30. apríla 2024</strong> končí technická podpora pre plotre radu: HP DJ Z6200, Z5200, T520, T120</li><li><strong>od 30. októbra 2024</strong> bude ukončená technická podpora aj pre plotre radu: HP DJ T930, T1530, T2530, T3500</li></ul><p>Pre majiteľov starých plotrov to znamená, že už nie sú dostupné originálne náhradné diely, CarePacky, softwarová podpora pre nové verzie napr. Windowsu a pod. Taktiež už nezoženiete originálne atramentové náplne.</p><p>HP technická / servisná podpora skončila pre tieto modely veľkoformátových tlačiarní:<strong> /celý zoznam viď v tabuľke nižšie</strong></p><ul><li>HP DesignJet T1200, T1200ps, T770, T770 HD, 4020, 4020ps, 4520, 4520ps, T7100 mono, 5500 42in, 5500 60in, 4500ps and 4000ps.</li><li>HP DesignJet 70, 100/110, 500, 800/815, 1050/1055, 4000/4500, 5000/5500</li></ul><p><strong>Ste majiteľom starého plotra a potrebujete sa poradiť? </strong></p><p>Zavolajte nám na <strong>0940 636 489 </strong> alebo nám napíšte správu cez formulár nižšie, sme tu pre Vás.</p>"
@@ -5801,7 +5801,7 @@
               "src": "/media/2016/09/T795-474x340.png",
               "alt": "",
               "width": 474,
-              "height": 340
+              "height": 290
             },
             "title": "HP DesignJet T795 ePrinter (CR649C)",
             "excerpt": "<p>Táto 44-palcová (1118mm) tlačiareň je ideálna pre malé a stredne veľké pracovné tímy v architektonických, strojárskych a stavebných firmách a v prostrediach GIS. Je navrhnutá pre jednoduché zdieľanie medzi miestnymi a mobilnými členmi tímu a partnermi.</p>"
@@ -5858,7 +5858,7 @@
               "src": "/media/2016/10/72.png",
               "alt": "",
               "width": 573,
-              "height": 430
+              "height": 381
             }
           },
           {
@@ -5891,7 +5891,7 @@
             "image": {
               "src": "/media/2016/09/T790-474x340.png",
               "alt": "",
-              "width": 474,
+              "width": 385,
               "height": 340
             },
             "title": "HP DesignJet T790 Printer (CR647A)",
@@ -6147,7 +6147,7 @@
             "image": {
               "src": "/media/2016/07/Z2100-474x340.png",
               "alt": "",
-              "width": 474,
+              "width": 414,
               "height": 340
             },
             "title": "HP DesignJet Z2100 Photo Printer (Q6675D, Q6677D)",
@@ -6275,8 +6275,8 @@
             "image": {
               "src": "/media/2016/07/T2530-474x340.png",
               "alt": "",
-              "width": 474,
-              "height": 340
+              "width": 352,
+              "height": 313
             },
             "title": "HP DesignJet T2530 Multifunction Printer (L2Y25A)",
             "excerpt": "<p>Chcete zvýšiť produktivitu? S tlačiarňou T2530 a jej funkciami sa Vám to podarí : efektívna tlač, dva kotúče a intuitívny ovládaci panel. Táto 36-palcová multifunkčná tlačiareň je určená na vytváranie, skenovanie a kopírovanie výkresov s profesionálnou kvalitou. </p>"
@@ -6467,8 +6467,8 @@
             "image": {
               "src": "/media/2016/07/T930-474x340.png",
               "alt": "",
-              "width": 474,
-              "height": 340
+              "width": 386,
+              "height": 334
             },
             "title": "HP DesignJet T930 Printer (L2Y21A)",
             "excerpt": "<p>Je robustná, 36-palcová a kompaktná tlačiareň so šírkou médií až 91,4 cm. Zabezpečuje rýchlu tlač profesionálnych výkresov a máp – dokonca aj pri práci mimo kancelárie.</p>"
@@ -6569,7 +6569,7 @@
             "image": {
               "src": "/media/2022/02/T830-1-r.2022.png",
               "alt": "",
-              "width": 1659,
+              "width": 1330,
               "height": 1246
             }
           },
@@ -6649,8 +6649,8 @@
             "image": {
               "src": "/media/2018/04/atramenty-130ml-300x300.png",
               "alt": "",
-              "width": 300,
-              "height": 300,
+              "width": 258,
+              "height": 259,
               "href": "https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+728"
             }
           },
@@ -6670,8 +6670,8 @@
             "image": {
               "src": "/media/2018/04/hlava-729-pre-T830.png",
               "alt": "",
-              "width": 497,
-              "height": 538,
+              "width": 440,
+              "height": 478,
               "href": "https://kancelaria.smartcad.sk/f9j81a"
             },
             "html": "<ul><li>F9J81A HP 729 DesignJet Printhead /C, Y, M, B/</li></ul><p><a href=\"https://kancelaria.smartcad.sk/vyhladavanie/?query=hp+729\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>CHCEM OBJEDNAŤ cez e-shop</strong>&nbsp;</a></p>"
@@ -6993,8 +6993,8 @@
             "image": {
               "src": "/media/2018/04/T120.png",
               "alt": "",
-              "width": 729,
-              "height": 411,
+              "width": 646,
+              "height": 285,
               "href": "https://www.youtube.com/watch?v=xCwBoPzfnTo"
             },
             "title": "HP DesignJet T120 Printer (CQ891A)",
@@ -7141,7 +7141,7 @@
             "image": {
               "src": "/media/2020/10/T630-36in.png",
               "alt": "",
-              "width": 800,
+              "width": 689,
               "height": 600
             },
             "excerpt": "<p>Pri výbere plotra treba brať do úvahy: </p><ul><li>veľkosť pracovného tímu</li><li>predpokladané množstvo a formát tlačených dokumentov za mesiac</li><li>typ tlače:<em> t</em><em>echnická, grafická</em></li><li>funkcie: <em>tlač, kopírovanie, skenovanie</em></li><li>očakávaný výkon </li><li>náklady na tlač</li><li>bezpečnosť dát pred kyberútokmi</li><li>ekologickosť zariadenia</li></ul>"
@@ -7150,7 +7150,7 @@
             "image": {
               "src": "/media/2016/07/T520.png",
               "alt": "",
-              "width": 474,
+              "width": 327,
               "height": 356
             },
             "excerpt": "<p>Pri výbere plotra treba brať do úvahy: </p><ul><li>veľkosť pracovného tímu</li><li>predpokladané množstvo a formát tlačených dokumentov za mesiac</li><li>typ tlače:<em> t</em><em>echnická, grafická</em></li><li>funkcie: <em>tlač, kopírovanie, skenovanie</em></li><li>očakávaný výkon </li><li>náklady na tlač</li><li>bezpečnosť dát pred kyberútokmi</li><li>ekologickosť zariadenia</li></ul>"
@@ -7160,7 +7160,7 @@
               "src": "/media/2022/01/HP-DJ-Z9.png",
               "alt": "",
               "width": 1659,
-              "height": 1246
+              "height": 960
             },
             "excerpt": "<p>Pri výbere plotra treba brať do úvahy: </p><ul><li>veľkosť pracovného tímu</li><li>predpokladané množstvo a formát tlačených dokumentov za mesiac</li><li>typ tlače:<em> t</em><em>echnická, grafická</em></li><li>funkcie: <em>tlač, kopírovanie, skenovanie</em></li><li>očakávaný výkon </li><li>náklady na tlač</li><li>bezpečnosť dát pred kyberútokmi</li><li>ekologickosť zariadenia</li></ul>"
           },
@@ -7230,7 +7230,7 @@
               "src": "/media/2018/10/Z9-44-palc.png",
               "alt": "",
               "width": 573,
-              "height": 430
+              "height": 367
             },
             "html": "<p><a href=\"/hp-designjet-z2100-photo\">↘</a>&nbsp;<a href=\"/hp-designjet-z6\">séria HP DesignJet Z6 PostScript</a></p><p><a href=\"/hp-designjet-z6-pro\">↘&nbsp;HP DesignJet Z6 Pro 64-in Printer</a></p><p>↘&nbsp;<a href=\"/hp-designjet-z9\">séria HP DesignJet Z9+ PostScript</a></p><p><a href=\"/hp-designjet-z9-pro\">↘&nbsp;séria HP DesignJet Z9+ Pro 64-in Printer</a></p><p><a href=\"/hp-designjet-z6610-printer\">↘&nbsp;HP DesignJet Z6610 Production Printer</a></p><p><a href=\"/hp-designjet-z6810-printer\">↘&nbsp;HP DesignJet Z6810 Production Printer</a></p>",
             "bg": "#ffffff"
@@ -7504,7 +7504,7 @@
             "image": {
               "src": "/media/2019/07/hp-T1600-300x225.png",
               "alt": "",
-              "width": 300,
+              "width": 274,
               "height": 225,
               "href": "/stary_za_novy"
             },
