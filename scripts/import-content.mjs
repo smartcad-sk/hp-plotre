@@ -13,6 +13,7 @@ import * as cheerio from "cheerio";
 import sanitizeHtml from "sanitize-html";
 import { imageSize } from "image-size";
 import { trimTransparentBorders } from "./trim-images.mjs";
+import { applyCopyEdits } from "./copy-edits.mjs";
 import { readFile } from "node:fs/promises";
 
 const ORIGIN = "https://hpplotre.sk";
@@ -480,6 +481,12 @@ async function main() {
   }
   await writeFile(path.join(OUT_DIR, "redirects.json"), JSON.stringify(redirects, null, 2) + "\n");
 
+  // Editorial copy edits (docs/copy-review.md) – re-applied on every import.
+  const edits = applyCopyEdits(pages, posts);
+  if (edits.missed.length) {
+    report.copyEditsMissed = edits.missed;
+    console.warn(`\ncopy edits not applied (text changed on the live site):\n  ${edits.missed.join("\n  ")}`);
+  }
   await fillDims(pages);
   await fillDims(posts);
   await writeFile(path.join(OUT_DIR, "pages.json"), JSON.stringify(pages, null, 2) + "\n");

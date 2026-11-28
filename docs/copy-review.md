@@ -3,9 +3,33 @@
 Review of `src/content/pages.json` (60 pages) and `posts.json` (9 posts): where the copy is a wall of text and how
 to structure it. The proposed Slovak copy keeps the original facts; nothing is invented.
 
-**Already fixed in the importer:** the "Slider Title / Short Excerpt" demo slides (29 sections) and the
-"WordPress › Chyba – kritická chyba" text at the end of the post `/hp-plotre-t850-a-t950-ochrania-vase-projektove-data`.
-The GDPR text next to the forms is now one shared block (`ContactFormSection`).
+## Status
+
+The edits are applied by `scripts/copy-edits.mjs`. The importer runs it on every `npm run import:content`, and it warns
+when a rewrite no longer matches the live text.
+
+**Applied:**
+- items 1–5, 7, 8, 10–12;
+- item 6, except moving "Prvá pomoc";
+- item 9: price under the heading, spec bullets split;
+- item 13: "Výroba ukončená" note at the top; captions that repeat on every slide are shown once;
+- item 14: typo "vyskrutkujte";
+- item 15: `/rada-t850_t950` and `/diagnostika_plotra`;
+- the pattern fixes for pseudo-link arrows, caps e-shop/spec labels, and ↘ / › / – lines turned into (nested) lists.
+
+Fixed earlier:
+- the "Slider Title / Short Excerpt" demo slides;
+- the WordPress error text in a post;
+- the GDPR text, now part of the shared form block.
+
+**Not applied (needs content work or a decision):**
+- the owner decisions below;
+- the "Prvá pomoc" box on `/diagnostika-plotra`;
+- a warranty badge on bazár cards;
+- a successor link for discontinued models;
+- the knife-replacement post as a numbered list;
+- a comparison table for the Epson post;
+- definition-list and subheading patterns.
 
 ## Needs an owner decision
 
