@@ -143,12 +143,13 @@ function Column({ col, dark, headingLevel }: { col: ContentColumn; dark: boolean
         />
         </MaybeLink>
       )}
+      {/* Media first, like image panels: video, then heading and text. */}
+      {col.youtubeId && <YouTubeEmbed id={col.youtubeId} title={col.title ? tidyHeading(col.title) : "Video"} />}
       {col.title && (
         <Heading level={headingLevel} size="md" className={panelDark ? "text-white" : "text-brand-800"}>
           {tidyHeading(col.title)}
         </Heading>
       )}
-      {col.youtubeId && <YouTubeEmbed id={col.youtubeId} title={col.title ? tidyHeading(col.title) : "Video"} />}
       {col.html && <Prose html={col.html} invert={panelDark} className="flex-1" />}
       {col.button && (
         <ButtonLink href={col.button.href} variant={panelDark ? "inverse" : "outline"} arrow className="self-start">
