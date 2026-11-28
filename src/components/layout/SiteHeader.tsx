@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { blogNav, mainNav, site } from "@/lib/site";
+import { mainNav, site } from "@/lib/site";
 import { Icon } from "@/components/ui/Icon";
 import { DesktopNav, MobileNav } from "./Navigation";
 
@@ -12,11 +12,6 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-(--container-content) items-center justify-end gap-4 px-4 py-1.5 sm:px-6 lg:justify-between lg:px-8">
           <p className="hidden text-white/85 lg:block">{site.tagline}</p>
           <ul className="flex items-center gap-5">
-            <li>
-              <Link href={blogNav.href} className="inline-flex items-center gap-1.5 py-1 font-semibold hover:underline pointer-coarse:min-h-11">
-                {blogNav.label}
-              </Link>
-            </li>
             <li>
               <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="inline-flex items-center gap-1.5 py-1 hover:underline pointer-coarse:min-h-11">
                 <Icon name="phone" className="size-4" /> {site.phoneDisplay}

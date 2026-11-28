@@ -122,11 +122,11 @@ test("desktop dropdown works with keyboard", async ({ page }) => {
   const width = page.viewportSize()?.width ?? 0;
   test.skip(width < 1024, "mobile uses the drawer");
   await page.goto("/");
-  const trigger = page.getByRole("navigation", { name: "Hlavná navigácia" }).getByRole("button", { name: "Podmenu Produkty" });
+  const trigger = page.getByRole("navigation", { name: "Hlavná navigácia" }).getByRole("button", { name: "Podmenu Služby a technická podpora" });
   await trigger.focus();
   await page.keyboard.press("Enter");
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
-  await expect(page.getByRole("link", { name: "Skladačky výkresov" }).first()).toBeVisible();
+  await expect(page.getByRole("link", { name: "Diagnostika a servis plotra" }).first()).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(trigger).toHaveAttribute("aria-expanded", "false");
 });

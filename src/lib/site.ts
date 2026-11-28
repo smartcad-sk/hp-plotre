@@ -36,49 +36,43 @@ export type NavItem = {
   children?: NavItem[];
 };
 
-/**
- * Main navigation – same structure as the original site: parents are links to their
- * overview page and open a sub-menu of the *other* pages (no item repeats its parent).
- * The original menu also listed "Bazár plotrov" three times; it now appears once.
- */
-export const mainNav: NavItem[] = [
-  { label: "Úvod", href: "/" },
-  {
-    label: "Produkty",
-    href: "/velkoformatove-tlaciarne",
-    description: "Plotre a skenery HP DesignJet",
-    children: [
-      { label: "Skladačky výkresov", href: "/skladacky-vykresov" },
-      { label: "Latex", href: "/latex" },
-      { label: "Vyrezávacie plotre", href: "/vyrezavacie-plotre" },
-    ],
-  },
-  {
-    label: "Služby a technická podpora",
-    href: "/smart-sluzby",
-    children: [
-      { label: "Diagnostika a servis plotra", href: "/diagnostika-plotra" },
-      { label: "Rady a návody", href: "/smart-sluzby/rady_tipy" },
-      { label: "Výmena starého plotra za nový", href: "/stary_za_novy" },
-      { label: "Ovládače pre HP plotre", href: "/smart-sluzby/ovladace-pre-hp-plotre" },
-    ],
-  },
-  { label: "Bazár plotrov", href: site.bazaar, external: true },
-  { label: "Planografia", href: "/plotrovanie" },
-  { label: "Kontakt", href: "/kontakt" },
+/** Product pages listed in the footer (the main menu links to the overview only). */
+export const productNav: NavItem[] = [
+  { label: "Skladačky výkresov", href: "/skladacky-vykresov" },
+  { label: "Latex", href: "/latex" },
+  { label: "Vyrezávacie plotre", href: "/vyrezavacie-plotre" },
 ];
 
-/** Secondary link shown in the top bar (as on the original site) and in the mobile menu. */
-export const blogNav: NavItem = { label: "Blogy o HP plotroch", href: "/blogy" };
+/** Service pages; "Rady a návody" stays reachable from the footer only. */
+const serviceNav: NavItem[] = [
+  { label: "Diagnostika a servis plotra", href: "/diagnostika-plotra" },
+  { label: "Výmena starého plotra za nový", href: "/stary_za_novy" },
+  { label: "Ovládače pre HP plotre", href: "/smart-sluzby/ovladace-pre-hp-plotre" },
+];
+
+export const blogNav: NavItem = { label: "Blog", href: "/blogy" };
+
+/**
+ * Main navigation. The logo links home (no "Úvod" item); Produkty links to the overview,
+ * which lists every category and model; only the service section has a sub-menu.
+ */
+export const mainNav: NavItem[] = [
+  { label: "Produkty", href: "/velkoformatove-tlaciarne" },
+  { label: "Služby a technická podpora", href: "/smart-sluzby", children: serviceNav },
+  { label: "Bazár plotrov", href: site.bazaar, external: true },
+  { label: "Planografia", href: "/plotrovanie" },
+  blogNav,
+  { label: "Kontakt", href: "/kontakt" },
+];
 
 export const footerNav: { title: string; items: NavItem[] }[] = [
   {
     title: "Produkty",
-    items: [{ label: "Plotre a skenery", href: "/velkoformatove-tlaciarne" }, ...(mainNav[1].children ?? [])],
+    items: [{ label: "Plotre a skenery", href: "/velkoformatove-tlaciarne" }, ...productNav],
   },
   {
     title: "Služby",
-    items: [{ label: "Služby a technická podpora", href: "/smart-sluzby" }, ...(mainNav[2].children ?? [])],
+    items: [{ label: "Služby a technická podpora", href: "/smart-sluzby" }, ...serviceNav, { label: "Rady a návody", href: "/smart-sluzby/rady_tipy" }],
   },
   {
     title: "Ďalšie",
