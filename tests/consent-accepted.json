@@ -1,0 +1,9 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "http://localhost:3100",
+      "localStorage": [{ "name": "hpplotre-consent-v1", "value": "{\"analytics\":false,\"marketing\":false,\"ts\":0}" }]
+    }
+  ]
+}

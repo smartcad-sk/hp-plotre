@@ -1,0 +1,118 @@
+[
+  {
+    "source": "/category/:slug*",
+    "destination": "/blogy"
+  },
+  {
+    "source": "/stary_za_novy/kampan2",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/tech-podpora",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/portfolio-2",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/designjety",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/technici",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/predaj-a-tech-podpora",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/hlavicka",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/podklady",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/tech-podpora-2",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/podmienky-2",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/podmienky",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/stary_za_novy/vymena",
+    "destination": "/stary_za_novy"
+  },
+  {
+    "source": "/diagnostika_plotra/vymena-displeja-final",
+    "destination": "/diagnostika_plotra"
+  },
+  {
+    "source": "/xl-3800-printer/xl3800",
+    "destination": "/xl-3800-printer"
+  },
+  {
+    "source": "/diagnostika_plotra/servis-2",
+    "destination": "/diagnostika_plotra"
+  },
+  {
+    "source": "/pigmentove_atramenty/pigmenty",
+    "destination": "/pigmentove_atramenty"
+  },
+  {
+    "source": "/pigmentove_atramenty/atramenty-t850t950-video",
+    "destination": "/pigmentove_atramenty"
+  },
+  {
+    "source": "/pigmentove_atramenty/vodeodolnost-pigmentovych-atramentov",
+    "destination": "/pigmentove_atramenty"
+  },
+  {
+    "source": "/rada-t850_t950/modely-t850-_-t950",
+    "destination": "/rada-t850_t950"
+  },
+  {
+    "source": "/hp-designjet-t950-najrychlejsi-ploter-vo-svojej-kategorii/hp-dj-t950",
+    "destination": "/hp-designjet-t950-najrychlejsi-ploter-vo-svojej-kategorii"
+  },
+  {
+    "source": "/hp-dj-t850-v-porovnani-s-epson-t5405/hp-vs-epson",
+    "destination": "/hp-dj-t850-v-porovnani-s-epson-t5405"
+  },
+  {
+    "source": "/hp-dj-t850-v-porovnani-s-epson-t5405/1-efektivita-hp-vs-epson-video",
+    "destination": "/hp-dj-t850-v-porovnani-s-epson-t5405"
+  },
+  {
+    "source": "/hp-dj-t850-v-porovnani-s-epson-t5405/2-kvalita-hp-vs-epson-video",
+    "destination": "/hp-dj-t850-v-porovnani-s-epson-t5405"
+  },
+  {
+    "source": "/hp-dj-t850-v-porovnani-s-epson-t5405/3-bezpecnost-hp-vs-epson-video",
+    "destination": "/hp-dj-t850-v-porovnani-s-epson-t5405"
+  },
+  {
+    "source": "/hp-dj-t850-v-porovnani-s-epson-t5405/4-ekologia-hp-vs-epson-video",
+    "destination": "/hp-dj-t850-v-porovnani-s-epson-t5405"
+  },
+  {
+    "source": "/montaz-a-instalacia-hp-dj-t850-u-zakaznika/montaz-a-instalacia-t850",
+    "destination": "/montaz-a-instalacia-hp-dj-t850-u-zakaznika"
+  },
+  {
+    "source": "/kvalita-materialov-a-detaily-rozhoduju/detaily-t950",
+    "destination": "/kvalita-materialov-a-detaily-rozhoduju"
+  },
+  {
+    "source": "/navod-ako-na-vymenu-rezacieho-noza/rezaci-noz-2",
+    "destination": "/navod-ako-na-vymenu-rezacieho-noza"
+  }
+]

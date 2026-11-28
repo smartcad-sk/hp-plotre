@@ -1,0 +1,8 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "next-prod", "runtimeExecutable": "npm", "runtimeArgs": ["run", "start"], "port": 3000 },
+    { "name": "next-dev", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 3000 },
+    { "name": "storybook", "runtimeExecutable": "npm", "runtimeArgs": ["run", "storybook", "--", "--no-open"], "port": 6006 }
+  ]
+}

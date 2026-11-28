@@ -1,0 +1,23 @@
+{
+  "brokenPages": [],
+  "unknownWidgets": {
+    "/hp-designjet-t870-printer": [
+      "widget_text"
+    ],
+    "/blogy": [
+      "widget_block"
+    ]
+  },
+  "truncatedPosts": [
+    "/hp-plotre-t850-a-t950-ochrania-vase-projektove-data"
+  ],
+  "images": {
+    "downloaded": 246,
+    "failed": []
+  },
+  "dedupedDescriptions": [
+    "/t850 keeps \"HP DJ T850 je kompaktná, ľahko ovládateľná a ekolo…\"",
+    "/smart-sluzby/rady_tipy keeps \"Netlačí Vám správne ploter? Výtlačky sú nepresné, …\"",
+    "/diagnostika_plotra keeps \"Včasnou diagnostikou predídete komplikáciam s tlač…\""
+  ]
+}
