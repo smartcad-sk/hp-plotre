@@ -80,7 +80,8 @@ export function SectionRenderer({ sections, pageTitle }: { sections: Data[]; pag
                 </Section>
               );
             }
-            const captioned = s.slides.filter((sl) => sl.excerpt);
+            // Layers often repeats the same caption on every slide – show each text once.
+            const captioned = s.slides.filter((sl, k, all) => sl.excerpt && all.findIndex((o) => o.excerpt === sl.excerpt) === k);
             const no = ++sliderNo;
             return (
               <Section key={s.id + i} spacing="sm">
